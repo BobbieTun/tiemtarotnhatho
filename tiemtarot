@@ -86,23 +86,23 @@
     .contact-link::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s; }
     .contact-link:hover::after { left: 100%; }
     .contact-link:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(166,126,184,0.4); }
-    .legit-list { display: flex; flex-direction: column; gap: 18px; }
-    .legit-card { background: var(--card-bg); backdrop-filter: blur(8px); border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 20px var(--shadow); border-left: 4px solid var(--accent); transition: all 0.3s; }
-    .legit-card:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(74,59,82,0.12); }
-    .legit-card .stars { color: #d4a574; font-size: 16px; margin-bottom: 10px; letter-spacing: 2px; }
-    .legit-card .text { color: #5a4a6a; font-size: 14px; line-height: 1.8; font-style: italic; font-family: 'Playfair Display', serif; }
-    .legit-card .author { text-align: right; color: #9a7aaa; font-size: 13px; margin-top: 12px; font-weight: 600; }
-    .legit-with-img { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
-    .legit-with-img .legit-text { flex: 1; min-width: 220px; }
-    .legit-img { width: 150px; height: 150px; object-fit: cover; border-radius: 14px; border: 2px solid rgba(201,168,216,0.3); cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 12px rgba(74,59,82,0.1); }
-    .legit-img:hover { transform: scale(1.05) rotate(1deg); box-shadow: 0 8px 24px rgba(74,59,82,0.15); border-color: var(--accent); }
-    .legit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
-    .legit-item { position: relative; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px var(--shadow); cursor: pointer; transition: all 0.4s; background: var(--card-bg); }
-    .legit-item:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 14px 40px rgba(74,59,82,0.18); }
-    .legit-item img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s; }
-    .legit-item:hover img { transform: scale(1.1); }
-    .legit-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(74,59,82,0.7)); padding: 30px 14px 14px; color: #fff; font-size: 13px; font-weight: 600; text-align: center; opacity: 0; transition: opacity 0.3s; }
-    .legit-item:hover .legit-overlay { opacity: 1; }
+    .feedback-list { display: flex; flex-direction: column; gap: 18px; }
+    .feedback-card { background: var(--card-bg); backdrop-filter: blur(8px); border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 20px var(--shadow); border-left: 4px solid var(--accent); transition: all 0.3s; }
+    .feedback-card:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(74,59,82,0.12); }
+    .feedback-card .stars { color: #d4a574; font-size: 16px; margin-bottom: 10px; letter-spacing: 2px; }
+    .feedback-card .text { color: #5a4a6a; font-size: 14px; line-height: 1.8; font-style: italic; font-family: 'Playfair Display', serif; }
+    .feedback-card .author { text-align: right; color: #9a7aaa; font-size: 13px; margin-top: 12px; font-weight: 600; }
+    .feedback-with-img { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+    .feedback-with-img .feedback-text { flex: 1; min-width: 220px; }
+    .feedback-img { width: 150px; height: 150px; object-fit: cover; border-radius: 14px; border: 2px solid rgba(201,168,216,0.3); cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 12px rgba(74,59,82,0.1); }
+    .feedback-img:hover { transform: scale(1.05) rotate(1deg); box-shadow: 0 8px 24px rgba(74,59,82,0.15); border-color: var(--accent); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
+    .gallery-item { position: relative; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px var(--shadow); cursor: pointer; transition: all 0.4s; background: var(--card-bg); }
+    .gallery-item:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 14px 40px rgba(74,59,82,0.18); }
+    .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s; }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(74,59,82,0.7)); padding: 30px 14px 14px; color: #fff; font-size: 13px; font-weight: 600; text-align: center; opacity: 0; transition: opacity 0.3s; }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
     .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(20,10,30,0.92); z-index: 1000; justify-content: center; align-items: center; flex-direction: column; padding: 20px; backdrop-filter: blur(10px); }
     .lightbox.active { display: flex; animation: fadeIn 0.3s; }
     .lightbox img { max-width: 90%; max-height: 78vh; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.1); }
@@ -148,9 +148,9 @@
       .tab-content { padding: 20px 12px; }
       .process-steps { flex-direction: column; }
       .arrow { transform: rotate(90deg); }
-      .legit-with-img { flex-direction: column; }
-      .legit-img { width: 100%; height: auto; }
-      .legit-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .feedback-with-img { flex-direction: column; }
+      .feedback-img { width: 100%; height: auto; }
+      .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
       .music-player { bottom: 10px; right: 10px; padding: 8px 14px; }
       .legit-box .big-number { font-size: 40px; }
     }
@@ -185,8 +185,8 @@
       <button class="tab-btn active" onclick="showTab('profile', this)">👤 Profile</button>
       <button class="tab-btn" onclick="showTab('prices', this)">💰 Bảng Giá</button>
       <button class="tab-btn" onclick="showTab('legit', this)">⭐ Uy Tín</button>
-      <button class="tab-btn" onclick="showTab('legit', this)">💬 legit</button>
-      <button class="tab-btn" onclick="showTab('legit', this)">📸 Ảnh</button>
+      <button class="tab-btn" onclick="showTab('feedback', this)">💬 Feedback</button>
+      <button class="tab-btn" onclick="showTab('gallery', this)">📸 Ảnh</button>
       <button class="tab-btn" onclick="showTab('contact', this)">📞 Liên Hệ</button>
     </div>
   </div>
@@ -339,12 +339,13 @@
         <div class="stat-item"><div class="num">1000+</div><div class="txt">Trải bài đã thực hiện</div></div>
         <div class="stat-item"><div class="num" style="font-size: 20px;">⭐⭐⭐⭐⭐</div><div class="txt" style="font-size: 18px;">Đánh giá trung bình</div></div>
         <div class="stat-item"><div class="num">100%</div><div class="txt">Khách hàng hài lòng</div></div>
-        <div class="stat-item"><div class="num">24/7</div><div class="txt">Hỗ trợ tư vấn</div></div>
+        <div class="stat-item"><div class="num" style="font-size: 24px;">11.am — 2.am</div><div class="txt">Giờ làm việc</div></div>
       </div>
     </div>
     <div class="glass-card" style="margin-top: 24px;">
-      <h3 style="margin-top:0;">📜 Cam Kết Củ a Tiệm</h3>
+      <h3 style="margin-top:0;">📜 Cam Kết Của Tiệm</h3>
       <ul class="commit-list">
+        <li><span class="check">🕊️</span> Duy nhất 1 Reader</li>
         <li><span class="check">🔒</span> Bảo mật tuyệt đối thông tin khách hàng</li>
         <li><span class="check">💎</span> Tư vấn trung thực, không thêm bớt, không nói láo</li>
         <li><span class="check">💰</span> Hoàn tiền nếu khách không hài lòng về chất lượng</li>
@@ -360,39 +361,39 @@
   </div>
 
   <div id="legit" class="tab-content">
-    <div class="section-title">legit Khách Hàng</div>
+    <div class="section-title">Feedback Khách Hàng</div>
     <div class="section-subtitle">Những lờ i chia sẻ chân thành từ cộng đồng</div>
-    <div class="legit-list">
-      <div class="legit-card legit-with-img animate-in delay-1">
-        <div class="legit-text">
+    <div class="feedback-list">
+      <div class="feedback-card feedback-with-img animate-in delay-1">
+        <div class="feedback-text">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <div class="text">"Nhà Thỏ xem rất chuẩn, đúng những gì mình đang trải qua luôn. Cách giải thích nhẹ nhàng, dễ hiểu và rất có chiều sâu. Cảm ơn Nhà Thỏ nhiều ạ!"</div>
           <div class="author">— Chị H., Hà Nội · Gói Combo Big</div>
         </div>
-        <img src="legit1.jpg" alt="legit Chị H." class="legit-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'legit từ Chị H., Hà Nội')">
+        <img src="feedback1.jpg" alt="Feedback Chị H." class="feedback-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'Feedback từ Chị H., Hà Nội')">
       </div>
-      <div class="legit-card legit-with-img animate-in delay-2">
-        <div class="legit-text">
+      <div class="feedback-card feedback-with-img animate-in delay-2">
+        <div class="feedback-text">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <div class="text">"Mình đã xem tarot ở nhiều nơi nhưng Tiệm nhà Thỏ là chỗ mình cảm thấy thoải mái và được lắng nghe nhất. Gói combo big rất đáng tiền, giải đáp được hết thắc mắc."</div>
           <div class="author">— Bạn T., TP.HCM · Gói Tarot Thờ i Gian</div>
         </div>
-        <img src="legit2.jpg" alt="legit Bạn T." class="legit-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'legit từ Bạn T., TP.HCM')">
+        <img src="feedback2.jpg" alt="Feedback Bạn T." class="feedback-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'Feedback từ Bạn T., TP.HCM')">
       </div>
-      <div class="legit-card legit-with-img animate-in delay-3">
-        <div class="legit-text">
+      <div class="feedback-card feedback-with-img animate-in delay-3">
+        <div class="feedback-text">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <div class="text">"Mình dùng gói Coach Manifest đồng hành 30 ngày, thực sự thay đổi cách nhìn của mình về cuộc sống. Nhà Thỏ không chỉ xem bài mà còn động viên, hướng dẫn rất tận tâm."</div>
           <div class="author">— Bạn M., Đà Nẵng · Coach Manifest 30 ngày</div>
         </div>
-        <img src="legit3.jpg" alt="legit Bạn M." class="legit-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'legit từ Bạn M., Đà Nẵng')">
+        <img src="feedback3.jpg" alt="Feedback Bạn M." class="feedback-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'Feedback từ Bạn M., Đà Nẵng')">
       </div>
-      <div class="legit-card animate-in delay-1">
+      <div class="feedback-card animate-in delay-1">
         <div class="stars">⭐⭐⭐⭐⭐</div>
         <div class="text">"Xem tử vi trọn đờ i ở đây, phân tích chi tiết từng năm vận hạn. Mình thấy rất hợp lý và có cơ sở. Sẽ quay lại dài dài!"</div>
         <div class="author">— Anh K., Hải Phòng · Tử Vi Trọn Đờ i</div>
       </div>
-      <div class="legit-card animate-in delay-2">
+      <div class="feedback-card animate-in delay-2">
         <div class="stars">⭐⭐⭐⭐⭐</div>
         <div class="text">"Nhà Thỏ làm spell rất có tâm, mình cảm nhận được năng lượng tích cực sau khi dùng lucky spell. Giá cả hợp lý, không bị chặt chém như mấy chỗ khác."</div>
         <div class="author">— Bạn L., Cần Thơ · Lucky Spell</div>
@@ -400,37 +401,37 @@
     </div>
   </div>
 
-  <div id="legit" class="tab-content">
-    <div class="section-title">Ảnh legit & Minh Chứng</div>
+  <div id="gallery" class="tab-content">
+    <div class="section-title">Ảnh Feedback & Minh Chứng</div>
     <div class="section-subtitle">Những khoảnh khắc đáng nhớ cùng khách hàng</div>
-    <div class="legit-grid">
-      <div class="legit-item" onclick="openLightbox('legit1.jpg', 'legit Chị H., Hà Nội')">
-        <img src="legit1.jpg" alt="legit 1" onerror="this.src='https://placehold.co/300x300/c9a8d8/ffffff?text=legit+1'">
-        <div class="legit-overlay">⭐ Chị H., Hà Nội</div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox('feedback1.jpg', 'Feedback Chị H., Hà Nội')">
+        <img src="feedback1.jpg" alt="Feedback 1" onerror="this.src='https://placehold.co/300x300/c9a8d8/ffffff?text=Feedback+1'">
+        <div class="gallery-overlay">⭐ Chị H., Hà Nội</div>
       </div>
-      <div class="legit-item" onclick="openLightbox('legit2.jpg', 'legit Bạn T., TP.HCM')">
-        <img src="legit2.jpg" alt="legit 2" onerror="this.src='https://placehold.co/300x300/e8c4d9/ffffff?text=legit+2'">
-        <div class="legit-overlay">⭐ Bạn T., TP.HCM</div>
+      <div class="gallery-item" onclick="openLightbox('feedback2.jpg', 'Feedback Bạn T., TP.HCM')">
+        <img src="feedback2.jpg" alt="Feedback 2" onerror="this.src='https://placehold.co/300x300/e8c4d9/ffffff?text=Feedback+2'">
+        <div class="gallery-overlay">⭐ Bạn T., TP.HCM</div>
       </div>
-      <div class="legit-item" onclick="openLightbox('legit3.jpg', 'legit Bạn M., Đà Nẵng')">
-        <img src="legit3.jpg" alt="legit 3" onerror="this.src='https://placehold.co/300x300/d4a8e0/ffffff?text=legit+3'">
-        <div class="legit-overlay">⭐ Bạn M., Đà Nẵng</div>
+      <div class="gallery-item" onclick="openLightbox('feedback3.jpg', 'Feedback Bạn M., Đà Nẵng')">
+        <img src="feedback3.jpg" alt="Feedback 3" onerror="this.src='https://placehold.co/300x300/d4a8e0/ffffff?text=Feedback+3'">
+        <div class="gallery-overlay">⭐ Bạn M., Đà Nẵng</div>
       </div>
-      <div class="legit-item" onclick="openLightbox('legit4.jpg', 'legit Anh K., Hải Phòng')">
-        <img src="legit4.jpg" alt="legit 4" onerror="this.src='https://placehold.co/300x300/c9a8d8/ffffff?text=legit+4'">
-        <div class="legit-overlay">⭐ Anh K., Hải Phòng</div>
+      <div class="gallery-item" onclick="openLightbox('feedback4.jpg', 'Feedback Anh K., Hải Phòng')">
+        <img src="feedback4.jpg" alt="Feedback 4" onerror="this.src='https://placehold.co/300x300/c9a8d8/ffffff?text=Feedback+4'">
+        <div class="gallery-overlay">⭐ Anh K., Hải Phòng</div>
       </div>
-      <div class="legit-item" onclick="openLightbox('legit5.jpg', 'legit Bạn L., Cần Thơ')">
-        <img src="legit5.jpg" alt="legit 5" onerror="this.src='https://placehold.co/300x300/e8c4d9/ffffff?text=legit+5'">
-        <div class="legit-overlay">⭐ Bạn L., Cần Thơ</div>
+      <div class="gallery-item" onclick="openLightbox('feedback5.jpg', 'Feedback Bạn L., Cần Thơ')">
+        <img src="feedback5.jpg" alt="Feedback 5" onerror="this.src='https://placehold.co/300x300/e8c4d9/ffffff?text=Feedback+5'">
+        <div class="gallery-overlay">⭐ Bạn L., Cần Thơ</div>
       </div>
-      <div class="legit-item" onclick="openLightbox('legit6.jpg', 'legit khách hàng khác')">
-        <img src="legit6.jpg" alt="legit 6" onerror="this.src='https://placehold.co/300x300/d4a8e0/ffffff?text=legit+6'">
-        <div class="legit-overlay">⭐ Khách hàng khác</div>
+      <div class="gallery-item" onclick="openLightbox('feedback6.jpg', 'Feedback khách hàng khác')">
+        <img src="feedback6.jpg" alt="Feedback 6" onerror="this.src='https://placehold.co/300x300/d4a8e0/ffffff?text=Feedback+6'">
+        <div class="gallery-overlay">⭐ Khách hàng khác</div>
       </div>
     </div>
     <div class="glass-card" style="margin-top: 24px; text-align: center;">
-      <p style="color: #7a5a8a; font-size: 13px; margin: 0; line-height: 1.8;">💡 Click vào ảnh để xem phóng to.<br>Để thêm ảnh mới: đặt file ảnh vào cùng thư mục với <code>index.html</code>, sau đó copy thêm block <code>legit-item</code>.</p>
+      <p style="color: #7a5a8a; font-size: 13px; margin: 0; line-height: 1.8;">💡 Click vào ảnh để xem phóng to.<br>Để thêm ảnh mới: đặt file ảnh vào cùng thư mục với <code>index.html</code>, sau đó copy thêm block <code>gallery-item</code>.</p>
     </div>
   </div>
 
