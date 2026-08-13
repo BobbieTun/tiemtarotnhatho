@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐰 Tiệm Tarot Nhà Thỏ | Since 2021</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #fdf6f9; --bg-2: #f5e8f0; --bg-3: #ead5e3;
+      --accent: #c9a8d8; --accent-light: #e8c4d9; --accent-dark: #a67eb8;
+      --text-main: #4a3b52; --text-dark: #2d1f3a; --text-muted: #8a6a9a;
+      --card-bg: rgba(255,255,255,0.72); --glass: rgba(255,255,255,0.55);
+      --shadow: rgba(74,59,82,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(160deg, #fdf6f9 0%, #f0e6f5 30%, #e8d5e8 60%, #ddd0e8 100%);
+      color: var(--text-main); min-height: 100vh; overflow-x: hidden; position: relative;
+    }
+    .stars-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+    .star { position: absolute; width: 3px; height: 3px; background: #d4a8e0; border-radius: 50%; animation: twinkle var(--dur) ease-in-out infinite; opacity: 0; }
+    @keyframes twinkle { 0%,100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 0.8; transform: scale(1.2); } }
+    .rabbit-float { position: fixed; font-size: 28px; pointer-events: none; z-index: 1; opacity: 0.12; animation: floatRabbit var(--dur) ease-in-out infinite; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+    @keyframes floatRabbit { 0%,100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-20px) rotate(5deg); } 50% { transform: translateY(-10px) rotate(-3deg); } 75% { transform: translateY(-25px) rotate(4deg); } }
+    .petal { position: fixed; top: -30px; pointer-events: none; z-index: 1; font-size: 16px; opacity: 0.35; animation: fallPetal linear infinite; }
+    @keyframes fallPetal { 0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.35; } 25% { transform: translateY(25vh) rotate(45deg) translateX(20px); } 50% { transform: translateY(50vh) rotate(90deg) translateX(-10px); opacity: 0.5; } 75% { transform: translateY(75vh) rotate(135deg) translateX(15px); } 100% { transform: translateY(105vh) rotate(180deg) translateX(0); opacity: 0; } }
+    .music-player { position: fixed; bottom: 20px; right: 20px; z-index: 100; background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 50px; padding: 10px 18px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(74,59,82,0.12); cursor: pointer; transition: all 0.3s; }
+    .music-player:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(74,59,82,0.18); }
+    .music-icon { font-size: 20px; animation: spin 3s linear infinite; }
+    .music-player.paused .music-icon { animation-play-state: paused; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .music-text { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+    .container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; padding: 0 16px; }
+    .hero { text-align: center; padding: 70px 30px 50px; position: relative; overflow: hidden; border-radius: 0 0 40px 40px; background: linear-gradient(135deg, rgba(201,168,216,0.3) 0%, rgba(232,196,217,0.3) 50%, rgba(240,213,224,0.3) 100%); backdrop-filter: blur(5px); margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.6); }
+    .hero-rabbit { font-size: 60px; margin-bottom: 10px; animation: bounceRabbit 2s ease-in-out infinite; display: inline-block; }
+    @keyframes bounceRabbit { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 44px; color: var(--text-dark); text-shadow: 2px 2px 8px rgba(255,255,255,0.6); letter-spacing: 2px; margin-bottom: 8px; }
+    .hero .since { font-size: 13px; color: #7a5a8a; letter-spacing: 4px; font-weight: 600; margin-bottom: 16px; }
+    .hero-divider { width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 0 auto 16px; }
+    .hero .tagline { font-family: 'Playfair Display', serif; font-style: italic; color: #5a3d6b; font-size: 16px; max-width: 550px; margin: 0 auto; line-height: 1.7; }
+    .hero .sub-tagline { margin-top: 12px; font-size: 13px; color: var(--text-muted); letter-spacing: 1px; }
+    .nav-wrapper { position: sticky; top: 0; z-index: 50; padding: 10px 0; margin-bottom: 20px; }
+    .tabs { display: flex; justify-content: center; background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.5); border-radius: 50px; flex-wrap: wrap; padding: 6px; box-shadow: 0 4px 20px var(--shadow); max-width: fit-content; margin: 0 auto; }
+    .tab-btn { padding: 12px 20px; border: none; background: transparent; color: var(--text-muted); font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); border-radius: 40px; font-family: inherit; white-space: nowrap; position: relative; overflow: hidden; }
+    .tab-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(201,168,216,0.2); border-radius: 50%; transform: translate(-50%,-50%); transition: width 0.4s, height 0.4s; }
+    .tab-btn:hover::before { width: 120px; height: 120px; }
+    .tab-btn:hover { color: var(--text-dark); }
+    .tab-btn.active { color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); box-shadow: 0 4px 15px rgba(166,126,184,0.35); }
+    .tab-content { display: none; padding: 30px 20px; animation: fadeInUp 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .tab-content.active { display: block; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--text-dark); margin-bottom: 28px; text-align: center; position: relative; }
+    .section-title::after { content: "🐇"; display: block; font-size: 18px; margin-top: 8px; opacity: 0.5; }
+    .section-subtitle { text-align: center; color: var(--text-muted); font-size: 14px; margin-top: -18px; margin-bottom: 28px; font-style: italic; }
+    .glass-card { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); border-radius: 20px; padding: 24px; box-shadow: 0 8px 32px rgba(74,59,82,0.08); transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .glass-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(74,59,82,0.14); border-color: rgba(201,168,216,0.4); }
+    .glass-card h3 { margin: 0 0 14px 0; font-size: 16px; color: var(--text-dark); display: flex; align-items: center; gap: 8px; font-weight: 700; }
+    .glass-card .icon { font-size: 22px; }
+    .price-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed rgba(201,168,216,0.3); font-size: 14px; transition: all 0.2s; }
+    .price-item:hover { padding-left: 8px; color: var(--text-dark); }
+    .price-item:last-child { border-bottom: none; }
+    .price-item .name { color: #5a4a6a; flex: 1; padding-right: 12px; font-weight: 500; }
+    .price-item .price { color: var(--accent-dark); font-weight: 700; white-space: nowrap; background: linear-gradient(135deg, rgba(201,168,216,0.15), rgba(232,196,217,0.15)); padding: 4px 12px; border-radius: 20px; font-size: 13px; }
+    .price-note { font-size: 12px; color: #9a7aaa; margin-bottom: 10px; font-style: italic; padding-left: 4px; }
+    .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .legit-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px; margin-top: 24px; }
+    .stat-item { background: var(--card-bg); backdrop-filter: blur(8px); border-radius: 16px; padding: 22px 16px; text-align: center; box-shadow: 0 4px 16px var(--shadow); border: 1px solid rgba(255,255,255,0.5); transition: transform 0.3s; }
+    .stat-item:hover { transform: translateY(-4px); }
+    .stat-item .num { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--accent-dark); font-weight: 700; }
+    .stat-item .txt { font-size: 12px; color: var(--text-muted); margin-top: 6px; font-weight: 500; }
+    .about-box { line-height: 2; font-size: 15px; color: #5a4a6a; }
+    .about-box p { margin-bottom: 16px; }
+    .highlight { color: var(--accent-dark); font-weight: 700; background: linear-gradient(120deg, rgba(201,168,216,0.2) 0%, rgba(201,168,216,0.2) 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 88%; padding: 0 4px; }
+    .services-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .service-tag { background: linear-gradient(135deg, rgba(201,168,216,0.2), rgba(232,196,217,0.2)); color: #5a3d6b; padding: 8px 18px; border-radius: 25px; font-size: 13px; font-weight: 600; border: 1px solid rgba(201,168,216,0.3); transition: all 0.3s; cursor: default; }
+    .service-tag:hover { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(166,126,184,0.3); }
+    .contact-card { text-align: center; padding: 28px 20px; }
+    .contact-card .emoji { font-size: 40px; margin-bottom: 12px; display: block; }
+    .contact-card h4 { margin: 0 0 8px 0; color: var(--text-dark); font-size: 15px; }
+    .contact-card p { margin: 0 0 12px 0; color: var(--text-muted); font-size: 13px; }
+    .contact-link { display: inline-block; padding: 10px 22px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: #fff; text-decoration: none; border-radius: 25px; font-size: 13px; font-weight: 700; transition: all 0.3s; box-shadow: 0 4px 15px rgba(166,126,184,0.3); position: relative; overflow: hidden; }
+    .contact-link::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s; }
+    .contact-link:hover::after { left: 100%; }
+    .contact-link:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(166,126,184,0.4); }
+    .legit-list { display: flex; flex-direction: column; gap: 18px; }
+    .legit-card { background: var(--card-bg); backdrop-filter: blur(8px); border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 20px var(--shadow); border-left: 4px solid var(--accent); transition: all 0.3s; }
+    .legit-card:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(74,59,82,0.12); }
+    .legit-card .stars { color: #d4a574; font-size: 16px; margin-bottom: 10px; letter-spacing: 2px; }
+    .legit-card .text { color: #5a4a6a; font-size: 14px; line-height: 1.8; font-style: italic; font-family: 'Playfair Display', serif; }
+    .legit-card .author { text-align: right; color: #9a7aaa; font-size: 13px; margin-top: 12px; font-weight: 600; }
+    .legit-with-img { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+    .legit-with-img .legit-text { flex: 1; min-width: 220px; }
+    .legit-img { width: 150px; height: 150px; object-fit: cover; border-radius: 14px; border: 2px solid rgba(201,168,216,0.3); cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 12px rgba(74,59,82,0.1); }
+    .legit-img:hover { transform: scale(1.05) rotate(1deg); box-shadow: 0 8px 24px rgba(74,59,82,0.15); border-color: var(--accent); }
+    .legit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
+    .legit-item { position: relative; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px var(--shadow); cursor: pointer; transition: all 0.4s; background: var(--card-bg); }
+    .legit-item:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 14px 40px rgba(74,59,82,0.18); }
+    .legit-item img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s; }
+    .legit-item:hover img { transform: scale(1.1); }
+    .legit-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(74,59,82,0.7)); padding: 30px 14px 14px; color: #fff; font-size: 13px; font-weight: 600; text-align: center; opacity: 0; transition: opacity 0.3s; }
+    .legit-item:hover .legit-overlay { opacity: 1; }
+    .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(20,10,30,0.92); z-index: 1000; justify-content: center; align-items: center; flex-direction: column; padding: 20px; backdrop-filter: blur(10px); }
+    .lightbox.active { display: flex; animation: fadeIn 0.3s; }
+    .lightbox img { max-width: 90%; max-height: 78vh; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.1); }
+    .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 40px; color: #fff; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+    .lightbox-close:hover { opacity: 1; background: rgba(255,255,255,0.1); }
+    .lightbox-caption { color: rgba(255,255,255,0.8); margin-top: 16px; font-size: 15px; text-align: center; font-family: 'Playfair Display', serif; }
+    .legit-box { background: linear-gradient(135deg, rgba(201,168,216,0.2), rgba(232,196,217,0.2)); backdrop-filter: blur(10px); border-radius: 24px; padding: 40px 30px; text-align: center; border: 1px solid rgba(255,255,255,0.5); }
+    .legit-box .big-number { font-family: 'Playfair Display', serif; font-size: 56px; color: var(--text-dark); font-weight: 700; text-shadow: 2px 2px 8px rgba(255,255,255,0.5); }
+    .legit-box .label { color: var(--text-muted); font-size: 14px; margin-top: 8px; font-weight: 500; }
+    .commit-list { list-style: none; padding: 0; margin: 0; }
+    .commit-list li { padding: 12px 0; border-bottom: 1px dashed rgba(201,168,216,0.25); display: flex; align-items: center; gap: 12px; font-size: 14px; color: #5a4a6a; transition: all 0.2s; }
+    .commit-list li:hover { padding-left: 8px; color: var(--text-dark); }
+    .commit-list li:last-child { border-bottom: none; }
+    .commit-list li .check { font-size: 18px; }
+    .process-box { margin-top: 28px; text-align: center; }
+    .process-steps { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+    .step { background: linear-gradient(135deg, rgba(201,168,216,0.2), rgba(232,196,217,0.2)); padding: 14px 24px; border-radius: 16px; font-size: 14px; color: #5a3d6b; font-weight: 600; border: 1px solid rgba(201,168,216,0.3); transition: all 0.3s; }
+    .step:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(166,126,184,0.2); }
+    .arrow { font-size: 24px; color: var(--accent); }
+    .footer { text-align: center; padding: 40px 24px 30px; margin-top: 40px; position: relative; }
+    .footer::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+    .footer .slogan { font-family: 'Playfair Display', serif; font-style: italic; color: #5a3d6b; margin-bottom: 10px; font-size: 15px; }
+    .footer .copyright { color: var(--text-muted); font-size: 12px; margin-top: 8px; }
+    .footer-rabbits { font-size: 24px; margin-top: 12px; letter-spacing: 8px; opacity: 0.6; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-1); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
+    .animate-in { opacity: 0; transform: translateY(30px); animation: slideIn 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+    @keyframes slideIn { to { opacity: 1; transform: translateY(0); } }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    @media (max-width: 640px) {
+      .hero { padding: 50px 20px 35px; border-radius: 0 0 30px 30px; }
+      .hero h1 { font-size: 30px; }
+      .hero-rabbit { font-size: 48px; }
+      .section-title { font-size: 22px; }
+      .tab-btn { padding: 10px 14px; font-size: 12px; }
+      .tabs { border-radius: 30px; }
+      .tab-content { padding: 20px 12px; }
+      .process-steps { flex-direction: column; }
+      .arrow { transform: rotate(90deg); }
+      .legit-with-img { flex-direction: column; }
+      .legit-img { width: 100%; height: auto; }
+      .legit-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .music-player { bottom: 10px; right: 10px; padding: 8px 14px; }
+      .legit-box .big-number { font-size: 40px; }
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+
+<div class="stars-bg" id="starsBg"></div>
+
+<div class="music-player paused" id="musicPlayer" onclick="toggleMusic()">
+  <span class="music-icon">🎵</span>
+  <span class="music-text" id="musicText">Phát nhạc</span>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=relaxing-mountains-rivers-streams-running-water-18178.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <div class="hero animate-in">
+    <div class="hero-rabbit">🐰</div>
+    <h1>Tiệm Tarot Nhà Thỏ</h1>
+    <div class="since">✦ S I N C E &nbsp; 2 0 2 1 ✦</div>
+    <div class="hero-divider"></div>
+    <div class="tagline">"Mỗi trải bài là một thông điệp —<br>Mỗi câu chuyện là một hành trình chữa lành."</div>
+    <div class="sub-tagline">🔮 Tarot · 🃏 Lenormand · ⭐ Astrology · 🌙 Witchcraft · 📿 Tử Vi</div>
+  </div>
+
+  <div class="nav-wrapper">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('profile', this)">👤 Profile</button>
+      <button class="tab-btn" onclick="showTab('prices', this)">💰 Bảng Giá</button>
+      <button class="tab-btn" onclick="showTab('legit', this)">⭐ Uy Tín</button>
+      <button class="tab-btn" onclick="showTab('legit', this)">💬 legit</button>
+      <button class="tab-btn" onclick="showTab('legit', this)">📸 Ảnh</button>
+      <button class="tab-btn" onclick="showTab('contact', this)">📞 Liên Hệ</button>
+    </div>
+  </div>
+
+  <div id="profile" class="tab-content active">
+    <div class="section-title">Giới Thiệu</div>
+    <div class="section-subtitle">Câu chuyện về Tiệm Tarot Nhà Thỏ</div>
+    <div class="glass-card about-box animate-in delay-1">
+      <p>Chào mừng bạn đến với <span class="highlight">Tiệm Tarot Nhà Thỏ</span> — một góc nhỏ bình yên nơi những lá bài kể câu chuyện, và những vì sao soi đường cho tâm hồn.</p>
+      <p>Tiệm được thành lập từ <span class="highlight">năm 2021</span>, với hơn 4 năm kinh nghiệm trong lĩnh vực tarot, chiêm tinh học và tâm linh. Mỗi trải bài tại Nhà Thỏ không chỉ là dự đoán — mà là <span class="highlight">lắng nghe, thấu hiểu và đồng hành</span> cùng bạn trên mọi khía cạnh của cuộc sống.</p>
+      <p>Dù bạn đang băn khoăn về <span class="highlight">tình yêu</span>, cần lợi khuyên cho <span class="highlight">sự nghiệp</span>, hay đơn giản là muốn tìm một chút ánh sáng trong những ngày mờ mịt — Nhà Thỏ luôn ở đây, với tất cả sự chân thành và tôn trọng.</p>
+      <div style="margin-top: 24px; padding: 18px; background: linear-gradient(135deg, rgba(201,168,216,0.12), rgba(232,196,217,0.12)); border-radius: 14px; border-left: 3px solid var(--accent);">
+        <p style="margin:0; font-style: italic; color: #6a4a7a; font-size: 14px;">🌙 "Tarot không phải là định mệnh — nó là tấm gương phản chiếu những gì trái tim bạn đã biết."</p>
+      </div>
+      <div class="services-list">
+        <span class="service-tag">🔮 Tarot Truyền Thống</span>
+        <span class="service-tag">🃏 Lenormand</span>
+        <span class="service-tag">✨ Oracle</span>
+        <span class="service-tag">⭐ Bảng Đồ Sao</span>
+        <span class="service-tag">🌙 Witchcraft</span>
+        <span class="service-tag">📿 Tử Vi</span>
+        <span class="service-tag">💑 Ma Trận Cặp Đôi</span>
+        <span class="service-tag">🎯 Coach Manifest</span>
+      </div>
+    </div>
+    <div class="glass-card" style="margin-top: 20px; text-align: center; padding: 30px;">
+      <div style="font-size: 32px; margin-bottom: 10px;">🐇 🌙 ✨ 🔮 🌸</div>
+      <p style="color: #6a4a7a; font-size: 14px; line-height: 1.8; margin: 0;">Mỗi buổi xem bài tại Nhà Thỏ đều được thực hiện trong không gian yên tĩnh, tập trung —<br>để bạn nhận được những thông điệp chân thật và sâu sắc nhất.</p>
+    </div>
+  </div>
+
+  <div id="prices" class="tab-content">
+    <div class="section-title">Bảng Giá</div>
+    <div class="section-subtitle">Minh bạch · Công khai · Hợp lý</div>
+    <div class="price-grid">
+      <div class="glass-card animate-in delay-1">
+        <h3><span class="icon">🎴</span> Tarot: Gói Câu Lẻ</h3>
+        <div class="price-item"><span class="name">Yes / No question</span><span class="price">15.000đ</span></div>
+        <div class="price-item"><span class="name">Câu lẻ chi tiết</span><span class="price">40.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-2">
+        <h3><span class="icon">♠️</span> Lenormand</h3>
+        <div class="price-item"><span class="name">1 câu lẻ</span><span class="price">60.000đ</span></div>
+        <div class="price-item"><span class="name">15 phút</span><span class="price">190.000đ</span></div>
+        <div class="price-item"><span class="name">30 phút</span><span class="price">380.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-3">
+        <h3><span class="icon">🔮</span> Dạng Bài Khác</h3>
+        <div class="price-item"><span class="name">Bài Tây</span><span class="price">80.000đ / câu</span></div>
+        <div class="price-item"><span class="name">Clow (10 câu)</span><span class="price">350.000đ</span></div>
+        <div class="price-item"><span class="name">Bài trải / tháng</span><span class="price">120.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-1">
+        <h3><span class="icon">⏳</span> Tarot: Gói Thờ Gian</h3>
+        <div class="price-note">Voice call hoặc nhắn tin</div>
+        <div class="price-item"><span class="name">30 phút</span><span class="price">190.000đ</span></div>
+        <div class="price-item"><span class="name">45 phút</span><span class="price">280.000đ</span></div>
+        <div class="price-item"><span class="name">60 phút</span><span class="price">370.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-2">
+        <h3><span class="icon">📞</span> Tarot Gói Call</h3>
+        <div class="price-item"><span class="name">30 phút</span><span class="price">400.000đ</span></div>
+        <div class="price-item"><span class="name">45 phút</span><span class="price">550.000đ</span></div>
+        <div class="price-item"><span class="name">60 phút</span><span class="price">700.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-3">
+        <h3><span class="icon">📦</span> Combo Mini</h3>
+        <div class="price-note">5 câu yes/no + giải thích</div>
+        <div class="price-item"><span class="name">Ngườ i yêu cũ / mập mờ cũ</span><span class="price">45.000đ</span></div>
+        <div class="price-item"><span class="name">Crush / Mập mờ</span><span class="price">45.000đ</span></div>
+        <div class="price-item"><span class="name">Ngườ i yêu hiện tại</span><span class="price">45.000đ</span></div>
+        <div class="price-item"><span class="name">Khả năng hôn nhân</span><span class="price">45.000đ</span></div>
+        <div class="price-item"><span class="name">Ngườ i yêu tương lai</span><span class="price">45.000đ</span></div>
+        <div class="price-item"><span class="name">Hôn nhân / Học tập</span><span class="price">45.000đ</span></div>
+        <div class="price-item"><span class="name">Tình cảm sắp tới</span><span class="price">45.000đ</span></div>
+        <div class="price-item"><span class="name">Công việc / Xã hội</span><span class="price">45.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-1">
+        <h3><span class="icon">🎁</span> Combo Big</h3>
+        <div class="price-note">6 câu chi tiết đầy đủ</div>
+        <div class="price-item"><span class="name">Ngườ i yêu cũ / mập mờ cũ</span><span class="price">135.000đ</span></div>
+        <div class="price-item"><span class="name">Crush / Mập mờ</span><span class="price">135.000đ</span></div>
+        <div class="price-item"><span class="name">Ngườ i yêu hiện tại</span><span class="price">135.000đ</span></div>
+        <div class="price-item"><span class="name">Khả năng hôn nhân</span><span class="price">135.000đ</span></div>
+        <div class="price-item"><span class="name">Ngườ i yêu tương lai</span><span class="price">135.000đ</span></div>
+        <div class="price-item"><span class="name">Hôn nhân / Học tập</span><span class="price">135.000đ</span></div>
+        <div class="price-item"><span class="name">Tình cảm sắp tới</span><span class="price">135.000đ</span></div>
+        <div class="price-item"><span class="name">Công việc / Xã hội</span><span class="price">135.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-2">
+        <h3><span class="icon">📅</span> Tổng Quan Theo Tháng</h3>
+        <div class="price-item"><span class="name">1 tháng (xem kỹ)</span><span class="price">120.000đ / vấn đề</span></div>
+        <div class="price-item"><span class="name">2 tháng (xem kỹ)</span><span class="price">230.000đ / vấn đề</span></div>
+        <div class="price-item"><span class="name">3 tháng (xem kỹ)</span><span class="price">340.000đ / vấn đề</span></div>
+      </div>
+      <div class="glass-card animate-in delay-3">
+        <h3><span class="icon">🧩</span> Mix Thêm Dạng Bài</h3>
+        <div class="price-item"><span class="name">Thêm Lenormand</span><span class="price">+50.000đ / chủ đề</span></div>
+        <div class="price-item"><span class="name">Thêm Oracle</span><span class="price">+50.000đ / chủ đề</span></div>
+        <div class="price-item"><span class="name">Thêm cả hai</span><span class="price">+80.000đ / chủ đề</span></div>
+      </div>
+      <div class="glass-card animate-in delay-1">
+        <h3><span class="icon">🕯️</span> Witchcraft</h3>
+        <div class="price-item"><span class="name">Lover spell</span><span class="price">250.000đ</span></div>
+        <div class="price-item"><span class="name">Lucky spell</span><span class="price">250.000đ</span></div>
+        <div class="price-item"><span class="name">Money spell</span><span class="price">250.000đ</span></div>
+        <div class="price-item"><span class="name">Healthy spell</span><span class="price">250.000đ</span></div>
+        <div class="price-item"><span class="name">Custom spell (theo yêu cầu)</span><span class="price">350.000đ</span></div>
+        <div class="price-item"><span class="name">Special combo (1 custom + 1 lễ)</span><span class="price">699.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-2">
+        <h3><span class="icon">🌟</span> Bảng Đồ Sao</h3>
+        <div class="price-item"><span class="name">Progressed / Natal chart</span><span class="price">390.000đ</span></div>
+        <div class="price-item"><span class="name">Composite / Synasty chart</span><span class="price">590.000đ</span></div>
+        <div class="price-item"><span class="name">Theo nhà</span><span class="price">90.000đ / nhà</span></div>
+      </div>
+      <div class="glass-card animate-in delay-3">
+        <h3><span class="icon">💑</span> Ma Trận Cặp Đôi</h3>
+        <div class="price-item"><span class="name">Cặp đôi</span><span class="price">590.000đ</span></div>
+        <div class="price-item"><span class="name">Lẻ</span><span class="price">350.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-1">
+        <h3><span class="icon">🎯</span> Coach Manifest</h3>
+        <div class="price-item"><span class="name">Gói Gấp (60 phút call)</span><span class="price">250.000đ</span></div>
+        <div class="price-item"><span class="name">Gói Đồng Hành (30 ngày)</span><span class="price">2.500.000đ</span></div>
+      </div>
+      <div class="glass-card animate-in delay-2">
+        <h3><span class="icon">🔯</span> Tử Vi</h3>
+        <div class="price-item"><span class="name">Tình Duyên</span><span class="price">380.000đ</span></div>
+        <div class="price-item"><span class="name">Vợ Chồng</span><span class="price">380.000đ</span></div>
+        <div class="price-item"><span class="name">Con Cái / Sự Nghiệp</span><span class="price">380.000đ</span></div>
+        <div class="price-item"><span class="name">Điền Trạch / Vận Hạn</span><span class="price">380.000đ</span></div>
+        <div class="price-item"><span class="name">Tài Bạch / Bản Mệnh</span><span class="price">380.000đ</span></div>
+        <div class="price-item"><span class="name">Số Ấm</span><span class="price">380.000đ</span></div>
+        <div class="price-item"><span class="name">Tử Vi Trọn Đờ i</span><span class="price">1.500.000đ</span></div>
+      </div>
+    </div>
+    <div class="glass-card" style="margin-top: 24px; text-align: center;">
+      <p style="color: #7a5a8a; font-size: 13px; margin: 0; line-height: 1.8;">💡 Giá có thể thay đổi theo thờ i điểm khuyến mãi.<br>Vui lòng inbox để được tư vấn gói phù hợp nhất với bạn.</p>
+    </div>
+  </div>
+
+  <div id="legit" class="tab-content">
+    <div class="section-title">Uy Tín & Cam Kết</div>
+    <div class="section-subtitle">Những gì Nhà Thỏ luôn giữ trọn</div>
+    <div class="legit-box animate-in">
+      <div class="big-number">+</div>
+      <div class="label">Năm kinh nghiệm · Since 2021</div>
+      <div class="legit-stats">
+        <div class="stat-item"><div class="num">1000+</div><div class="txt">Trải bài đã thực hiện</div></div>
+        <div class="stat-item"><div class="num" style="font-size: 20px;">⭐⭐⭐⭐⭐</div><div class="txt" style="font-size: 18px;">Đánh giá trung bình</div></div>
+        <div class="stat-item"><div class="num">100%</div><div class="txt">Khách hàng hài lòng</div></div>
+        <div class="stat-item"><div class="num">24/7</div><div class="txt">Hỗ trợ tư vấn</div></div>
+      </div>
+    </div>
+    <div class="glass-card" style="margin-top: 24px;">
+      <h3 style="margin-top:0;">📜 Cam Kết Củ a Tiệm</h3>
+      <ul class="commit-list">
+        <li><span class="check">🔒</span> Bảo mật tuyệt đối thông tin khách hàng</li>
+        <li><span class="check">💎</span> Tư vấn trung thực, không thêm bớt, không nói láo</li>
+        <li><span class="check">💰</span> Hoàn tiền nếu khách không hài lòng về chất lượng</li>
+        <li><span class="check">💬</span> Hỗ trợ giải đáp thắc mắc sau khi xem bài</li>
+        <li><span class="check">🛡️</span> Không lợi dụng tâm linh để lừa đảo hay ép buộc</li>
+        <li><span class="check">🤝</span> Tôn trọng quyền riêng tư và quyết định của khách</li>
+      </ul>
+    </div>
+    <div class="glass-card" style="margin-top: 20px; text-align: center; padding: 28px;">
+      <div style="font-size: 28px; margin-bottom: 10px;">🐇 ✨ 🌙</div>
+      <p style="color: #6a4a7a; font-size: 14px; margin: 0; line-height: 1.8;">Nhà Thỏ tin rằng: <span class="highlight">Sự chân thành</span> là nền tảng của mọi kết nối.<br>Dù bạn đến với tâm trạng thế nào, Nhà Thỏ sẽ lắng nghe bạn bằng cả trái tim.</p>
+    </div>
+  </div>
+
+  <div id="legit" class="tab-content">
+    <div class="section-title">legit Khách Hàng</div>
+    <div class="section-subtitle">Những lờ i chia sẻ chân thành từ cộng đồng</div>
+    <div class="legit-list">
+      <div class="legit-card legit-with-img animate-in delay-1">
+        <div class="legit-text">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="text">"Nhà Thỏ xem rất chuẩn, đúng những gì mình đang trải qua luôn. Cách giải thích nhẹ nhàng, dễ hiểu và rất có chiều sâu. Cảm ơn Nhà Thỏ nhiều ạ!"</div>
+          <div class="author">— Chị H., Hà Nội · Gói Combo Big</div>
+        </div>
+        <img src="legit1.jpg" alt="legit Chị H." class="legit-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'legit từ Chị H., Hà Nội')">
+      </div>
+      <div class="legit-card legit-with-img animate-in delay-2">
+        <div class="legit-text">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="text">"Mình đã xem tarot ở nhiều nơi nhưng Tiệm nhà Thỏ là chỗ mình cảm thấy thoải mái và được lắng nghe nhất. Gói combo big rất đáng tiền, giải đáp được hết thắc mắc."</div>
+          <div class="author">— Bạn T., TP.HCM · Gói Tarot Thờ i Gian</div>
+        </div>
+        <img src="legit2.jpg" alt="legit Bạn T." class="legit-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'legit từ Bạn T., TP.HCM')">
+      </div>
+      <div class="legit-card legit-with-img animate-in delay-3">
+        <div class="legit-text">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="text">"Mình dùng gói Coach Manifest đồng hành 30 ngày, thực sự thay đổi cách nhìn của mình về cuộc sống. Nhà Thỏ không chỉ xem bài mà còn động viên, hướng dẫn rất tận tâm."</div>
+          <div class="author">— Bạn M., Đà Nẵng · Coach Manifest 30 ngày</div>
+        </div>
+        <img src="legit3.jpg" alt="legit Bạn M." class="legit-img" onerror="this.style.display='none'" onclick="openLightbox(this.src, 'legit từ Bạn M., Đà Nẵng')">
+      </div>
+      <div class="legit-card animate-in delay-1">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="text">"Xem tử vi trọn đờ i ở đây, phân tích chi tiết từng năm vận hạn. Mình thấy rất hợp lý và có cơ sở. Sẽ quay lại dài dài!"</div>
+        <div class="author">— Anh K., Hải Phòng · Tử Vi Trọn Đờ i</div>
+      </div>
+      <div class="legit-card animate-in delay-2">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="text">"Nhà Thỏ làm spell rất có tâm, mình cảm nhận được năng lượng tích cực sau khi dùng lucky spell. Giá cả hợp lý, không bị chặt chém như mấy chỗ khác."</div>
+        <div class="author">— Bạn L., Cần Thơ · Lucky Spell</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="legit" class="tab-content">
+    <div class="section-title">Ảnh legit & Minh Chứng</div>
+    <div class="section-subtitle">Những khoảnh khắc đáng nhớ cùng khách hàng</div>
+    <div class="legit-grid">
+      <div class="legit-item" onclick="openLightbox('legit1.jpg', 'legit Chị H., Hà Nội')">
+        <img src="legit1.jpg" alt="legit 1" onerror="this.src='https://placehold.co/300x300/c9a8d8/ffffff?text=legit+1'">
+        <div class="legit-overlay">⭐ Chị H., Hà Nội</div>
+      </div>
+      <div class="legit-item" onclick="openLightbox('legit2.jpg', 'legit Bạn T., TP.HCM')">
+        <img src="legit2.jpg" alt="legit 2" onerror="this.src='https://placehold.co/300x300/e8c4d9/ffffff?text=legit+2'">
+        <div class="legit-overlay">⭐ Bạn T., TP.HCM</div>
+      </div>
+      <div class="legit-item" onclick="openLightbox('legit3.jpg', 'legit Bạn M., Đà Nẵng')">
+        <img src="legit3.jpg" alt="legit 3" onerror="this.src='https://placehold.co/300x300/d4a8e0/ffffff?text=legit+3'">
+        <div class="legit-overlay">⭐ Bạn M., Đà Nẵng</div>
+      </div>
+      <div class="legit-item" onclick="openLightbox('legit4.jpg', 'legit Anh K., Hải Phòng')">
+        <img src="legit4.jpg" alt="legit 4" onerror="this.src='https://placehold.co/300x300/c9a8d8/ffffff?text=legit+4'">
+        <div class="legit-overlay">⭐ Anh K., Hải Phòng</div>
+      </div>
+      <div class="legit-item" onclick="openLightbox('legit5.jpg', 'legit Bạn L., Cần Thơ')">
+        <img src="legit5.jpg" alt="legit 5" onerror="this.src='https://placehold.co/300x300/e8c4d9/ffffff?text=legit+5'">
+        <div class="legit-overlay">⭐ Bạn L., Cần Thơ</div>
+      </div>
+      <div class="legit-item" onclick="openLightbox('legit6.jpg', 'legit khách hàng khác')">
+        <img src="legit6.jpg" alt="legit 6" onerror="this.src='https://placehold.co/300x300/d4a8e0/ffffff?text=legit+6'">
+        <div class="legit-overlay">⭐ Khách hàng khác</div>
+      </div>
+    </div>
+    <div class="glass-card" style="margin-top: 24px; text-align: center;">
+      <p style="color: #7a5a8a; font-size: 13px; margin: 0; line-height: 1.8;">💡 Click vào ảnh để xem phóng to.<br>Để thêm ảnh mới: đặt file ảnh vào cùng thư mục với <code>index.html</code>, sau đó copy thêm block <code>legit-item</code>.</p>
+    </div>
+  </div>
+
+  <div id="contact" class="tab-content">
+    <div class="section-title">Liên Hệ Đặt Lịch</div>
+    <div class="section-subtitle">Nhà Thỏ luôn sẵn sàng đồng hành cùng bạn</div>
+    <div class="contact-grid">
+      <div class="glass-card contact-card animate-in delay-1">
+        <span class="emoji">💬</span>
+        <h4>Facebook Cá Nhân</h4>
+        <p>Nhắn tin trực tiếp với Nhà Thỏ</p>
+        <a href="https://www.facebook.com/consochwhene1311/" target="_blank" class="contact-link">Nhắn Facebook</a>
+      </div>
+      <div class="glass-card contact-card animate-in delay-2">
+        <span class="emoji">📷</span>
+        <h4>Instagram</h4>
+        <p>Theo dõi & nhắn tin qua IG</p>
+        <a href="https://www.instagram.com/tiemtarotnhatho06/" target="_blank" class="contact-link">Mở Instagram</a>
+      </div>
+      <div class="glass-card contact-card animate-in delay-3">
+        <span class="emoji">📘</span>
+        <h4>Fanpage</h4>
+        <p>Tiệm Tarot Nhà Thỏ Official</p>
+        <a href="https://www.facebook.com/tiemtarotnhatho" target="_blank" class="contact-link">Vào Fanpage</a>
+      </div>
+      <div class="glass-card contact-card animate-in delay-1">
+        <span class="emoji">⏰</span>
+        <h4>Giờ Làm Việc</h4>
+        <p>10:00 — 23:00 hàng ngày</p>
+        <span style="display:inline-block; margin-top:10px; padding:10px 22px; background: linear-gradient(135deg, rgba(201,168,216,0.2), rgba(232,196,217,0.2)); border-radius:25px; font-size:13px; color:#5a3d6b; font-weight:600; border:1px solid rgba(201,168,216,0.3);">Cả tuần luôn nhé!</span>
+      </div>
+    </div>
+    <div class="glass-card process-box">
+      <h3 style="margin-top:0;">🌙 Quy Trình Đặt Lịch</h3>
+      <div class="process-steps">
+        <div class="step"><b>1.</b> Nhắn tin chọn gói</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>2.</b> Thanh toán trước</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>3.</b> Nhận kết quả</div>
+      </div>
+      <p style="color: #9a7aaa; font-size: 13px; margin-top: 18px;">💡 Lưu ý: Vui lòng thanh toán trước để xác nhận lịch. Tiệm hỗ trợ chuyển khoản ngân hàng & ví điện tử.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="slogan">"Mỗi trải bài là một thông điệp — Mỗi câu chuyện là một hành trình chữa lành."</div>
+    <div>🐰 Tiệm Tarot Nhà Thỏ — Since 2021 🐰</div>
+    <div class="copyright">Made with 🌙 & ✨ by Nhà Thỏ</div>
+    <div class="footer-rabbits">🐇 🐇 🐇</div>
+  </div>
+</div>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+  <div id="lightbox-caption" class="lightbox-caption"></div>
+</div>
+
+<script>
+  function showTab(tabId, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function openLightbox(src, caption) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = caption;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Music toggle
+  const music = document.getElementById('bgMusic');
+  const player = document.getElementById('musicPlayer');
+  const musicText = document.getElementById('musicText');
+  let isPlaying = false;
+  function toggleMusic() {
+    if (isPlaying) {
+      music.pause();
+      player.classList.add('paused');
+      musicText.textContent = 'Phát nhạc';
+    } else {
+      music.play().catch(() => {});
+      player.classList.remove('paused');
+      musicText.textContent = 'Tạm dừng';
+    }
+    isPlaying = !isPlaying;
+  }
+
+  // Generate stars
+  const starsBg = document.getElementById('starsBg');
+  for (let i = 0; i < 60; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.setProperty('--dur', (2 + Math.random() * 3) + 's');
+    star.style.animationDelay = Math.random() * 3 + 's';
+    starsBg.appendChild(star);
+  }
+
+  // Generate floating rabbits
+  const rabbits = ['🐰', '🐇', '🌙', '✨', '🔮', '🌸', '💫'];
+  for (let i = 0; i < 8; i++) {
+    const r = document.createElement('div');
+    r.className = 'rabbit-float';
+    r.textContent = rabbits[Math.floor(Math.random() * rabbits.length)];
+    r.style.left = Math.random() * 95 + '%';
+    r.style.top = (10 + Math.random() * 80) + '%';
+    r.style.setProperty('--dur', (4 + Math.random() * 4) + 's');
+    r.style.animationDelay = Math.random() * 4 + 's';
+    document.body.appendChild(r);
+  }
+
+  // Generate falling petals
+  const petals = ['🌸', '🌺', '🌷', '✨', '💫', '🍃'];
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = petals[Math.floor(Math.random() * petals.length)];
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = Math.random() * 8 + 's';
+    p.style.fontSize = (12 + Math.random() * 10) + 'px';
+    document.body.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
