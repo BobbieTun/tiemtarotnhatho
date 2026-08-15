@@ -29,7 +29,6 @@
       position: relative;
     }
 
-    /* Ambient Effects */
     .stars-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
     .star { position: absolute; width: 2px; height: 2px; background: var(--accent); border-radius: 50%; animation: twinkle var(--dur) ease-in-out infinite; opacity: 0; }
     @keyframes twinkle { 0%,100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 0.6; transform: scale(1.2); } }
@@ -52,10 +51,8 @@
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .music-text { font-size: 12px; color: var(--text-muted); font-weight: 600; }
 
-    /* Mở rộng container lên 1150px để fit đủ 5 cột */
     .container { max-width: 1150px; margin: 0 auto; position: relative; z-index: 2; padding: 0 16px; }
     
-    /* Hero Section */
     .hero { text-align: center; padding: 60px 20px 40px; margin-bottom: 30px; border-bottom: 1px solid var(--border); background: var(--bg-surface); border-radius: 0 0 30px 30px; }
     .hero-avatar-group { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; }
     .hero-avatar { width: 95px; height: 95px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); box-shadow: 0 0 25px var(--accent-glow); }
@@ -66,7 +63,6 @@
     .hero-divider { width: 60px; height: 1px; background: var(--accent); margin: 0 auto 16px; }
     .hero .tagline { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-muted); font-size: 15px; max-width: 500px; margin: 0 auto; line-height: 1.7; }
 
-    /* Navigation */
     .nav-wrapper { position: sticky; top: 0; z-index: 50; padding: 10px 0; margin-bottom: 20px; }
     .tabs { display: flex; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 30px; padding: 6px; gap: 4px; max-width: fit-content; margin: 0 auto; }
     .tab-btn { padding: 10px 20px; border: none; background: transparent; color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 20px; transition: 0.3s; font-family: inherit; }
@@ -78,7 +74,6 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     .section-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--accent); margin-bottom: 24px; text-align: center; }
 
-    /* BỐ CỤC LƯỚI GRID CHO BẢNG GIÁ THEO ẢNH */
     .price-row-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 16px; }
     .price-row-4-combo { display: grid; grid-template-columns: 2fr 2fr 1.3fr 1.3fr; gap: 12px; margin-bottom: 12px; }
     .price-row-4-witch { display: grid; grid-template-columns: 2.2fr 1.2fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
@@ -98,7 +93,6 @@
 
     .banner-special { background: linear-gradient(90deg, #4c1d95, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; text-align: center; padding: 6px; border-radius: 20px; margin-top: auto; letter-spacing: 0.5px; }
 
-    /* HIỆU ỨNG ACCORDION (COMBO ĐẶC BIỆT) */
     .combo-accordion { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 14px; margin-bottom: 16px; overflow: hidden; transition: all 0.3s ease; }
     .combo-accordion.open { box-shadow: 0 4px 20px var(--accent-glow); border-color: var(--accent); background: var(--bg-card); }
     .combo-header { padding: 14px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 14px; color: var(--accent); background: rgba(139, 92, 246, 0.05); transition: 0.3s; }
@@ -119,7 +113,6 @@
     .combo-card ul li { margin-bottom: 10px; padding-left: 18px; position: relative; line-height: 1.5; }
     .combo-card ul li::before { content: "✦"; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 2px; }
 
-    /* Layout Other */
     .feed-column { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
     .feed-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: 0.3s; }
     .feed-item:hover { border-color: var(--accent); transform: scale(1.02); }
@@ -135,7 +128,10 @@
     .lightbox img { max-width: 95%; max-height: 85vh; border-radius: 12px; }
     .footer { text-align: center; padding: 40px 20px; margin-top: 40px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border); }
 
-    /* Responsive */
+    .github-loader { text-align: center; padding: 40px; color: var(--accent); font-style: italic; font-size: 14px; }
+    .github-loader span { display: inline-block; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
     @media (max-width: 950px) {
       .price-row-5 { grid-template-columns: repeat(3, 1fr); }
       .price-row-4-combo { grid-template-columns: repeat(2, 1fr); }
@@ -186,7 +182,6 @@
 
   <div id="prices" class="tab-content active">
     
-    <!-- HÀNG 1: 5 CÁI ĐẦU 1 HÀNG -->
     <div class="price-row-5">
       <div class="price-box">
         <h3>✦ Tarot: Gói Câu Lẻ ✦</h3>
@@ -221,7 +216,6 @@
       </div>
     </div>
 
-    <!-- HÀNG 2: COMBO & TỔNG QUAN & MIX -->
     <div class="price-row-4-combo">
       <div class="price-box">
         <h3>COMBO MINI</h3>
@@ -269,7 +263,6 @@
       </div>
     </div>
 
-    <!-- ACCORDION CHI TIẾT COMBO NYC/MMC NẰM DƯỚI -->
     <div class="combo-accordion" onclick="this.classList.toggle('open')">
       <div class="combo-header">
         <span>💕 Ấn vào xem chi tiết gói: Người Yêu Cũ / Mập Mờ Cũ</span>
@@ -280,7 +273,6 @@
           ( Dành cho mối quan hệ ngắt kết nối )
         </div>
         <div class="combo-grid">
-          <!-- Bản Pro -->
           <div class="combo-card pro">
             <h4>Bản Cơ Bản (Mini)</h4>
             <div class="combo-price">45k</div>
@@ -292,7 +284,6 @@
               <li>Lời khuyên cho em về mqh này</li>
             </ul>
           </div>
-          <!-- Bản Elite -->
           <div class="combo-card elite">
             <h4>Bản Nâng Cao (Big)</h4>
             <div class="combo-price">135k</div>
@@ -312,7 +303,6 @@
       </div>
     </div>
 
-    <!-- HÀNG 3: WITCHCRAFT, BẢN ĐỒ SAO, MA TRẬN, COACH -->
     <div class="price-row-4-witch">
       <div class="price-box">
         <h3>✦ WITCHCRAFT</h3>
@@ -355,7 +345,6 @@
       </div>
     </div>
 
-    <!-- HÀNG 4: TỬ VI (TRẢI DÀI) -->
     <div class="price-row-1">
       <div class="price-box">
         <h3>✦ TỬ VI ✦</h3>
@@ -381,15 +370,8 @@
 
   <div id="feed" class="tab-content">
     <div class="section-title">Minh Chứng & Feedback</div>
-    <div class="feed-column">
-      <div class="feed-item" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="https://placehold.co/500x500/121214/8b5cf6?text=Feedback+1" alt="Feed Image">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="https://placehold.co/500x600/121214/8b5cf6?text=Bill+Thanh+Toan" alt="Feed Image">
-        <div class="caption">Giao dịch thành công</div>
-      </div>
+    <div class="feed-column" id="feedList">
+      <div class="github-loader"><span>🐰 Đang lục tìm ảnh trong kho GitHub...</span></div>
     </div>
   </div>
 
@@ -412,11 +394,50 @@
 </div>
 
 <script>
+  // CẤU HÌNH THÔNG TIN GITHUB CỦA BẠN VÀO ĐÂY
+  const GITHUB_USER = 'daemonix2'; // Thay tên đăng nhập GitHub
+  const GITHUB_REPO = 'nhatho';    // Thay tên repo
+  const FOLDER_PATH = 'feedback';   // Tên thư mục chứa ảnh
+
   function showTab(tabId, btn) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
     btn.classList.add('active');
+
+    if(tabId === 'feed' && !window.hasLoadedFeed) {
+      loadFeedImages();
+      window.hasLoadedFeed = true;
+    }
+  }
+
+  async function loadFeedImages() {
+    const feedContainer = document.getElementById('feedList');
+    try {
+      const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FOLDER_PATH}`);
+      if (!response.ok) throw new Error('Không thể kết nối GitHub API');
+      
+      const files = await response.json();
+      const imageFiles = files.filter(file => file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i));
+      
+      if(imageFiles.length === 0) {
+        feedContainer.innerHTML = '<div class="github-loader">Chưa có ảnh nào trong kho 🐰</div>';
+        return;
+      }
+
+      feedContainer.innerHTML = imageFiles.map(file => {
+        const captionText = file.name.split('.')[0].replace(/-/g, ' ');
+        return `
+          <div class="feed-item" onclick="openLightbox('${file.download_url}')">
+            <img src="${file.download_url}" alt="${file.name}" loading="lazy">
+            <div class="caption">${captionText}</div>
+          </div>
+        `;
+      }).join('');
+
+    } catch (error) {
+      feedContainer.innerHTML = '<div class="github-loader" style="color: #ef4444;">Lỗi khi tải ảnh từ GitHub. ❌</div>';
+    }
   }
 
   document.addEventListener('mousemove', function(e) {
