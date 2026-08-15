@@ -61,6 +61,8 @@
     
     .hero { text-align: center; padding: 60px 20px 40px; margin-bottom: 30px; border-bottom: 1px solid var(--border); background: var(--bg-surface); border-radius: 0 0 30px 30px; }
     .hero-rabbit { font-size: 50px; margin-bottom: 10px; animation: bounceRabbit 2s ease-in-out infinite; display: inline-block; }
+    .hero-avatar-group { display: flex; aligh-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; }
+    .hero-avatar {width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; box-shadow: 0 0 25px var(--accent-glow); }
     @keyframes bounceRabbit { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--text-main); letter-spacing: 1px; margin-bottom: 8px; }
     .hero .since { font-size: 12px; color: var(--accent); letter-spacing: 4px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; }
@@ -120,6 +122,8 @@
 
 <div class="container">
   <div class="hero">
+    <div class="hero-rabbit">🐰</div>
+    <img src ="https://raw.githubusercontent.com/BobbieTun/tiemtarotnhatho/refs/heads/main/tarottho.png" alt="Avatar" class = "hero-avatar">
     <div class="hero-rabbit">🐰</div>
     <h1>Tiệm Tarot Nhà Thỏ</h1>
     <div class="since">Since 2021</div>
