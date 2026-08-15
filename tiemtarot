@@ -74,57 +74,36 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     .section-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--accent); margin-bottom: 24px; text-align: center; }
 
-    /* LAYOUT MỚI CỦA BẢNG GIÁ */
+    .summary-card { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.4); border-radius: 14px; padding: 20px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .summary-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+    .summary-item .icon { font-size: 24px; margin-bottom: 4px; }
+    .summary-item .text strong { color: var(--text-main); font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px; }
+    .summary-item .text p { color: var(--text-muted); font-size: 12px; line-height: 1.5; }
+    .candle-banner { grid-column: 1 / -1; background: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(139,92,246,0.2), rgba(139,92,246,0.1)); border: 1px solid rgba(139, 92, 246, 0.3); padding: 12px; border-radius: 10px; margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; color: var(--text-main); }
+    .candle-banner strong { color: var(--accent); }
+
     .price-row-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 16px; }
     .price-row-2-combo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .price-row-3-witch { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .price-row-2-other { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .price-row-2-witch { display: grid; grid-template-columns: 2fr 1.5fr; gap: 16px; margin-bottom: 16px; }
     .price-row-3-other { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
     .price-row-1 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
     
     .inner-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
     .inner-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px 16px; }
 
-    /* ĐƯỜNG PHÂN CÁCH CHIA CỘT */
-    .section-divider {
-      border-top: 1px dashed var(--border);
-      margin: 40px 0 30px;
-      position: relative;
-      text-align: center;
-    }
-    .section-divider span {
-      background: var(--bg-main);
-      padding: 0 20px;
-      position: relative;
-      top: -10px;
-      color: var(--accent);
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 2px;
-    }
+    .section-divider { border-top: 1px dashed var(--border); margin: 40px 0 30px; position: relative; text-align: center; }
+    .section-divider span { background: var(--bg-main); padding: 0 20px; position: relative; top: -10px; color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: 2px; }
 
     .price-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 14px; padding: 16px; transition: 0.3s; position: relative; display: flex; flex-direction: column; }
     .price-box:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 4px 15px var(--accent-glow); z-index: 5; background: var(--bg-card); }
-    .price-box h3 { font-family: 'Playfair Display', serif; color: var(--text-main); font-size: 14px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 10px; text-align: center; }
+    .price-box h3 { font-family: 'Playfair Display', serif; color: var(--text-main); font-size: 14px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 10px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
     
     .price-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 12px; color: var(--text-muted); }
     
-    /* HIỆU ỨNG DẤU CHẤM PHÁT SÁNG CHO BULLET POINT */
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 4px var(--accent); }
-      50% { box-shadow: 0 0 10px var(--accent), 0 0 15px var(--accent-dark); }
-      100% { box-shadow: 0 0 4px var(--accent); }
-    }
+    @keyframes pulseGlow { 0% { box-shadow: 0 0 4px var(--accent); } 50% { box-shadow: 0 0 10px var(--accent), 0 0 15px var(--accent-dark); } 100% { box-shadow: 0 0 4px var(--accent); } }
     .price-row .name { display: flex; align-items: center; gap: 10px; }
-    .price-row .name::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: inline-block;
-      flex-shrink: 0;
-      animation: pulseGlow 2s infinite alternate;
-    }
+    .price-row .name::before { content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; flex-shrink: 0; animation: pulseGlow 2s infinite alternate; }
 
     .price-row .val { color: var(--accent); font-weight: 600; white-space: nowrap; margin-left: 8px; }
     .price-note { font-size: 11px; color: rgba(161, 161, 170, 0.6); text-align: center; margin-top: -10px; margin-bottom: 12px; font-style: italic; }
@@ -151,14 +130,12 @@
     @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
     @media (max-width: 950px) {
-      .price-row-5 { grid-template-columns: repeat(3, 1fr); }
-      .price-row-2-combo { grid-template-columns: 1fr; }
-      .price-row-3-witch { grid-template-columns: 1fr; }
-      .price-row-3-other { grid-template-columns: 1fr; }
+      .price-row-5, .summary-card { grid-template-columns: repeat(3, 1fr); }
+      .price-row-2-combo, .price-row-2-other, .price-row-2-witch, .price-row-3-other { grid-template-columns: 1fr; }
       .inner-grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
-      .price-row-5, .price-row-3-witch { grid-template-columns: 1fr; }
+      .price-row-5, .summary-card { grid-template-columns: 1fr; }
       .inner-grid-2, .inner-grid-4 { grid-template-columns: 1fr; }
     }
   </style>
@@ -199,8 +176,34 @@
   </div>
 
   <div id="prices" class="tab-content active">
+
+    <div class="summary-card">
+      <div class="summary-item">
+        <span class="icon">🔮</span>
+        <div class="text">
+          <strong>Xem Bài Tiên Tri</strong>
+          <p>Tarot, Lenormand, Tea Leaf, Bài Tây, Clow, Oracle</p>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="icon">🌙</span>
+        <div class="text">
+          <strong>Witchcraft & Manifest</strong>
+          <p>Spell, nghi lễ năng lượng, Manifest</p>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="icon">🌟</span>
+        <div class="text">
+          <strong>Huyền Học & Chiêm Tinh</strong>
+          <p>Tử vi chuyên đề, Bản đồ sao, Ma trận</p>
+        </div>
+      </div>
+      <div class="candle-banner">
+        <span style="font-size: 16px;">🕯️</span> Nến thơm năng lượng Custom <strong>theo yêu cầu:</strong> Vui lòng Inbox để tư vấn riêng
+      </div>
+    </div>
     
-    <!-- HÀNG 1: 5 GÓI CƠ BẢN -->
     <div class="price-row-5">
       <div class="price-box">
         <h3>Tarot: Gói Câu Lẻ</h3>
@@ -235,7 +238,6 @@
       </div>
     </div>
 
-    <!-- HÀNG 2: COMBO (RỘNG RÃI) -->
     <div class="price-row-2-combo">
       <div class="price-box">
         <h3>COMBO MINI</h3>
@@ -271,13 +273,28 @@
       </div>
     </div>
 
-    <!-- DIVIDER CHIA CỘT -->
+    <!-- TỔNG QUAN & MIX BÀI ĐƯỢC CHUYỂN LÊN TRÊN VÁCH NGĂN -->
+    <div class="price-row-2-other">
+      <div class="price-box">
+        <h3>Tổng Quan Theo Tháng</h3>
+        <div class="price-row"><span class="name">1 tháng (xem kỹ)</span><span class="val">120k</span></div>
+        <div class="price-row"><span class="name">2 tháng (xem kỹ)</span><span class="val">230k</span></div>
+        <div class="price-row"><span class="name">3 tháng (xem kỹ)</span><span class="val">340k</span></div>
+      </div>
+      <div class="price-box">
+        <h3>Mix Thêm Dạng Bài</h3>
+        <div class="price-row"><span class="name">Thêm Lenormand</span><span class="val">+50k</span></div>
+        <div class="price-row"><span class="name">Thêm Oracle</span><span class="val">+50k</span></div>
+        <div class="price-row"><span class="name">Lenormand & Oracle</span><span class="val">+80k</span></div>
+      </div>
+    </div>
+
     <div class="section-divider">
       <span>DỊCH VỤ CHUYÊN SÂU & NĂNG LƯỢNG</span>
     </div>
 
-    <!-- HÀNG 3: WITCHCRAFT, TỔNG QUAN, MIX BÀI -->
-    <div class="price-row-3-witch">
+    <!-- WITCHCRAFT VÀ NẾN THƠM -->
+    <div class="price-row-2-witch">
       <div class="price-box">
         <h3>WITCHCRAFT</h3>
         <div class="inner-grid-2">
@@ -295,21 +312,17 @@
       </div>
       
       <div class="price-box">
-        <h3>Tổng Quan Theo Tháng</h3>
-        <div class="price-row"><span class="name">1 tháng (xem kỹ)</span><span class="val">120k</span></div>
-        <div class="price-row"><span class="name">2 tháng (xem kỹ)</span><span class="val">230k</span></div>
-        <div class="price-row"><span class="name">3 tháng (xem kỹ)</span><span class="val">340k</span></div>
-      </div>
-
-      <div class="price-box">
-        <h3>Mix Thêm Dạng Bài</h3>
-        <div class="price-row"><span class="name">Thêm Lenormand</span><span class="val">+50k</span></div>
-        <div class="price-row"><span class="name">Thêm Oracle</span><span class="val">+50k</span></div>
-        <div class="price-row"><span class="name">Lenormand & Oracle</span><span class="val">+80k</span></div>
+        <h3>Ritual Scented Candle</h3>
+        <div class="price-note">(Nến thơm năng lượng)</div>
+        <div class="price-row"><span class="name">Beauty ritual</span><span class="val">650k</span></div>
+        <div class="price-row"><span class="name">Love ritual</span><span class="val">750k</span></div>
+        <div class="price-row"><span class="name">Work ritual</span><span class="val">950k</span></div>
+        <div class="price-row"><span class="name">Money ritual</span><span class="val">950k</span></div>
+        <div class="price-row" style="margin-top: auto; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Custom ritual</span><span class="val">Inbox</span></div>
       </div>
     </div>
 
-    <!-- HÀNG 4: BẢN ĐỒ SAO, MA TRẬN, COACH (RỘNG RÃI) -->
+    <!-- BẢN ĐỒ SAO, MA TRẬN, COACH -->
     <div class="price-row-3-other">
       <div class="price-box">
         <h3>Bản Đồ Sao</h3>
@@ -337,7 +350,7 @@
       </div>
     </div>
 
-    <!-- HÀNG 5: TỬ VI (TRẢI DÀI) -->
+    <!-- TỬ VI -->
     <div class="price-row-1">
       <div class="price-box">
         <h3>TỬ VI CHI TIẾT</h3>
