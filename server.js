@@ -1,3 +1,4 @@
+// File server.js trong thư mục Tarot-Backend
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -11,6 +12,7 @@ app.use(cors({
 app.use(express.json());
 
 const MONGO_URI = process.env.MONGO_URI; 
+const ADMIN_PASS = process.env.ADMIN_PASS;
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('connected to MongoDB'))
