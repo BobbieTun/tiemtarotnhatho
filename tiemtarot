@@ -198,7 +198,7 @@
     glow.style.setProperty('--mouse-y', `${e.clientY}px`);
   });
 
-  let isPlaying = false;
+  let isPlaying = true;
   function toggleMusic() {
     const music = document.getElementById('bgMusic');
     const player = document.getElementById('musicPlayer');
@@ -221,7 +221,10 @@
 
   function toggleAdmin() {
     const pass = prompt("Nhập Passcode:");
-    if(pass === "nhatho") document.getElementById('adminPanel').classList.add('open');
+    if(pass){
+      currentAdminPass = pass;
+     document.getElementById('adminPanel').classList.add('open');
+    }
   }
 
   async function loadData() {
@@ -287,7 +290,12 @@
   async function addFeed() {
     const imageUrl = document.getElementById('imgUrl').value;
     const caption = document.getElementById('imgCaption').value;
-    await fetch(`${API_URL}/feed`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageUrl, caption }) });
+    const res = await fetch(`${API_URL}/feed`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageUrl, caption }) });
+    await fetch(`${API_URL}/feed`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageUrl, caption,pass :currentAdminPass }) });
+    if(res.status === 403){
+      alert('Passcode không đúng! Không thể tải lên.');
+      return;
+    }
     alert('Đã tải ảnh lên Cột Feedback!'); 
     document.getElementById('imgUrl').value = '';
     document.getElementById('imgCaption').value = '';
