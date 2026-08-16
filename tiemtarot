@@ -59,12 +59,13 @@
     .hero-rabbit { font-size: 45px; animation: bounceRabbit 2s ease-in-out infinite; }
     @keyframes bounceRabbit { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--text-main); letter-spacing: 1px; margin-bottom: 8px; }
-    .hero .since { font-size: 12px; color: var(--accent); letter-spacing: 4px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; }
+    .hero .since { font-size: 12px; color: var(--accent); letter-spacing: 2px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; }
+    .hero .since span { color: var(--text-main); margin: 0 6px; }
     .hero-divider { width: 60px; height: 1px; background: var(--accent); margin: 0 auto 16px; }
     .hero .tagline { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-muted); font-size: 15px; max-width: 500px; margin: 0 auto; line-height: 1.7; }
 
     .nav-wrapper { position: sticky; top: 0; z-index: 50; padding: 10px 0; margin-bottom: 20px; }
-    .tabs { display: flex; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 30px; padding: 6px; gap: 4px; max-width: fit-content; margin: 0 auto; }
+    .tabs { display: flex; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 30px; padding: 6px; gap: 4px; max-width: fit-content; margin: 0 auto; flex-wrap: wrap; }
     .tab-btn { padding: 10px 20px; border: none; background: transparent; color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 20px; transition: 0.3s; font-family: inherit; }
     .tab-btn:hover { color: var(--text-main); }
     .tab-btn.active { background: var(--accent); color: #000; font-weight: 700; }
@@ -73,6 +74,24 @@
     .tab-content.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     .section-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--accent); margin-bottom: 24px; text-align: center; }
+
+    /* THÔNG BÁO PHỤ PHÍ */
+    .surcharge-notice {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0 auto 24px;
+      max-width: 600px;
+      line-height: 1.6;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: rgba(139, 92, 246, 0.05);
+      border: 1px dashed rgba(139, 92, 246, 0.3);
+    }
+    .surcharge-notice strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
 
     .summary-card { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.4); border-radius: 14px; padding: 20px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .summary-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
@@ -121,14 +140,26 @@
     .witch-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: #fff; margin-bottom: 16px; font-style: italic; letter-spacing: 1px; }
     .banner-special { background: linear-gradient(90deg, #4c1d95, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; text-align: center; padding: 8px 30px; border-radius: 20px; margin: 24px auto 0; width: fit-content; letter-spacing: 0.5px; box-shadow: 0 4px 15px var(--accent-glow); }
 
-    /* LƯỚI ẢNH FEEDBACK MỚI NHẤT (GRID GALLERY) */
+    /* LƯỚT NGANG FEEDBACK */
     .feed-gallery { 
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
       gap: 16px;
+      padding-bottom: 24px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
       width: 100%;
     }
+    
+    .feed-gallery::-webkit-scrollbar { height: 8px; }
+    .feed-gallery::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
+    .feed-gallery::-webkit-scrollbar-thumb { background: var(--accent-dark); border-radius: 10px; }
+    .feed-gallery::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
     .feed-item { 
+      flex: 0 0 240px;
+      scroll-snap-align: start;
       background: var(--bg-card); 
       border: 1px solid var(--border); 
       border-radius: 14px; 
@@ -145,7 +176,7 @@
     }
     .feed-item img { 
       width: 100%; 
-      height: 380px; 
+      height: 420px; 
       object-fit: cover; 
       display: block; 
     }
@@ -158,6 +189,15 @@
       font-style: italic; 
     }
 
+    /* RULES CARD */
+    .rules-card { text-align: left; line-height: 1.7; font-size: 14px; color: var(--text-muted); margin-bottom: 30px; }
+    .rules-card h4 { color: var(--accent); font-size: 18px; margin: 24px 0 12px; font-family: 'Playfair Display', serif; }
+    .rules-card ul { padding-left: 20px; margin-bottom: 16px; list-style: none; }
+    .rules-card ul li { margin-bottom: 12px; position: relative; }
+    .rules-card ul li::before { content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; position: absolute; left: -16px; top: 8px; animation: pulseGlow 2s infinite alternate; }
+    .rules-card strong { color: var(--text-main); font-weight: 600; }
+    .rules-card em { color: #8b5cf6; font-size: 13px; }
+
     .clean-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
     .contact-link { display: block; width: 100%; text-align: center; padding: 14px; margin-bottom: 12px; background: var(--bg-surface); color: var(--text-main); text-decoration: none; border-radius: 12px; border: 1px solid var(--border); font-size: 14px; font-weight: 600; transition: 0.3s; }
     .contact-link:hover { background: var(--accent); color: #000; border-color: var(--accent); }
@@ -169,7 +209,7 @@
 
     @media (max-width: 950px) {
       .price-row-5, .summary-card { grid-template-columns: repeat(3, 1fr); }
-      .price-row-2-combo, .price-row-2-other, .price-row-3-other { grid-template-columns: 1fr; }
+      .price-row-2-combo, .price-row-2-other { grid-template-columns: 1fr; }
       .inner-grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
@@ -178,9 +218,8 @@
       .witchcraft-split { flex-direction: column; gap: 0; }
       .v-divider { width: 100%; height: 1px; margin: 20px 0; background: linear-gradient(to right, transparent, var(--accent-dark), transparent); }
       
-      /* Trên Mobile tự động chia thành 2 cột ảnh */
-      .feed-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .feed-item img { height: 260px; }
+      .feed-item { flex: 0 0 200px; } 
+      .feed-item img { height: 350px; }
     }
   </style>
 </head>
@@ -206,7 +245,7 @@
       <div class="hero-rabbit">🐰</div>
     </div>
     <h1>Tiệm Tarot Nhà Thỏ</h1>
-    <div class="since">Since 2021</div>
+    <div class="since">Since 2021 <span>•</span> 6+ Năm Kinh Nghiệm</div>
     <div class="hero-divider"></div>
     <div class="tagline">"Mỗi trải bài là một thông điệp — Mỗi câu chuyện là một hành trình chữa lành."</div>
   </div>
@@ -215,37 +254,13 @@
     <div class="tabs">
       <button class="tab-btn active" onclick="showTab('prices', this)">Dịch Vụ & Giá</button>
       <button class="tab-btn" onclick="showTab('feed', this)">Feed & Legit</button>
-      <button class="tab-btn" onclick="showTab('contact', this)">Liên Hệ</button>
+      <button class="tab-btn" onclick="showTab('contact', this)">Quy Định & Đặt Lịch</button>
     </div>
   </div>
 
   <div id="prices" class="tab-content active">
-
-    <div class="summary-card">
-      <div class="summary-item">
-        <span class="icon">🔮</span>
-        <div class="text">
-          <strong>Xem Bài Tiên Tri</strong>
-          <p>Tarot, Lenormand, Tea Leaf, Bài Tây, Clow, Oracle</p>
-        </div>
-      </div>
-      <div class="summary-item">
-        <span class="icon">🌙</span>
-        <div class="text">
-          <strong>Witchcraft & Manifest</strong>
-          <p>Spell, nghi lễ năng lượng, Manifest</p>
-        </div>
-      </div>
-      <div class="summary-item">
-        <span class="icon">🌟</span>
-        <div class="text">
-          <strong>Huyền Học & Chiêm Tinh</strong>
-          <p>Tử vi chuyên đề, Bản đồ sao, Ma trận</p>
-        </div>
-      </div>
-      <div class="candle-banner">
-        <span style="font-size: 16px;">🕯️</span> Nến thơm năng lượng Custom <strong>theo yêu cầu:</strong> Vui lòng Inbox để tư vấn riêng
-      </div>
+    <div class="surcharge-notice">
+      <strong>Phụ phí ngoài giờ:</strong> Ngoài giờ làm việc mình sẽ có phụ phí 20% giá gói nếu bạn muốn trả kết quả trải bằng tin nhắn.
     </div>
     
     <div class="price-row-5">
@@ -332,6 +347,7 @@
       </div>
     </div>
 
+
     <div class="toggle-wrapper">
       <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
         <span>🌙 Witchcraft & Manifest</span>
@@ -393,6 +409,7 @@
       </div>
     </div>
 
+
     <div class="toggle-wrapper">
       <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
         <span>🌟 Huyền Học & Chiêm Tinh</span>
@@ -443,123 +460,126 @@
   <div id="feed" class="tab-content">
     <div class="section-title">Minh Chứng & Feedback</div>
     
-    <!-- GALLERY GRID MỚI TÍCH HỢP SẴN 21 ẢNH CỦA BẠN -->
     <div class="feed-gallery">
-      <!-- ẢNH 1 -->
+      <!-- 21 ẢNH FEEDBACK MẶC ĐỊNH LƯỚT NGANG -->
       <div class="feed-item" onclick="openLightbox('feedback/15.png')">
-        <img src="feedback/15.png" alt="Feedback 15" loading="lazy">
+        <img src="feedback/15.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 2 -->
       <div class="feed-item" onclick="openLightbox('feedback/16.png')">
-        <img src="feedback/16.png" alt="Feedback 16" loading="lazy">
+        <img src="feedback/16.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 3 -->
       <div class="feed-item" onclick="openLightbox('feedback/19.png')">
-        <img src="feedback/19.png" alt="Feedback 19" loading="lazy">
+        <img src="feedback/19.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 4 -->
       <div class="feed-item" onclick="openLightbox('feedback/23.png')">
-        <img src="feedback/23.png" alt="Feedback 23" loading="lazy">
+        <img src="feedback/23.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 5 -->
       <div class="feed-item" onclick="openLightbox('feedback/234rtefds4wtersgf43twresgfdqresgf.png')">
-        <img src="feedback/234rtefds4wtersgf43twresgfdqresgf.png" alt="Feedback 5" loading="lazy">
+        <img src="feedback/234rtefds4wtersgf43twresgfdqresgf.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 6 -->
       <div class="feed-item" onclick="openLightbox('feedback/27.png')">
-        <img src="feedback/27.png" alt="Feedback 27" loading="lazy">
+        <img src="feedback/27.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 7 -->
       <div class="feed-item" onclick="openLightbox('feedback/28.png')">
-        <img src="feedback/28.png" alt="Feedback 28" loading="lazy">
+        <img src="feedback/28.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 8 -->
       <div class="feed-item" onclick="openLightbox('feedback/29.png')">
-        <img src="feedback/29.png" alt="Feedback 29" loading="lazy">
+        <img src="feedback/29.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 9 -->
       <div class="feed-item" onclick="openLightbox('feedback/30.png')">
-        <img src="feedback/30.png" alt="Feedback 30" loading="lazy">
+        <img src="feedback/30.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 10 -->
       <div class="feed-item" onclick="openLightbox('feedback/5ytghyugt.png')">
-        <img src="feedback/5ytghyugt.png" alt="Feedback 10" loading="lazy">
+        <img src="feedback/5ytghyugt.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 11 -->
       <div class="feed-item" onclick="openLightbox('feedback/sadasdawfsfasfawd.png')">
-        <img src="feedback/sadasdawfsfasfawd.png" alt="Feedback 11" loading="lazy">
+        <img src="feedback/sadasdawfsfasfawd.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 12 -->
       <div class="feed-item" onclick="openLightbox('feedback/sghdfgdhsfh.png')">
-        <img src="feedback/sghdfgdhsfh.png" alt="Feedback 12" loading="lazy">
+        <img src="feedback/sghdfgdhsfh.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 13 -->
       <div class="feed-item" onclick="openLightbox('feedback/sss.png')">
-        <img src="feedback/sss.png" alt="Feedback 13" loading="lazy">
+        <img src="feedback/sss.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 14 -->
       <div class="feed-item" onclick="openLightbox('feedback/tbvrfcedtbgvrfcd.png')">
-        <img src="feedback/tbvrfcedtbgvrfcd.png" alt="Feedback 14" loading="lazy">
+        <img src="feedback/tbvrfcedtbgvrfcd.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 15 -->
       <div class="feed-item" onclick="openLightbox('feedback/tryntrnrtynrthn.png')">
-        <img src="feedback/tryntrnrtynrthn.png" alt="Feedback 15" loading="lazy">
+        <img src="feedback/tryntrnrtynrthn.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 16 -->
       <div class="feed-item" onclick="openLightbox('feedback/twdfasdgwgsdg.png')">
-        <img src="feedback/twdfasdgwgsdg.png" alt="Feedback 16" loading="lazy">
+        <img src="feedback/twdfasdgwgsdg.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 17 -->
       <div class="feed-item" onclick="openLightbox('feedback/ueffgethrtj5.png')">
-        <img src="feedback/ueffgethrtj5.png" alt="Feedback 17" loading="lazy">
+        <img src="feedback/ueffgethrtj5.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 18 -->
       <div class="feed-item" onclick="openLightbox('feedback/uiouiouiou.png')">
-        <img src="feedback/uiouiouiou.png" alt="Feedback 18" loading="lazy">
+        <img src="feedback/uiouiouiou.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 19 -->
       <div class="feed-item" onclick="openLightbox('feedback/umumikumik.png')">
-        <img src="feedback/umumikumik.png" alt="Feedback 19" loading="lazy">
+        <img src="feedback/umumikumik.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 20 -->
       <div class="feed-item" onclick="openLightbox('feedback/uytreertyui.png')">
-        <img src="feedback/uytreertyui.png" alt="Feedback 20" loading="lazy">
+        <img src="feedback/uytreertyui.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
-      <!-- ẢNH 21 -->
       <div class="feed-item" onclick="openLightbox('feedback/vrtvhr.png')">
-        <img src="feedback/vrtvhr.png" alt="Feedback 21" loading="lazy">
+        <img src="feedback/vrtvhr.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
       </div>
     </div>
-    
   </div>
 
   <div id="contact" class="tab-content">
-    <div class="section-title">Đặt Lịch</div>
-    <div class="clean-card" style="text-align: center; max-width: 500px; margin: 0 auto;">
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">11:00 AM — 02:00 AM hàng ngày.<br>Vui lòng thanh toán trước để xác nhận lịch.</p>
+    <div class="section-title">Quy Định & Đặt Lịch</div>
+    
+    <div class="clean-card rules-card">
+      <p style="text-align: center; margin-bottom: 20px; font-style: italic;">
+        Vui lòng đọc kỹ trước khi inbox/book lịch để buổi trải diễn ra thuận lợi và hiệu quả nhất nhé 💗
+      </p>
+
+      <h4>🔮 Trong quá trình trải bài</h4>
+      <ul>
+        <li><strong>Tương tác là điều rất quan trọng.</strong> Hãy tập trung nghe phần giải và hỏi ngay nếu có điều gì chưa hiểu. Bọn mình sẽ giữ buổi trải trong <strong>30 phút</strong>. Nếu sau thời gian này bạn không còn thắc mắc, bọn mình xin phép không giải đáp thêm các câu hỏi liên quan đến nội dung buổi trải trước đó.</li>
+        <li><strong>Vui lòng không inbox theo kiểu ra lệnh hoặc yêu cầu tự đoán.</strong> Tarot giúp bạn nhìn rõ những điều đang rối và nhận thông điệp phù hợp, chứ không phải để đoán xem bạn đang gặp vấn đề gì. Hãy chia sẻ đủ thông tin cần thiết để được hỗ trợ tốt nhất.</li>
+        <li><strong>Tôn trọng nguyên tắc và quyền lợi hai bên.</strong> Bạn có quyền lựa chọn dịch vụ phù hợp với nhu cầu và ngân sách. Thuận mua vừa bán, hai bên cùng thoải mái và vui vẻ.</li>
+      </ul>
+
+      <h4>💸 Thanh toán & Book lịch</h4>
+      <ul>
+        <li><strong>Vui lòng thanh toán trước để đặt lịch.</strong> Ngoài Tarot, bọn mình còn có công việc và cuộc sống riêng nên không thể đảm bảo lúc nào cũng online và sẵn sàng trải bài 24/7.</li>
+        <li><strong>Không nhận trải/test trước</strong> rồi mới chốt bill sau.</li>
+        <li><strong>Muốn hỏi thêm sau khi hết thời gian:</strong> Vui lòng thanh toán thêm <em>(Không áp dụng với những chia sẻ/tâm sự phát sinh sau buổi trải)</em>.</li>
+        <li><strong>Nếu có việc đột xuất:</strong> Hãy báo trước để giữ thời gian cho bạn. Nếu bạn không phản hồi hoặc không báo gì thêm, thời gian trải vẫn được tính như bình thường. Khi hết thời gian, buổi trải sẽ được đóng.</li>
+        <li><strong>Phụ phí ngoài giờ:</strong> Ngoài giờ làm việc mình sẽ có phụ phí <strong>20% giá gói</strong> nếu bạn muốn trả kết quả trải bằng tin nhắn.</li>
+      </ul>
+
+      <p style="text-align: center; margin-top: 24px; color: var(--accent);">
+        Cảm ơn bạn đã đọc và tôn trọng những nguyên tắc nhỏ của Tiệm 🐰💗
+      </p>
+    </div>
+
+    <div style="display: flex; gap: 12px; max-width: 500px; margin: 0 auto; flex-direction: column;">
       <a href="https://www.facebook.com/tiemtarotnhatho" target="_blank" class="contact-link">Nhắn tin qua Fanpage</a>
-      <a href="https://www.facebook.com/consochwhene1311/" target="_blank" class="contact-link">Nhắn tin Facebook cá nhân</a>
       <a href="https://www.instagram.com/tiemtarotnhatho06/" target="_blank" class="contact-link">Direct qua Instagram</a>
     </div>
   </div>
