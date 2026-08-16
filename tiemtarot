@@ -85,7 +85,6 @@
     .price-row-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 16px; }
     .price-row-2-combo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     .price-row-2-other { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .price-row-2-witch { display: grid; grid-template-columns: 2fr 1.5fr; gap: 16px; margin-bottom: 16px; }
     .price-row-3-other { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
     .price-row-1 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
     
@@ -104,17 +103,60 @@
     @keyframes pulseGlow { 0% { box-shadow: 0 0 4px var(--accent); } 50% { box-shadow: 0 0 10px var(--accent), 0 0 15px var(--accent-dark); } 100% { box-shadow: 0 0 4px var(--accent); } }
     .price-row .name { display: flex; align-items: center; gap: 10px; }
     .price-row .name::before { content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; flex-shrink: 0; animation: pulseGlow 2s infinite alternate; }
-
     .price-row .val { color: var(--accent); font-weight: 600; white-space: nowrap; margin-left: 8px; }
     .price-note { font-size: 11px; color: rgba(161, 161, 170, 0.6); text-align: center; margin-top: -10px; margin-bottom: 12px; font-style: italic; }
 
-    .banner-special { background: linear-gradient(90deg, #4c1d95, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; text-align: center; padding: 6px; border-radius: 20px; margin-top: auto; letter-spacing: 0.5px; }
+    .toggle-wrapper { margin: 40px 0 20px; }
+    .toggle-header { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--accent); display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; padding: 10px; transition: 0.3s; user-select: none; letter-spacing: 1px; }
+    .toggle-header:hover { text-shadow: 0 0 15px var(--accent-glow); color: #fff; }
+    .toggle-header .icon-arrow { font-size: 14px; transition: transform 0.4s ease; }
+    .toggle-wrapper.open .toggle-header .icon-arrow { transform: rotate(180deg); }
+    .toggle-content { display: none; padding-top: 10px; animation: fadeInDown 0.4s ease; }
+    .toggle-wrapper.open .toggle-content { display: block; }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .feed-column { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
-    .feed-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: 0.3s; }
-    .feed-item:hover { border-color: var(--accent); transform: scale(1.02); }
-    .feed-item img { width: 100%; height: auto; display: block; }
-    .feed-item .caption { padding: 14px; font-size: 14px; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border); font-style: italic; }
+    .witchcraft-split { display: flex; gap: 20px; justify-content: space-between; }
+    .col-spells, .col-rituals { flex: 1; }
+    .v-divider { width: 1px; background: linear-gradient(to bottom, transparent, var(--accent-dark), transparent); opacity: 0.5; margin: 0 10px; }
+    .witch-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: #fff; margin-bottom: 16px; font-style: italic; letter-spacing: 1px; }
+    .banner-special { background: linear-gradient(90deg, #4c1d95, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; text-align: center; padding: 8px 30px; border-radius: 20px; margin: 24px auto 0; width: fit-content; letter-spacing: 0.5px; box-shadow: 0 4px 15px var(--accent-glow); }
+
+    /* LƯỚI ẢNH FEEDBACK MỚI NHẤT (GRID GALLERY) */
+    .feed-gallery { 
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      width: 100%;
+    }
+    .feed-item { 
+      background: var(--bg-card); 
+      border: 1px solid var(--border); 
+      border-radius: 14px; 
+      overflow: hidden; 
+      cursor: pointer; 
+      transition: 0.3s; 
+      display: flex;
+      flex-direction: column;
+    }
+    .feed-item:hover { 
+      border-color: var(--accent); 
+      transform: translateY(-5px); 
+      box-shadow: 0 5px 15px var(--accent-glow); 
+    }
+    .feed-item img { 
+      width: 100%; 
+      height: 380px; 
+      object-fit: cover; 
+      display: block; 
+    }
+    .feed-item .caption { 
+      padding: 12px; 
+      font-size: 13px; 
+      color: var(--text-muted); 
+      text-align: center; 
+      border-top: 1px solid var(--border); 
+      font-style: italic; 
+    }
 
     .clean-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
     .contact-link { display: block; width: 100%; text-align: center; padding: 14px; margin-bottom: 12px; background: var(--bg-surface); color: var(--text-main); text-decoration: none; border-radius: 12px; border: 1px solid var(--border); font-size: 14px; font-weight: 600; transition: 0.3s; }
@@ -122,21 +164,23 @@
 
     .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
     .lightbox.active { display: flex; }
-    .lightbox img { max-width: 95%; max-height: 85vh; border-radius: 12px; }
+    .lightbox img { max-width: 95%; max-height: 85vh; border-radius: 12px; object-fit: contain; }
     .footer { text-align: center; padding: 40px 20px; margin-top: 40px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border); }
-
-    .github-loader { text-align: center; padding: 40px; color: var(--accent); font-style: italic; font-size: 14px; }
-    .github-loader span { display: inline-block; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
     @media (max-width: 950px) {
       .price-row-5, .summary-card { grid-template-columns: repeat(3, 1fr); }
-      .price-row-2-combo, .price-row-2-other, .price-row-2-witch, .price-row-3-other { grid-template-columns: 1fr; }
+      .price-row-2-combo, .price-row-2-other, .price-row-3-other { grid-template-columns: 1fr; }
       .inner-grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
       .price-row-5, .summary-card { grid-template-columns: 1fr; }
       .inner-grid-2, .inner-grid-4 { grid-template-columns: 1fr; }
+      .witchcraft-split { flex-direction: column; gap: 0; }
+      .v-divider { width: 100%; height: 1px; margin: 20px 0; background: linear-gradient(to right, transparent, var(--accent-dark), transparent); }
+      
+      /* Trên Mobile tự động chia thành 2 cột ảnh */
+      .feed-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .feed-item img { height: 260px; }
     }
   </style>
 </head>
@@ -273,7 +317,6 @@
       </div>
     </div>
 
-    <!-- TỔNG QUAN & MIX BÀI ĐƯỢC CHUYỂN LÊN TRÊN VÁCH NGĂN -->
     <div class="price-row-2-other">
       <div class="price-box">
         <h3>Tổng Quan Theo Tháng</h3>
@@ -289,86 +332,109 @@
       </div>
     </div>
 
-    <div class="section-divider">
-      <span>DỊCH VỤ CHUYÊN SÂU & NĂNG LƯỢNG</span>
+    <div class="toggle-wrapper">
+      <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+        <span>🌙 Witchcraft & Manifest</span>
+        <span class="icon-arrow">▼</span>
+      </div>
+      <div class="toggle-content">
+        
+        <div class="price-row-1">
+          <div class="price-box">
+            <h3 style="font-size: 18px; margin-bottom: 24px; color: var(--accent);">✦ WITCHCRAFT ✦</h3>
+            <div class="witchcraft-split">
+              <div class="col-spells">
+                <div class="witch-title">Sphere of Spell</div>
+                <div class="price-row"><span class="name">Love spell</span><span class="val">250k</span></div>
+                <div class="price-row"><span class="name">Lucky spell</span><span class="val">250k</span></div>
+                <div class="price-row"><span class="name">Money spell</span><span class="val">250k</span></div>
+                <div class="price-row"><span class="name">Healthy spell</span><span class="val">250k</span></div>
+                <div class="price-row"><span class="name">Custome spell mạnh theo yêu cầu</span><span class="val">350k</span></div>
+              </div>
+              <div class="v-divider"></div>
+              <div class="col-rituals">
+                <div class="witch-title">Sphere of Ritual</div>
+                <div class="price-row"><span class="name">Lễ nối duyên</span><span class="val">280k</span></div>
+                <div class="price-row"><span class="name">Lễ mở vận</span><span class="val">320k</span></div>
+                <div class="price-row"><span class="name">Lễ cắt duyên</span><span class="val">380k</span></div>
+                <div class="price-row"><span class="name">Custome lễ mạnh</span><span class="val">380k</span></div>
+              </div>
+            </div>
+            <div class="banner-special">SPECIAL COMBO (1 SPELL CUSTOME + 1 LỄ CUSTOME) 699K</div>
+          </div>
+        </div>
+
+        <div class="price-row-2-combo">
+          <div class="price-box">
+            <h3>🕯️ Ritual Scented Candle</h3>
+            <div class="price-note">(Nến thơm năng lượng chuyên biệt)</div>
+            <div class="price-row"><span class="name">Beauty ritual</span><span class="val">650k</span></div>
+            <div class="price-row"><span class="name">Love ritual</span><span class="val">750k</span></div>
+            <div class="price-row"><span class="name">Work ritual</span><span class="val">950k</span></div>
+            <div class="price-row"><span class="name">Money ritual</span><span class="val">950k</span></div>
+            <div class="price-row" style="margin-top: auto; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Custom ritual</span><span class="val">Inbox tư vấn</span></div>
+          </div>
+
+          <div class="price-box">
+            <h3>✍️ Coach Manifest</h3>
+            <div class="price-row" style="flex-direction: column; align-items: center; justify-content: center; height: 100%; border-bottom: 1px dashed var(--border); padding-bottom: 16px;">
+              <span style="font-weight: 700; color: var(--text-main); font-size: 14px;">GÓI GẤP</span>
+              <span style="font-size: 11px; margin-bottom: 6px;">Thời gian: 60 phút call</span>
+              <span class="val" style="font-size: 18px; margin:0;">250K</span>
+            </div>
+            <div class="price-row" style="flex-direction: column; align-items: center; justify-content: center; height: 100%; padding-top: 16px; margin-bottom: 0;">
+              <span style="font-weight: 700; color: var(--text-main); font-size: 14px;">GÓI ĐỒNG HÀNH</span>
+              <span style="font-size: 11px; margin-bottom: 6px;">Thời gian: 30 ngày</span>
+              <span class="val" style="font-size: 18px; margin:0;">2TR5</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- WITCHCRAFT VÀ NẾN THƠM -->
-    <div class="price-row-2-witch">
-      <div class="price-box">
-        <h3>WITCHCRAFT</h3>
-        <div class="inner-grid-2">
-          <div class="price-row"><span class="name">Love spell</span><span class="val">250k</span></div>
-          <div class="price-row"><span class="name">Lễ nối duyên</span><span class="val">280k</span></div>
-          <div class="price-row"><span class="name">Lucky spell</span><span class="val">250k</span></div>
-          <div class="price-row"><span class="name">Lễ mở vận</span><span class="val">320k</span></div>
-          <div class="price-row"><span class="name">Money spell</span><span class="val">250k</span></div>
-          <div class="price-row"><span class="name">Lễ cắt duyên</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Healthy spell</span><span class="val">250k</span></div>
-          <div class="price-row"><span class="name">Custome lễ mạnh</span><span class="val">380k</span></div>
-          <div class="price-row" style="grid-column: 1 / -1;"><span class="name">Custome spell mạnh theo yêu cầu</span><span class="val">350k</span></div>
+    <div class="toggle-wrapper">
+      <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+        <span>🌟 Huyền Học & Chiêm Tinh</span>
+        <span class="icon-arrow">▼</span>
+      </div>
+      <div class="toggle-content">
+        
+        <div class="price-row-2-combo">
+          <div class="price-box">
+            <h3>Bản Đồ Sao</h3>
+            <div class="price-row"><span class="name">Progressed / Natal chart</span><span class="val">390k</span></div>
+            <div class="price-row"><span class="name">Composite / Synasty chart</span><span class="val">590k</span></div>
+            <div class="price-row"><span class="name">Theo nhà</span><span class="val">90k/nhà</span></div>
+          </div>
+          <div class="price-box">
+            <h3>Ma Trận Cặp Đôi</h3>
+            <div class="price-row"><span class="name">Cặp đôi</span><span class="val">590k</span></div>
+            <div class="price-row"><span class="name">Lẻ</span><span class="val">350k</span></div>
+          </div>
         </div>
-        <div class="banner-special" style="margin-top: 16px;">SPECIAL COMBO (1 SPELL CUSTOME + 1 LỄ CUSTOME) 699K</div>
-      </div>
-      
-      <div class="price-box">
-        <h3>Ritual Scented Candle</h3>
-        <div class="price-note">(Nến thơm năng lượng)</div>
-        <div class="price-row"><span class="name">Beauty ritual</span><span class="val">650k</span></div>
-        <div class="price-row"><span class="name">Love ritual</span><span class="val">750k</span></div>
-        <div class="price-row"><span class="name">Work ritual</span><span class="val">950k</span></div>
-        <div class="price-row"><span class="name">Money ritual</span><span class="val">950k</span></div>
-        <div class="price-row" style="margin-top: auto; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Custom ritual</span><span class="val">Inbox</span></div>
-      </div>
-    </div>
 
-    <!-- BẢN ĐỒ SAO, MA TRẬN, COACH -->
-    <div class="price-row-3-other">
-      <div class="price-box">
-        <h3>Bản Đồ Sao</h3>
-        <div class="price-row"><span class="name">Progressed / Natal chart</span><span class="val">390k</span></div>
-        <div class="price-row"><span class="name">Composite / Synasty chart</span><span class="val">590k</span></div>
-        <div class="price-row"><span class="name">Theo nhà</span><span class="val">90k/nhà</span></div>
-      </div>
-      <div class="price-box">
-        <h3>Ma Trận Cặp Đôi</h3>
-        <div class="price-row"><span class="name">Cặp đôi</span><span class="val">590k</span></div>
-        <div class="price-row"><span class="name">Lẻ</span><span class="val">350k</span></div>
-      </div>
-      <div class="price-box">
-        <h3>Coach Manifest</h3>
-        <div class="price-row" style="flex-direction: column; align-items: center; border-bottom: 1px dashed var(--border); padding-bottom: 8px;">
-          <span style="font-weight: 700; color: var(--text-main);">GÓI GẤP</span>
-          <span style="font-size: 11px; margin-bottom: 4px;">Thời gian: 60 phút call</span>
-          <span class="val" style="font-size: 16px; margin:0;">250K</span>
+        <div class="price-row-1">
+          <div class="price-box">
+            <h3>TỬ VI CHI TIẾT</h3>
+            <div class="inner-grid-4">
+              <div class="price-row"><span class="name">Tử Vi Tình Duyên</span><span class="val">380k</span></div>
+              <div class="price-row"><span class="name">Tử Vi Gia Tiên</span><span class="val">380k</span></div>
+              <div class="price-row"><span class="name">Tử Vi Vận Hạn</span><span class="val">380k</span></div>
+              <div class="price-row"><span class="name">Tử Vi Soi Âm</span><span class="val">380k</span></div>
+              
+              <div class="price-row"><span class="name">Tử Vi Vợ Chồng</span><span class="val">380k</span></div>
+              <div class="price-row"><span class="name">Tử Vi Sự Nghiệp</span><span class="val">380k</span></div>
+              <div class="price-row"><span class="name">Tử Vi Tài Bạch</span><span class="val">380k</span></div>
+              <div class="price-row"><span class="name">Tử Vi Trọn Đời</span><span class="val" style="color: #ef4444;">1500k</span></div>
+              
+              <div class="price-row"><span class="name">Tử Vi Con Cái</span><span class="val">380k</span></div>
+              <div class="price-row"><span class="name">Tử Vi Điền Trạch</span><span class="val">380k</span></div>
+              <div class="price-row"><span class="name">Tử Vi Bản Mệnh</span><span class="val">380k</span></div>
+            </div>
+          </div>
         </div>
-        <div class="price-row" style="flex-direction: column; align-items: center; padding-top: 8px; margin-bottom: 0;">
-          <span style="font-weight: 700; color: var(--text-main);">GÓI ĐỒNG HÀNH</span>
-          <span style="font-size: 11px; margin-bottom: 4px;">Thời gian: 30 ngày</span>
-          <span class="val" style="font-size: 16px; margin:0;">2TR5</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- TỬ VI -->
-    <div class="price-row-1">
-      <div class="price-box">
-        <h3>TỬ VI CHI TIẾT</h3>
-        <div class="inner-grid-4">
-          <div class="price-row"><span class="name">Tử Vi Tình Duyên</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Tử Vi Gia Tiên</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Tử Vi Vận Hạn</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Tử Vi Soi Âm</span><span class="val">380k</span></div>
-          
-          <div class="price-row"><span class="name">Tử Vi Vợ Chồng</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Tử Vi Sự Nghiệp</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Tử Vi Tài Bạch</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Tử Vi Trọn Đời</span><span class="val" style="color: #ef4444;">1500k</span></div>
-          
-          <div class="price-row"><span class="name">Tử Vi Con Cái</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Tử Vi Điền Trạch</span><span class="val">380k</span></div>
-          <div class="price-row"><span class="name">Tử Vi Bản Mệnh</span><span class="val">380k</span></div>
-        </div>
       </div>
     </div>
 
@@ -376,9 +442,116 @@
 
   <div id="feed" class="tab-content">
     <div class="section-title">Minh Chứng & Feedback</div>
-    <div class="feed-column" id="feedList">
-      <div class="github-loader"><span>🐰 Đang lục tìm ảnh trong kho GitHub...</span></div>
+    
+    <!-- GALLERY GRID MỚI TÍCH HỢP SẴN 21 ẢNH CỦA BẠN -->
+    <div class="feed-gallery">
+      <!-- ẢNH 1 -->
+      <div class="feed-item" onclick="openLightbox('feedback/15.png')">
+        <img src="feedback/15.png" alt="Feedback 15" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 2 -->
+      <div class="feed-item" onclick="openLightbox('feedback/16.png')">
+        <img src="feedback/16.png" alt="Feedback 16" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 3 -->
+      <div class="feed-item" onclick="openLightbox('feedback/19.png')">
+        <img src="feedback/19.png" alt="Feedback 19" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 4 -->
+      <div class="feed-item" onclick="openLightbox('feedback/23.png')">
+        <img src="feedback/23.png" alt="Feedback 23" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 5 -->
+      <div class="feed-item" onclick="openLightbox('feedback/234rtefds4wtersgf43twresgfdqresgf.png')">
+        <img src="feedback/234rtefds4wtersgf43twresgfdqresgf.png" alt="Feedback 5" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 6 -->
+      <div class="feed-item" onclick="openLightbox('feedback/27.png')">
+        <img src="feedback/27.png" alt="Feedback 27" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 7 -->
+      <div class="feed-item" onclick="openLightbox('feedback/28.png')">
+        <img src="feedback/28.png" alt="Feedback 28" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 8 -->
+      <div class="feed-item" onclick="openLightbox('feedback/29.png')">
+        <img src="feedback/29.png" alt="Feedback 29" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 9 -->
+      <div class="feed-item" onclick="openLightbox('feedback/30.png')">
+        <img src="feedback/30.png" alt="Feedback 30" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 10 -->
+      <div class="feed-item" onclick="openLightbox('feedback/5ytghyugt.png')">
+        <img src="feedback/5ytghyugt.png" alt="Feedback 10" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 11 -->
+      <div class="feed-item" onclick="openLightbox('feedback/sadasdawfsfasfawd.png')">
+        <img src="feedback/sadasdawfsfasfawd.png" alt="Feedback 11" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 12 -->
+      <div class="feed-item" onclick="openLightbox('feedback/sghdfgdhsfh.png')">
+        <img src="feedback/sghdfgdhsfh.png" alt="Feedback 12" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 13 -->
+      <div class="feed-item" onclick="openLightbox('feedback/sss.png')">
+        <img src="feedback/sss.png" alt="Feedback 13" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 14 -->
+      <div class="feed-item" onclick="openLightbox('feedback/tbvrfcedtbgvrfcd.png')">
+        <img src="feedback/tbvrfcedtbgvrfcd.png" alt="Feedback 14" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 15 -->
+      <div class="feed-item" onclick="openLightbox('feedback/tryntrnrtynrthn.png')">
+        <img src="feedback/tryntrnrtynrthn.png" alt="Feedback 15" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 16 -->
+      <div class="feed-item" onclick="openLightbox('feedback/twdfasdgwgsdg.png')">
+        <img src="feedback/twdfasdgwgsdg.png" alt="Feedback 16" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 17 -->
+      <div class="feed-item" onclick="openLightbox('feedback/ueffgethrtj5.png')">
+        <img src="feedback/ueffgethrtj5.png" alt="Feedback 17" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 18 -->
+      <div class="feed-item" onclick="openLightbox('feedback/uiouiouiou.png')">
+        <img src="feedback/uiouiouiou.png" alt="Feedback 18" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 19 -->
+      <div class="feed-item" onclick="openLightbox('feedback/umumikumik.png')">
+        <img src="feedback/umumikumik.png" alt="Feedback 19" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 20 -->
+      <div class="feed-item" onclick="openLightbox('feedback/uytreertyui.png')">
+        <img src="feedback/uytreertyui.png" alt="Feedback 20" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
+      <!-- ẢNH 21 -->
+      <div class="feed-item" onclick="openLightbox('feedback/vrtvhr.png')">
+        <img src="feedback/vrtvhr.png" alt="Feedback 21" loading="lazy">
+        <div class="caption">Feedback khách hàng</div>
+      </div>
     </div>
+    
   </div>
 
   <div id="contact" class="tab-content">
@@ -401,50 +574,11 @@
 </div>
 
 <script>
-  // CẤU HÌNH THÔNG TIN GITHUB CỦA BẠN VÀO ĐÂY
-  const GITHUB_USER = 'daemonix2'; // Thay tên đăng nhập GitHub
-  const GITHUB_REPO = 'nhatho';    // Thay tên repo
-  const FOLDER_PATH = 'feedback';   // Tên thư mục chứa ảnh
-
   function showTab(tabId, btn) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
     btn.classList.add('active');
-
-    if(tabId === 'feed' && !window.hasLoadedFeed) {
-      loadFeedImages();
-      window.hasLoadedFeed = true;
-    }
-  }
-
-  async function loadFeedImages() {
-    const feedContainer = document.getElementById('feedList');
-    try {
-      const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FOLDER_PATH}`);
-      if (!response.ok) throw new Error('Không thể kết nối GitHub API');
-      
-      const files = await response.json();
-      const imageFiles = files.filter(file => file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i));
-      
-      if(imageFiles.length === 0) {
-        feedContainer.innerHTML = '<div class="github-loader">Chưa có ảnh nào trong kho 🐰</div>';
-        return;
-      }
-
-      feedContainer.innerHTML = imageFiles.map(file => {
-        const captionText = file.name.split('.')[0].replace(/-/g, ' ');
-        return `
-          <div class="feed-item" onclick="openLightbox('${file.download_url}')">
-            <img src="${file.download_url}" alt="${file.name}" loading="lazy">
-            <div class="caption">${captionText}</div>
-          </div>
-        `;
-      }).join('');
-
-    } catch (error) {
-      feedContainer.innerHTML = '<div class="github-loader" style="color: #ef4444;">Lỗi khi tải ảnh từ GitHub. ❌</div>';
-    }
   }
 
   document.addEventListener('mousemove', function(e) {
