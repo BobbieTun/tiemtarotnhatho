@@ -29,9 +29,26 @@
       position: relative;
     }
 
-    .stars-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-    .star { position: absolute; width: 2px; height: 2px; background: var(--accent); border-radius: 50%; animation: twinkle var(--dur) ease-in-out infinite; opacity: 0; }
-    @keyframes twinkle { 0%,100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 0.6; transform: scale(1.2); } }
+    /* HIỆU ỨNG MƯA SAO RƠI BLINK BLINK */
+    .stars-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; overflow: hidden; }
+    .star { 
+      position: absolute; 
+      width: 3px; 
+      height: 3px; 
+      background: #fff; 
+      border-radius: 50%; 
+      box-shadow: 0 0 8px #fff, 0 0 15px var(--accent); 
+      animation: fall var(--dur) linear infinite;
+      opacity: 0;
+    }
+    
+    @keyframes fall {
+      0% { transform: translateY(-10vh) translateX(0) scale(0.5); opacity: 0; }
+      15% { opacity: 0.8; }
+      50% { transform: translateY(50vh) translateX(20px) scale(1.2); opacity: 1; }
+      85% { opacity: 0.8; }
+      100% { transform: translateY(110vh) translateX(-15px) scale(0.5); opacity: 0; }
+    }
     
     #mouseGlow {
       position: fixed;
@@ -75,7 +92,6 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     .section-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--accent); margin-bottom: 24px; text-align: center; }
 
-    /* THÔNG BÁO PHỤ PHÍ */
     .surcharge-notice {
       text-align: center;
       font-size: 13px;
@@ -101,10 +117,8 @@
     .candle-banner { grid-column: 1 / -1; background: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(139,92,246,0.2), rgba(139,92,246,0.1)); border: 1px solid rgba(139, 92, 246, 0.3); padding: 12px; border-radius: 10px; margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; color: var(--text-main); }
     .candle-banner strong { color: var(--accent); }
 
-    .price-row-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 16px; }
+    .price-row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
     .price-row-2-combo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .price-row-2-other { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .price-row-3-other { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
     .price-row-1 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
     
     .inner-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
@@ -140,7 +154,6 @@
     .witch-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: #fff; margin-bottom: 16px; font-style: italic; letter-spacing: 1px; }
     .banner-special { background: linear-gradient(90deg, #4c1d95, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; text-align: center; padding: 8px 30px; border-radius: 20px; margin: 24px auto 0; width: fit-content; letter-spacing: 0.5px; box-shadow: 0 4px 15px var(--accent-glow); }
 
-    /* LƯỚT NGANG FEEDBACK */
     .feed-gallery { 
       display: flex;
       flex-wrap: nowrap;
@@ -189,7 +202,6 @@
       font-style: italic; 
     }
 
-    /* RULES CARD */
     .rules-card { text-align: left; line-height: 1.7; font-size: 14px; color: var(--text-muted); margin-bottom: 30px; }
     .rules-card h4 { color: var(--accent); font-size: 18px; margin: 24px 0 12px; font-family: 'Playfair Display', serif; }
     .rules-card ul { padding-left: 20px; margin-bottom: 16px; list-style: none; }
@@ -208,12 +220,12 @@
     .footer { text-align: center; padding: 40px 20px; margin-top: 40px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border); }
 
     @media (max-width: 950px) {
-      .price-row-5, .summary-card { grid-template-columns: repeat(3, 1fr); }
-      .price-row-2-combo, .price-row-2-other { grid-template-columns: 1fr; }
+      .price-row-3, .summary-card { grid-template-columns: repeat(2, 1fr); }
+      .price-row-2-combo { grid-template-columns: 1fr; }
       .inner-grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
-      .price-row-5, .summary-card { grid-template-columns: 1fr; }
+      .price-row-3, .summary-card { grid-template-columns: 1fr; }
       .inner-grid-2, .inner-grid-4 { grid-template-columns: 1fr; }
       .witchcraft-split { flex-direction: column; gap: 0; }
       .v-divider { width: 100%; height: 1px; margin: 20px 0; background: linear-gradient(to right, transparent, var(--accent-dark), transparent); }
@@ -262,8 +274,7 @@
     <div class="surcharge-notice">
       <strong>Phụ phí ngoài giờ:</strong> Ngoài giờ làm việc mình sẽ có phụ phí 20% giá gói nếu bạn muốn trả kết quả trải bằng tin nhắn.
     </div>
-    
-    <div class="price-row-5">
+    <div class="price-row-3">
       <div class="price-box">
         <h3>Tarot: Gói Câu Lẻ</h3>
         <div class="price-row"><span class="name">Yes / no question</span><span class="val">15k</span></div>
@@ -282,6 +293,14 @@
         <div class="price-row"><span class="name">Clow</span><span class="val">350k</span></div>
         <div class="price-row"><span class="name">Bài trà</span><span class="val">120k</span></div>
       </div>
+    </div>
+    <div class="price-row-3">
+      <div class="price-box">
+        <h3>Tổng Quan Theo Tháng</h3>
+        <div class="price-row"><span class="name">1 tháng (xem kỹ)</span><span class="val">120k</span></div>
+        <div class="price-row"><span class="name">2 tháng (xem kỹ)</span><span class="val">230k</span></div>
+        <div class="price-row"><span class="name">3 tháng (xem kỹ)</span><span class="val">340k</span></div>
+      </div>
       <div class="price-box">
         <h3>Tarot: Gói Thời Gian</h3>
         <div class="price-note">(voice hoặc nhắn tin)</div>
@@ -296,7 +315,6 @@
         <div class="price-row"><span class="name">60 phút</span><span class="val">700k</span></div>
       </div>
     </div>
-
     <div class="price-row-2-combo">
       <div class="price-box">
         <h3>COMBO MINI</h3>
@@ -331,19 +349,34 @@
         </div>
       </div>
     </div>
-
-    <div class="price-row-2-other">
+    <div class="section-divider">
+      <span>MIX THÊM DẠNG BÀI</span>
+    </div>
+    
+    <div class="price-row-3">
       <div class="price-box">
-        <h3>Tổng Quan Theo Tháng</h3>
-        <div class="price-row"><span class="name">1 tháng (xem kỹ)</span><span class="val">120k</span></div>
-        <div class="price-row"><span class="name">2 tháng (xem kỹ)</span><span class="val">230k</span></div>
-        <div class="price-row"><span class="name">3 tháng (xem kỹ)</span><span class="val">340k</span></div>
+        <h3>Mix 1 Dạng Bài</h3>
+        <div class="price-row"><span class="name">Tarot</span><span class="val">50k</span></div>
+        <div class="price-row"><span class="name">Lenormand</span><span class="val">60k</span></div>
+        <div class="price-row"><span class="name">Tây</span><span class="val">80k</span></div>
+        <div class="price-row"><span class="name">Oracle</span><span class="val">50k</span></div>
       </div>
       <div class="price-box">
-        <h3>Mix Thêm Dạng Bài</h3>
-        <div class="price-row"><span class="name">Thêm Lenormand</span><span class="val">+50k</span></div>
-        <div class="price-row"><span class="name">Thêm Oracle</span><span class="val">+50k</span></div>
-        <div class="price-row"><span class="name">Lenormand & Oracle</span><span class="val">+80k</span></div>
+        <h3>Mix 2 Dạng Bài</h3>
+        <div class="price-row"><span class="name">Tarot + Lenormand</span><span class="val">80k</span></div>
+        <div class="price-row"><span class="name">Tarot + Tây</span><span class="val">120k</span></div>
+        <div class="price-row"><span class="name">Tarot + Oracle</span><span class="val">70k</span></div>
+        <div class="price-row"><span class="name">Lenormand + Tây</span><span class="val">130k</span></div>
+        <div class="price-row"><span class="name">Lenormand + Oracle</span><span class="val">100k</span></div>
+        <div class="price-row"><span class="name">Tây + Oracle</span><span class="val">120k</span></div>
+      </div>
+      <div class="price-box">
+        <h3>Mix 3 - 4 Dạng Bài</h3>
+        <div class="price-row"><span class="name">Tarot + Lenormand + Oracle</span><span class="val">145k</span></div>
+        <div class="price-row"><span class="name">Tarot + Lenormand + Tây</span><span class="val">170k</span></div>
+        <div class="price-row"><span class="name">Tarot + Tây + Oracle</span><span class="val">165k</span></div>
+        <div class="price-row"><span class="name">Lenormand + Tây + Oracle</span><span class="val">170k</span></div>
+        <div class="price-row"><span class="name">Tarot + Lenormand + Tây + Oracle</span><span class="val">210k</span></div>
       </div>
     </div>
 
@@ -461,7 +494,7 @@
     <div class="section-title">Minh Chứng & Feedback</div>
     
     <div class="feed-gallery">
-      <!-- 21 ẢNH FEEDBACK MẶC ĐỊNH LƯỚT NGANG -->
+      <!-- 21 ẢNH FEEDBACK -->
       <div class="feed-item" onclick="openLightbox('feedback/15.png')">
         <img src="feedback/15.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
@@ -580,7 +613,7 @@
 
     <div style="display: flex; gap: 12px; max-width: 500px; margin: 0 auto; flex-direction: column;">
       <a href="https://www.facebook.com/tiemtarotnhatho" target="_blank" class="contact-link">Nhắn tin qua Fanpage</a>
-      <a href="https://www.instagram.com/tiemtarotnhatho06/" target="_blank" class="contact-link">Direct qua Instagram</a>
+      <a href="https://www.instagram.com/tiemtarotnhatho06/" target="_blank" class="contact-link">Nhắn tin qua Instagram</a>
     </div>
   </div>
 
@@ -624,13 +657,12 @@
   }
 
   const starsBg = document.getElementById('starsBg');
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 60; i++) {
     const star = document.createElement('div');
     star.className = 'star';
-    star.style.left = Math.random() * 100 + '%'; 
-    star.style.top = Math.random() * 100 + '%';
-    star.style.setProperty('--dur', (2 + Math.random() * 3) + 's');
-    star.style.animationDelay = Math.random() * 3 + 's';
+    star.style.left = Math.random() * 100 + 'vw'; 
+    star.style.setProperty('--dur', (6 + Math.random() * 12) + 's');
+    star.style.animationDelay = (Math.random() * -20) + 's';
     starsBg.appendChild(star);
   }
 
