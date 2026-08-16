@@ -29,25 +29,39 @@
       position: relative;
     }
 
-    /* HIỆU ỨNG MƯA SAO RƠI BLINK BLINK */
+    /* MẶT TRĂNG VÀ KHÔNG GIAN */
     .stars-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; overflow: hidden; }
-    .star { 
+    
+    .moon {
+      position: absolute;
+      top: 8%; 
+      right: 15%;
+      width: 140px; 
+      height: 140px;
+      background: radial-gradient(circle at 30% 30%, #fff 0%, #f4f4f5 20%, #c4b5fd 80%, transparent 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 60px 15px rgba(139, 92, 246, 0.3), 0 0 120px 40px rgba(139, 92, 246, 0.15);
+      opacity: 0.85;
+      filter: blur(1px);
+    }
+
+    /* BÔNG TUYẾT & TINH TÚ RƠI XOAY */
+    .snowflake { 
       position: absolute; 
-      width: 3px; 
-      height: 3px; 
-      background: #fff; 
-      border-radius: 50%; 
-      box-shadow: 0 0 8px #fff, 0 0 15px var(--accent); 
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 15px var(--accent);
       animation: fall var(--dur) linear infinite;
       opacity: 0;
+      will-change: transform, opacity; /* Chống lag */
     }
     
     @keyframes fall {
-      0% { transform: translateY(-10vh) translateX(0) scale(0.5); opacity: 0; }
-      15% { opacity: 0.8; }
-      50% { transform: translateY(50vh) translateX(20px) scale(1.2); opacity: 1; }
-      85% { opacity: 0.8; }
-      100% { transform: translateY(110vh) translateX(-15px) scale(0.5); opacity: 0; }
+      0% { transform: translate3d(var(--start-x), -10vh, 0) scale(var(--s)) rotate(0deg); opacity: 0; }
+      20% { opacity: var(--max-op); }
+      50% { transform: translate3d(var(--mid-x), 50vh, 0) scale(var(--s)) rotate(180deg); opacity: var(--max-op); }
+      80% { opacity: var(--max-op); }
+      100% { transform: translate3d(var(--end-x), 110vh, 0) scale(var(--s)) rotate(360deg); opacity: 0; }
     }
     
     #mouseGlow {
@@ -154,6 +168,7 @@
     .witch-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: #fff; margin-bottom: 16px; font-style: italic; letter-spacing: 1px; }
     .banner-special { background: linear-gradient(90deg, #4c1d95, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; text-align: center; padding: 8px 30px; border-radius: 20px; margin: 24px auto 0; width: fit-content; letter-spacing: 0.5px; box-shadow: 0 4px 15px var(--accent-glow); }
 
+    /* LƯỚT NGANG FEEDBACK */
     .feed-gallery { 
       display: flex;
       flex-wrap: nowrap;
@@ -202,6 +217,7 @@
       font-style: italic; 
     }
 
+    /* RULES CARD */
     .rules-card { text-align: left; line-height: 1.7; font-size: 14px; color: var(--text-muted); margin-bottom: 30px; }
     .rules-card h4 { color: var(--accent); font-size: 18px; margin: 24px 0 12px; font-family: 'Playfair Display', serif; }
     .rules-card ul { padding-left: 20px; margin-bottom: 16px; list-style: none; }
@@ -232,12 +248,15 @@
       
       .feed-item { flex: 0 0 200px; } 
       .feed-item img { height: 350px; }
+      .moon { width: 100px; height: 100px; top: 5%; right: 5%; }
     }
   </style>
 </head>
 <body>
 
-<div class="stars-bg" id="starsBg"></div>
+<div class="stars-bg" id="starsBg">
+  <div class="moon"></div>
+</div>
 <div id="mouseGlow"></div>
 
 <div class="music-player paused" id="musicPlayer" onclick="toggleMusic()">
@@ -274,6 +293,9 @@
     <div class="surcharge-notice">
       <strong>Phụ phí ngoài giờ:</strong> Ngoài giờ làm việc mình sẽ có phụ phí 20% giá gói nếu bạn muốn trả kết quả trải bằng tin nhắn.
     </div>
+    
+    
+
     <div class="price-row-3">
       <div class="price-box">
         <h3>Tarot: Gói Câu Lẻ</h3>
@@ -286,17 +308,21 @@
         <div class="price-row"><span class="name">1 câu lẻ</span><span class="val">60k</span></div>
         <div class="price-row"><span class="name">15 phút</span><span class="val">190k</span></div>
         <div class="price-row"><span class="name">30 phút</span><span class="val">380k</span></div>
+        <div class="price-row"><span class="name">45 phút</span><span class="val">520k</span></div>
       </div>
       <div class="price-box">
         <h3>Dạng Bài Khác</h3>
         <div class="price-row"><span class="name">Bài Tây</span><span class="val">80k</span></div>
         <div class="price-row"><span class="name">Clow</span><span class="val">350k</span></div>
         <div class="price-row"><span class="name">Bài trà</span><span class="val">120k</span></div>
+        <div class="price-row"><span class="name">Oracle</span><span class="val">50k/câu</span></div>
       </div>
     </div>
+    
     <div class="price-row-3">
       <div class="price-box">
         <h3>Tổng Quan Theo Tháng</h3>
+        <div class="price-note">(có thể thêm, vui lòng inbox để tư vấn)</div>
         <div class="price-row"><span class="name">1 tháng (xem kỹ)</span><span class="val">120k</span></div>
         <div class="price-row"><span class="name">2 tháng (xem kỹ)</span><span class="val">230k</span></div>
         <div class="price-row"><span class="name">3 tháng (xem kỹ)</span><span class="val">340k</span></div>
@@ -310,11 +336,13 @@
       </div>
       <div class="price-box">
         <h3>Tarot Gói Call</h3>
+        <div class="price-note">(có thể qua google meet)</div>
         <div class="price-row"><span class="name">30 phút</span><span class="val">400k</span></div>
         <div class="price-row"><span class="name">45 phút</span><span class="val">550k</span></div>
         <div class="price-row"><span class="name">60 phút</span><span class="val">700k</span></div>
       </div>
     </div>
+    
     <div class="price-row-2-combo">
       <div class="price-box">
         <h3>COMBO MINI</h3>
@@ -325,7 +353,7 @@
           <div class="price-row"><span class="name">Crush</span><span class="val">45k</span></div>
           <div class="price-row"><span class="name">Học tập</span><span class="val">45k</span></div>
           <div class="price-row"><span class="name">Mập mờ</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Tình cảm sắp tới</span><span class="val">45k</span></div>
+          <div class="price-row"><span class="name">Tài chính</span><span class="val">45k</span></div>
           <div class="price-row"><span class="name">NY hiện tại</span><span class="val">45k</span></div>
           <div class="price-row"><span class="name">Công việc</span><span class="val">45k</span></div>
           <div class="price-row"><span class="name">Khả năng kết hôn</span><span class="val">45k</span></div>
@@ -341,7 +369,7 @@
           <div class="price-row"><span class="name">Crush</span><span class="val">135k</span></div>
           <div class="price-row"><span class="name">Học tập</span><span class="val">135k</span></div>
           <div class="price-row"><span class="name">Mập mờ</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Tình cảm sắp tới</span><span class="val">135k</span></div>
+          <div class="price-row"><span class="name">Tài chính</span><span class="val">135k</span></div>
           <div class="price-row"><span class="name">NY hiện tại</span><span class="val">135k</span></div>
           <div class="price-row"><span class="name">Công việc</span><span class="val">135k</span></div>
           <div class="price-row"><span class="name">Khả năng kết hôn</span><span class="val">135k</span></div>
@@ -349,6 +377,7 @@
         </div>
       </div>
     </div>
+    
     <div class="section-divider">
       <span>MIX THÊM DẠNG BÀI</span>
     </div>
@@ -379,7 +408,6 @@
         <div class="price-row"><span class="name">Tarot + Lenormand + Tây + Oracle</span><span class="val">210k</span></div>
       </div>
     </div>
-
 
     <div class="toggle-wrapper">
       <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
@@ -494,7 +522,6 @@
     <div class="section-title">Minh Chứng & Feedback</div>
     
     <div class="feed-gallery">
-      <!-- 21 ẢNH FEEDBACK -->
       <div class="feed-item" onclick="openLightbox('feedback/15.png')">
         <img src="feedback/15.png" alt="Feedback" loading="lazy">
         <div class="caption">Feedback khách hàng</div>
@@ -613,7 +640,7 @@
 
     <div style="display: flex; gap: 12px; max-width: 500px; margin: 0 auto; flex-direction: column;">
       <a href="https://www.facebook.com/tiemtarotnhatho" target="_blank" class="contact-link">Nhắn tin qua Fanpage</a>
-      <a href="https://www.instagram.com/tiemtarotnhatho06/" target="_blank" class="contact-link">Nhắn tin qua Instagram</a>
+      <a href="https://www.instagram.com/tiemtarotnhatho06/" target="_blank" class="contact-link">Direct qua Instagram</a>
     </div>
   </div>
 
@@ -657,13 +684,26 @@
   }
 
   const starsBg = document.getElementById('starsBg');
-  for (let i = 0; i < 60; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = Math.random() * 100 + 'vw'; 
-    star.style.setProperty('--dur', (6 + Math.random() * 12) + 's');
-    star.style.animationDelay = (Math.random() * -20) + 's';
-    starsBg.appendChild(star);
+  const symbols = ['❄', '❅', '❆', '✧', '✦'];
+  
+ 
+  for (let i = 0; i < 45; i++) {
+    const flake = document.createElement('div');
+    flake.className = 'snowflake';
+    flake.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+    
+    const startX = Math.random() * 100;
+    const sway = (Math.random() - 0.5) * 20; 
+    
+    flake.style.setProperty('--start-x', startX + 'vw');
+    flake.style.setProperty('--mid-x', (startX + sway) + 'vw');
+    flake.style.setProperty('--end-x', (startX + sway * 2) + 'vw');
+    flake.style.setProperty('--s', 0.5 + Math.random() * 0.8); 
+    flake.style.setProperty('--max-op', 0.4 + Math.random() * 0.6); 
+    flake.style.setProperty('--dur', (15 + Math.random() * 25) + 's'); 
+    flake.style.animationDelay = (Math.random() * -40) + 's';
+    
+    starsBg.appendChild(flake);
   }
 
   function openLightbox(src) {
