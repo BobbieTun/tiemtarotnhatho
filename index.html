@@ -40,7 +40,7 @@
     .music-player.paused .music-icon { animation-play-state: paused; }
     .music-text { font-size: 12px; color: var(--text-muted); font-weight: 600; }
     
-    .container { max-width: 1150px; margin: 0 auto; position: relative; z-index: 2; padding: 0 16px; }
+    .container { max-width: 1150px; margin: 0 auto; position: relative; z-index: 2; padding: 0 16px; scroll-padding-top: 100px; }
     .hero { text-align: center; padding: 60px 20px 40px; margin-bottom: 30px; background: rgba(10, 10, 12, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(139, 92, 246, 0.25); border-left: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-radius: 0 0 30px 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
     .hero-avatar-group { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; }
     .hero-avatar { width: 95px; height: 95px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(139, 92, 246, 0.8); box-shadow: 0 0 25px var(--accent-glow); }
@@ -66,11 +66,15 @@
     .surcharge-notice strong { color: var(--accent); font-weight: 600; }
     
     .summary-card { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.4); border-radius: 14px; padding: 20px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .summary-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+    .summary-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; cursor: pointer; transition: 0.3s; padding: 10px; border-radius: 10px;}
+    .summary-item:hover { background: rgba(139, 92, 246, 0.1); }
     .summary-item .icon { font-size: 24px; margin-bottom: 4px; }
-    .summary-item .text strong { color: var(--text-main); font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px; }
+    .summary-item .text strong { color: var(--text-main); font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px; transition: 0.3s;}
+    .summary-item:hover .text strong { color: var(--accent); }
     .summary-item .text p { color: var(--text-muted); font-size: 12px; line-height: 1.5; }
-    .candle-banner { grid-column: 1 / -1; background: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(139,92,246,0.2), rgba(139,92,246,0.1)); border: 1px solid rgba(139, 92, 246, 0.3); padding: 12px; border-radius: 10px; margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; color: var(--text-main); }
+    
+    .candle-banner { grid-column: 1 / -1; background: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(139,92,246,0.2), rgba(139,92,246,0.1)); border: 1px solid rgba(139, 92, 246, 0.3); padding: 12px; border-radius: 10px; margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; color: var(--text-main); cursor: pointer; transition: 0.3s;}
+    .candle-banner:hover { border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
     .candle-banner strong { color: var(--accent); }
     
     .price-row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
@@ -81,17 +85,17 @@
     
     .section-divider { border-top: 1px dashed var(--border); margin: 40px 0 30px; position: relative; text-align: center; }
     .section-divider span { background: var(--bg-main); padding: 0 20px; position: relative; top: -10px; color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: 2px; }
-    .price-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 14px; padding: 16px; transition: 0.3s; position: relative; display: flex; flex-direction: column; }
+    .price-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 14px; padding: 16px; transition: 0.3s; position: relative; display: flex; flex-direction: column; scroll-margin-top: 80px; }
     .price-box:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 4px 15px var(--accent-glow); z-index: 5; background: var(--bg-card); }
     .price-box h3 { font-family: 'Playfair Display', serif; color: var(--text-main); font-size: 14px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 10px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
     .price-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 12px; color: var(--text-muted); }
     @keyframes pulseGlow { 0% { box-shadow: 0 0 4px var(--accent); } 50% { box-shadow: 0 0 10px var(--accent), 0 0 15px var(--accent-dark); } 100% { box-shadow: 0 0 4px var(--accent); } }
     .price-row .name { display: flex; align-items: center; gap: 10px; }
     .price-row .name::before { content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; flex-shrink: 0; animation: pulseGlow 2s infinite alternate; }
-    .price-row .val { color: var(--accent); font-weight: 600; white-space: nowrap; margin-left: 8px; }
+    .price-row .val { color: var(--accent); font-weight: 600; white-space: nowrap; margin-left: 8px; text-align: right; }
     .price-note { font-size: 11px; color: rgba(161, 161, 170, 0.6); text-align: center; margin-top: -10px; margin-bottom: 12px; font-style: italic; }
     
-    .toggle-wrapper { margin: 40px 0 20px; }
+    .toggle-wrapper { margin: 40px 0 20px; scroll-margin-top: 80px; }
     .toggle-header { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--accent); display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; padding: 10px; transition: 0.3s; user-select: none; letter-spacing: 1px; }
     .toggle-header:hover { text-shadow: 0 0 15px var(--accent-glow); color: #fff; }
     .toggle-header .icon-arrow { font-size: 14px; transition: transform 0.4s ease; }
@@ -199,131 +203,161 @@
       <strong>Phụ phí ngoài giờ:</strong> Ngoài giờ làm việc mình sẽ có phụ phí 20% giá gói nếu bạn muốn trả kết quả trải bằng tin nhắn.
     </div>
     
-
-    <div class="price-row-3">
-      <div class="price-box">
-        <h3>Tarot: Gói Câu Lẻ</h3>
-        <div class="price-row"><span class="name">Yes / no question</span><span class="val">15k</span></div>
-        <div class="price-row"><span class="name">Câu lẻ chi tiết</span><span class="val">40k</span></div>
-        <div class="price-row" style="margin-top: auto; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Test năng lượng</span><span class="val">5k</span></div>
-      </div>
-      <div class="price-box">
-        <h3>Lenormand</h3>
-        <div class="price-row"><span class="name">1 câu lẻ</span><span class="val">60k</span></div>
-        <div class="price-row"><span class="name">15 phút</span><span class="val">190k</span></div>
-        <div class="price-row"><span class="name">30 phút</span><span class="val">380k</span></div>
-        <div class="price-row"><span class="name">45 phút</span><span class="val">520k</span></div>
-      </div>
-      <div class="price-box">
-        <h3>Dạng Bài Khác</h3>
-        <div class="price-row"><span class="name">Bài Tây</span><span class="val">80k</span></div>
-        <div class="price-row"><span class="name">Clow</span><span class="val">350k</span></div>
-        <div class="price-row"><span class="name">Bài trà</span><span class="val">120k</span></div>
-        <div class="price-row"><span class="name">Oracle</span><span class="val">50k/câu</span></div>
-      </div>
-    </div>
-    
-    <div class="price-row-3">
-      <div class="price-box">
-        <h3>Tổng Quan Theo Tháng</h3>
-        <div class="price-row"><span class="name">1 tháng (xem kỹ)</span><span class="val">120k</span></div>
-        <div class="price-row"><span class="name">2 tháng (xem kỹ)</span><span class="val">230k</span></div>
-        <div class="price-row"><span class="name">3 tháng (xem kỹ)</span><span class="val">340k</span></div>
-      </div>
-      <div class="price-box">
-        <h3>Tarot: Gói Thời Gian</h3>
-        <div class="price-note">(voice hoặc nhắn tin)</div>
-        <div class="price-row"><span class="name">30 phút</span><span class="val">190k</span></div>
-        <div class="price-row"><span class="name">45 phút</span><span class="val">280k</span></div>
-        <div class="price-row"><span class="name">60 phút</span><span class="val">370k</span></div>
-      </div>
-      <div class="price-box">
-        <h3>Tarot Gói Call</h3>
-        <div class="price-row"><span class="name">30 phút</span><span class="val">400k</span></div>
-        <div class="price-row"><span class="name">45 phút</span><span class="val">550k</span></div>
-        <div class="price-row"><span class="name">60 phút</span><span class="val">700k</span></div>
-      </div>
-    </div>
-    
-    <div class="price-row-2-combo">
-      <div class="price-box">
-        <h3>COMBO MINI</h3>
-        <div class="price-note">(5 câu yes no có giải thích)</div>
-        <div class="inner-grid-2">
-          <div class="price-row"><span class="name">Người yêu cũ / Mập mờ cũ</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Hôn nhân</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Crush</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Học tập</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Mập mờ</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Tài chính</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Người yêu hiện tại</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Công việc</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Khả năng kết hôn</span><span class="val">45k</span></div>
-          <div class="price-row"><span class="name">Các mqh xã hội</span><span class="val">45k</span></div>
+    <div class="summary-card">
+      <div class="summary-item" onclick="scrollToSection('tu-vi-tien-tri')">
+        <span class="icon">🔮</span>
+        <div class="text">
+          <strong>Xem Bài Tiên Tri</strong>
+          <p>Tarot, Lenormand, Tea Leaf, Bài Tây, Clow, Oracle</p>
         </div>
       </div>
-      <div class="price-box">
-        <h3>COMBO BIG</h3>
-        <div class="price-note">(6 câu chi tiết)</div>
-        <div class="inner-grid-2">
-          <div class="price-row"><span class="name">Người yêu cũ / Mập mờ cũ</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Hôn nhân</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Crush</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Học tập</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Mập mờ</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Tài chính</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Người yêu hiện tại</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Công việc</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Khả năng kết hôn</span><span class="val">135k</span></div>
-          <div class="price-row"><span class="name">Các mqh xã hội</span><span class="val">135k</span></div>
+      <div class="summary-item" onclick="scrollToSection('witchcraft-manifest')">
+        <span class="icon">🌙</span>
+        <div class="text">
+          <strong>Spell & Manifest</strong>
+          <p>Spell, nến năng lượng, Manifest</p>
         </div>
       </div>
-    </div>
-    
-    <div class="section-divider">
-      <span>MIX THÊM DẠNG BÀI</span>
-    </div>
-    
-    <div class="price-row-3">
-      <div class="price-box">
-        <h3>Mix 1 Dạng Bài</h3>
-        <div class="price-row"><span class="name">Tarot</span><span class="val">50k</span></div>
-        <div class="price-row"><span class="name">Lenormand</span><span class="val">60k</span></div>
-        <div class="price-row"><span class="name">Tây</span><span class="val">80k</span></div>
-        <div class="price-row"><span class="name">Oracle</span><span class="val">50k</span></div>
+      <div class="summary-item" onclick="scrollToSection('huyen-hoc-chiem-tinh')">
+        <span class="icon">🌟</span>
+        <div class="text">
+          <strong>Huyền Học & Chiêm Tinh</strong>
+          <p>Tử vi chuyên đề, Bản đồ sao, Ma trận</p>
+        </div>
       </div>
-      <div class="price-box">
-        <h3>Mix 2 Dạng Bài</h3>
-        <div class="price-row"><span class="name">Tarot + Lenormand</span><span class="val">80k</span></div>
-        <div class="price-row"><span class="name">Tarot + Tây</span><span class="val">120k</span></div>
-        <div class="price-row"><span class="name">Tarot + Oracle</span><span class="val">70k</span></div>
-        <div class="price-row"><span class="name">Lenormand + Tây</span><span class="val">130k</span></div>
-        <div class="price-row"><span class="name">Lenormand + Oracle</span><span class="val">100k</span></div>
-        <div class="price-row"><span class="name">Tây + Oracle</span><span class="val">120k</span></div>
-      </div>
-      <div class="price-box">
-        <h3>Mix 3 - 4 Dạng Bài</h3>
-        <div class="price-row"><span class="name">Tarot + Lenormand + Oracle</span><span class="val">145k</span></div>
-        <div class="price-row"><span class="name">Tarot + Lenormand + Tây</span><span class="val">170k</span></div>
-        <div class="price-row"><span class="name">Tarot + Tây + Oracle</span><span class="val">165k</span></div>
-        <div class="price-row"><span class="name">Lenormand + Tây + Oracle</span><span class="val">170k</span></div>
-        <div class="price-row"><span class="name">Tarot + Lenormand + Tây + Oracle</span><span class="val">210k</span></div>
+      <div class="candle-banner" onclick="scrollToSection('witchcraft-manifest')">
+        <span style="font-size: 16px;">🕯️</span> Nến thơm năng lượng Custom <strong>theo yêu cầu:</strong> Vui lòng Inbox để tư vấn riêng
       </div>
     </div>
 
-    <div class="toggle-wrapper">
+    <!-- KHU VỰC TIÊN TRI -->
+    <div id="tu-vi-tien-tri">
+      <div class="price-row-3">
+        <div class="price-box">
+          <h3>Tarot: Gói Câu Lẻ</h3>
+          <div class="price-row"><span class="name">Yes / no question</span><span class="val">15k</span></div>
+          <div class="price-row"><span class="name">Câu lẻ chi tiết</span><span class="val">40k</span></div>
+          <div class="price-row" style="margin-top: auto; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Test năng lượng</span><span class="val">5k</span></div>
+        </div>
+        <div class="price-box">
+          <h3>Lenormand</h3>
+          <div class="price-row"><span class="name">1 câu lẻ</span><span class="val">60k</span></div>
+          <div class="price-row"><span class="name">15 phút</span><span class="val">190k</span></div>
+          <div class="price-row"><span class="name">30 phút</span><span class="val">380k</span></div>
+          <div class="price-row"><span class="name">45 phút</span><span class="val">520k</span></div>
+        </div>
+        <div class="price-box">
+          <h3>Dạng Bài Khác</h3>
+          <div class="price-row"><span class="name">Bài Tây</span><span class="val">80k</span></div>
+          <div class="price-row"><span class="name">Clow</span><span class="val" style="font-size: 11px;">350k / 1 vấn đề 8 câu</span></div>
+          <div class="price-row"><span class="name">Bài trà</span><span class="val" style="font-size: 11px;">120k / 1 tháng</span></div>
+          <div class="price-row"><span class="name">Oracle</span><span class="val">50k / câu</span></div>
+        </div>
+      </div>
+      
+      <div class="price-row-3">
+        <div class="price-box">
+          <h3>Tổng Quan Theo Tháng</h3>
+          <div class="price-row"><span class="name">1 tháng (xem kỹ)</span><span class="val">120k</span></div>
+          <div class="price-row"><span class="name">2 tháng (xem kỹ)</span><span class="val">230k</span></div>
+          <div class="price-row"><span class="name">3 tháng (xem kỹ)</span><span class="val">340k</span></div>
+        </div>
+        <div class="price-box">
+          <h3>Tarot: Gói Thời Gian</h3>
+          <div class="price-note">(voice hoặc nhắn tin)</div>
+          <div class="price-row"><span class="name">30 phút</span><span class="val">280k</span></div>
+          <div class="price-row"><span class="name">45 phút</span><span class="val">400k</span></div>
+          <div class="price-row"><span class="name">60 phút</span><span class="val">520k</span></div>
+        </div>
+        <div class="price-box">
+          <h3>Tarot Gói Call</h3>
+          <div class="price-row"><span class="name">30 phút</span><span class="val">400k</span></div>
+          <div class="price-row"><span class="name">45 phút</span><span class="val">550k</span></div>
+          <div class="price-row"><span class="name">60 phút</span><span class="val">700k</span></div>
+        </div>
+      </div>
+      
+      <div class="price-row-2-combo">
+        <div class="price-box">
+          <h3>COMBO MINI</h3>
+          <div class="price-note">(5 câu yes no có giải thích)</div>
+          <div class="inner-grid-2">
+            <div class="price-row"><span class="name">NY cũ / Mập mờ cũ</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">Hôn nhân</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">Crush</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">Học tập</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">Mập mờ</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">Tài chính</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">NY hiện tại</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">Công việc</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">Khả năng kết hôn</span><span class="val">45k</span></div>
+            <div class="price-row"><span class="name">Các mqh xã hội</span><span class="val">45k</span></div>
+          </div>
+        </div>
+        <div class="price-box">
+          <h3>COMBO BIG</h3>
+          <div class="price-note">(6 câu chi tiết)</div>
+          <div class="inner-grid-2">
+            <div class="price-row"><span class="name">NY cũ / Mập mờ cũ</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">Hôn nhân</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">Crush</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">Học tập</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">Mập mờ</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">Tài chính</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">NY hiện tại</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">Công việc</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">Khả năng kết hôn</span><span class="val">135k</span></div>
+            <div class="price-row"><span class="name">Các mqh xã hội</span><span class="val">135k</span></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section-divider">
+        <span>MIX THÊM DẠNG BÀI</span>
+      </div>
+      
+      <div class="price-row-3">
+        <div class="price-box">
+          <h3>Mix 1 Dạng Bài</h3>
+          <div class="price-row"><span class="name">Tarot</span><span class="val">50k</span></div>
+          <div class="price-row"><span class="name">Lenormand</span><span class="val">60k</span></div>
+          <div class="price-row"><span class="name">Tây</span><span class="val">80k</span></div>
+          <div class="price-row"><span class="name">Oracle</span><span class="val">50k</span></div>
+        </div>
+        <div class="price-box">
+          <h3>Mix 2 Dạng Bài</h3>
+          <div class="price-row"><span class="name">Tarot + Lenormand</span><span class="val">80k</span></div>
+          <div class="price-row"><span class="name">Tarot + Tây</span><span class="val">120k</span></div>
+          <div class="price-row"><span class="name">Tarot + Oracle</span><span class="val">70k</span></div>
+          <div class="price-row"><span class="name">Lenormand + Tây</span><span class="val">130k</span></div>
+          <div class="price-row"><span class="name">Lenormand + Oracle</span><span class="val">100k</span></div>
+          <div class="price-row"><span class="name">Tây + Oracle</span><span class="val">120k</span></div>
+        </div>
+        <div class="price-box">
+          <h3>Mix 3 - 4 Dạng Bài</h3>
+          <div class="price-row"><span class="name">Tarot + Lenormand + Oracle</span><span class="val">145k</span></div>
+          <div class="price-row"><span class="name">Tarot + Lenormand + Tây</span><span class="val">170k</span></div>
+          <div class="price-row"><span class="name">Tarot + Tây + Oracle</span><span class="val">165k</span></div>
+          <div class="price-row"><span class="name">Lenormand + Tây + Oracle</span><span class="val">170k</span></div>
+          <div class="price-row"><span class="name">Tarot + Lenormand + Tây + Oracle</span><span class="val">210k</span></div>
+        </div>
+      </div>
+    </div> <!-- END KHU VỰC TIÊN TRI -->
+
+    <!-- KHU VỰC SPELL & MANIFEST -->
+    <div class="toggle-wrapper" id="witchcraft-manifest">
       <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
-        <span>🌙 Witchcraft & Manifest</span>
+        <span>🌙 Spell & Manifest</span>
         <span class="icon-arrow">▼</span>
       </div>
       <div class="toggle-content">
         
         <div class="price-row-1">
           <div class="price-box">
-            <h3 style="font-size: 18px; margin-bottom: 24px; color: var(--accent);">✦ WITCHCRAFT ✦</h3>
+            <h3 style="font-size: 18px; margin-bottom: 24px; color: var(--accent);">✦ SPELL ✦</h3>
             <div class="witchcraft-split">
               <div class="col-spells">
-                <div class="witch-title">Sphere of Spell</div>
+                <div class="witch-title">Spell</div>
                 <div class="price-row"><span class="name">Love spell</span><span class="val">250k</span></div>
                 <div class="price-row"><span class="name">Lucky spell</span><span class="val">250k</span></div>
                 <div class="price-row"><span class="name">Money spell</span><span class="val">250k</span></div>
@@ -332,7 +366,7 @@
               </div>
               <div class="v-divider"></div>
               <div class="col-rituals">
-                <div class="witch-title">Sphere of Ritual</div>
+                <div class="witch-title">Ritual</div>
                 <div class="price-row"><span class="name">Lễ nối duyên</span><span class="val">280k</span></div>
                 <div class="price-row"><span class="name">Lễ mở vận</span><span class="val">320k</span></div>
                 <div class="price-row"><span class="name">Lễ cắt duyên</span><span class="val">380k</span></div>
@@ -345,13 +379,18 @@
 
         <div class="price-row-2-combo">
           <div class="price-box">
-            <h3>🕯️ Ritual Scented Candle</h3>
-            <div class="price-note">(Nến thơm năng lượng chuyên biệt)</div>
-            <div class="price-row"><span class="name">Beauty ritual</span><span class="val">650k</span></div>
-            <div class="price-row"><span class="name">Love ritual</span><span class="val">750k</span></div>
-            <div class="price-row"><span class="name">Work ritual</span><span class="val">950k</span></div>
-            <div class="price-row"><span class="name">Money ritual</span><span class="val">950k</span></div>
-            <div class="price-row" style="margin-top: auto; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Custom ritual</span><span class="val">Inbox tư vấn</span></div>
+            <h3>🕯️ CANDLE SCENTED</h3>
+            <div class="price-note">(Nến thơm năng lượng chuyên biệt: mỗi hũ 500g được mix thảo mộc đá các loại phù hợp với mục đích)</div>
+            
+            <div class="price-row"><span class="name">Beauty / Love / Work / Money ritual</span><span class="val">Inbox tư vấn</span></div>
+            
+            <div class="price-row" style="margin-top: 8px; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Gói 1</span><span class="val">280k</span></div>
+            <div class="price-row"><span class="name">Gói 2</span><span class="val">320k</span></div>
+            <div class="price-row"><span class="name">Gói 3</span><span class="val">350k</span></div>
+            <div class="price-row"><span class="name">Gói 4</span><span class="val">450k</span></div>
+            <div class="price-row"><span class="name">Gói 5</span><span class="val">480k</span></div>
+            <div class="price-row" style="margin-top: 8px; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Love yourself</span><span class="val">550k</span></div>
+            <div class="price-row"><span class="name">Study</span><span class="val">850k</span></div>
           </div>
 
           <div class="price-box">
@@ -363,17 +402,17 @@
             </div>
             <div class="price-row" style="flex-direction: column; align-items: center; justify-content: center; height: 100%; padding-top: 16px; margin-bottom: 0;">
               <span style="font-weight: 700; color: var(--text-main); font-size: 14px;">GÓI ĐỒNG HÀNH</span>
-              <span style="font-size: 11px; margin-bottom: 6px;">Thời gian: 30 ngày</span>
+              <span style="font-size: 11px; margin-bottom: 6px;">Thời gian: 30 ngày (mỗi ngày call 30 phút)</span>
               <span class="val" style="font-size: 18px; margin:0;">2TR5</span>
             </div>
           </div>
         </div>
 
       </div>
-    </div>
+    </div> <!-- END KHU VỰC SPELL & MANIFEST -->
 
-
-    <div class="toggle-wrapper">
+    <!-- KHU VỰC HUYỀN HỌC & CHIÊM TINH -->
+    <div class="toggle-wrapper" id="huyen-hoc-chiem-tinh">
       <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
         <span>🌟 Huyền Học & Chiêm Tinh</span>
         <span class="icon-arrow">▼</span>
@@ -416,98 +455,36 @@
         </div>
 
       </div>
-    </div>
+    </div> <!-- END KHU VỰC HUYỀN HỌC -->
 
-  </div>
+  </div> <!-- END TAB BẢNG GIÁ -->
 
+  <!-- TAB FEEDBACK -->
   <div id="feed" class="tab-content">
     <div class="section-title">Minh Chứng & Feedback</div>
     
     <div class="feed-gallery">
-      <div class="feed-item" onclick="openLightbox('feedback/15.png')">
-        <img src="feedback/15.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/16.png')">
-        <img src="feedback/16.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/19.png')">
-        <img src="feedback/19.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/23.png')">
-        <img src="feedback/23.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/234rtefds4wtersgf43twresgfdqresgf.png')">
-        <img src="feedback/234rtefds4wtersgf43twresgfdqresgf.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/27.png')">
-        <img src="feedback/27.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/28.png')">
-        <img src="feedback/28.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/29.png')">
-        <img src="feedback/29.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/30.png')">
-        <img src="feedback/30.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/5ytghyugt.png')">
-        <img src="feedback/5ytghyugt.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/sadasdawfsfasfawd.png')">
-        <img src="feedback/sadasdawfsfasfawd.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/sghdfgdhsfh.png')">
-        <img src="feedback/sghdfgdhsfh.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/sss.png')">
-        <img src="feedback/sss.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/tbvrfcedtbgvrfcd.png')">
-        <img src="feedback/tbvrfcedtbgvrfcd.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/tryntrnrtynrthn.png')">
-        <img src="feedback/tryntrnrtynrthn.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/twdfasdgwgsdg.png')">
-        <img src="feedback/twdfasdgwgsdg.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/ueffgethrtj5.png')">
-        <img src="feedback/ueffgethrtj5.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/uiouiouiou.png')">
-        <img src="feedback/uiouiouiou.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/umumikumik.png')">
-        <img src="feedback/umumikumik.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/uytreertyui.png')">
-        <img src="feedback/uytreertyui.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
-      <div class="feed-item" onclick="openLightbox('feedback/vrtvhr.png')">
-        <img src="feedback/vrtvhr.png" alt="Feedback" loading="lazy">
-        <div class="caption">Feedback khách hàng</div>
-      </div>
+      <div class="feed-item" onclick="openLightbox('feedback/15.png')"><img src="feedback/15.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/16.png')"><img src="feedback/16.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/19.png')"><img src="feedback/19.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/23.png')"><img src="feedback/23.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/234rtefds4wtersgf43twresgfdqresgf.png')"><img src="feedback/234rtefds4wtersgf43twresgfdqresgf.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/27.png')"><img src="feedback/27.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/28.png')"><img src="feedback/28.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/29.png')"><img src="feedback/29.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/30.png')"><img src="feedback/30.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/5ytghyugt.png')"><img src="feedback/5ytghyugt.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/sadasdawfsfasfawd.png')"><img src="feedback/sadasdawfsfasfawd.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/sghdfgdhsfh.png')"><img src="feedback/sghdfgdhsfh.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/sss.png')"><img src="feedback/sss.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/tbvrfcedtbgvrfcd.png')"><img src="feedback/tbvrfcedtbgvrfcd.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/tryntrnrtynrthn.png')"><img src="feedback/tryntrnrtynrthn.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/twdfasdgwgsdg.png')"><img src="feedback/twdfasdgwgsdg.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/ueffgethrtj5.png')"><img src="feedback/ueffgethrtj5.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/uiouiouiou.png')"><img src="feedback/uiouiouiou.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/umumikumik.png')"><img src="feedback/umumikumik.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/uytreertyui.png')"><img src="feedback/uytreertyui.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
+      <div class="feed-item" onclick="openLightbox('feedback/vrtvhr.png')"><img src="feedback/vrtvhr.png" alt="Feedback" loading="lazy"><div class="caption">Feedback khách hàng</div></div>
     </div>
   </div>
 
@@ -542,6 +519,7 @@
 
     <div style="display: flex; gap: 12px; max-width: 500px; margin: 0 auto; flex-direction: column;">
       <a href="https://www.facebook.com/tiemtarotnhatho" target="_blank" class="contact-link">Nhắn tin qua Fanpage</a>
+      <a href="https://www.facebook.com/consochwhene1311/" target="_blank" class="contact-link">Nhắn tin Facebook cá nhân</a>
       <a href="https://www.instagram.com/tiemtarotnhatho06/" target="_blank" class="contact-link">Direct qua Instagram</a>
     </div>
   </div>
@@ -561,6 +539,17 @@
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
     btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      if (section.classList.contains('toggle-wrapper')) {
+        section.classList.add('open');
+      }
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   document.addEventListener('mousemove', function(e) {
