@@ -138,8 +138,14 @@
     .lightbox img { max-width: 95%; max-height: 85vh; border-radius: 12px; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
     .footer { text-align: center; padding: 40px 20px; margin-top: 40px; color: var(--text-muted); font-size: 12px; border-top: 1px solid rgba(139, 92, 246, 0.2); }
 
-    .commit { display: flex; flex-direction: row; gap: 16px; width: 100%; }
-    .commit-box { background: #fff; border: 1px solid rgba(139, 92, 246, 0.3); padding: 12px; border-radius: 10px; margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; max-width: 180px; color: var(--text-main); aspect-ratio: 1 / 1; }
+    .personal-cards { display: flex; flex-direction: row; gap: 16px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+    .personal-content { width: 150px; padding: 22px 15px; box-sizing: border-box; text-align: center; color: #33243b; background: #fff; border: 1.5px solid #b8a9c2; border-radius: 16px; box-shadow: 0 2px 8px rgba(80,50,100,.08); }
+    .personal-avatar { width: 58px; height: 58px; margin: 0 auto 12px; }
+    .personal-avatar img { width: 100%; height: 100%; object-fit: contain; }
+    .personal-title { font-family: "Playfair Display", Georgia, serif; font-size: 17px; color: #392842; margin-bottom: 9px; }
+    .personal-star { color: #806392; font-size: 10px; margin-bottom: 10px; }
+    .personal-text { font-size: 10px; line-height: 1.5; color: #514b53; }
+
     
     
     @media (max-width: 950px) {
@@ -488,6 +494,35 @@
 
   <div id="contact" class="tab-content">
     <div class="section-title">Cam kết</div>
+    <div class="personal-cards">
+    <div class="personal-content">
+        <div class="personal-avatar">
+            
+        </div>
+        <div class="personal-title">Xem 1:1</div>
+        <div class="personal-star">✦</div>
+        <div class="personal-text">
+            Cá nhân hóa<br>
+            theo năng lượng<br>
+            và vấn đề riêng<br>
+            của bạn.
+        </div>
+    </div>
+
+    <div class="personal-content">
+        <div class="personal-avatar">
+      
+        </div>
+        <div class="personal-title">Không sử dụng ChatGPT/AI</div>
+        <div class="personal-star">✦</div>
+        <div class="personal-text">
+            Trực tiếp luận bài,<br>
+             không dùng AI<br>
+             thay thế reader.
+        </div>
+    </div>
+</div>
+
     <div class="section-title">Quy Định & Đặt Lịch</div>
     
     <div class="clean-card rules-card">
