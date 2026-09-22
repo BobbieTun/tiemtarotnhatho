@@ -65,7 +65,7 @@
     .surcharge-notice { text-align: center; font-size: 13px; color: var(--text-muted); margin: 0 auto 24px; max-width: 600px; line-height: 1.6; padding: 12px 20px; border-radius: 12px; background: rgba(139, 92, 246, 0.05); border: 1px dashed rgba(139, 92, 246, 0.3); }
     .surcharge-notice strong { color: var(--accent); font-weight: 600; }
     
-    .summary-card { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.4); border-radius: 14px; padding: 20px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .summary-card { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.4); border-radius: 14px; padding: 20px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .summary-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; cursor: pointer; transition: 0.3s; padding: 10px; border-radius: 10px;}
     .summary-item:hover { background: rgba(139, 92, 246, 0.1); }
     .summary-item .icon { font-size: 24px; margin-bottom: 4px; }
@@ -221,7 +221,8 @@
         <span class="icon">🔮</span>
         <div class="text">
           <strong>Xem Bài Tiên Tri</strong>
-          <p>Tarot, Lenormand, Tea Leaf, Bài Tây, Clow, Oracle</p>
+          <p>Tarot, Lenormand, Tea Leaf,</p>
+          <p> Bài Tây, Clow, Oracle</p>
         </div>
       </div>
       <div class="summary-item" onclick="scrollToSection('witchcraft-manifest')">
@@ -236,6 +237,13 @@
         <div class="text">
           <strong>Huyền Học & Chiêm Tinh</strong>
           <p>Tử vi chuyên đề, Bản đồ sao, Ma trận</p>
+        </div>
+      </div>
+       <div class="summary-item" onclick="scrollToSection('da-nang-luong-thanh-tay')">
+        <span class="icon">💎</span>
+        <div class="text">
+          <strong>Crystal & Cleansing</strong>
+          <p>Đá Năng Lượng, Bột Thanh tẩy</p>
         </div>
       </div>
       <div class="candle-banner">
@@ -460,6 +468,80 @@
           </div>
         </div>
     </div> <!-- END KHU VỰC SPELL & MANIFEST -->
+
+  <!-- KHU VỰC ĐÁ NĂNG LƯỢNG & THANH TẨY -->
+    <div class="toggle-wrapper" id="da-nang-luong-thanh-tay">
+      <div class="toggle-header">
+        <span>💎 Crystal & Cleansing</span>
+      </div>
+
+      <!-- KHỐI 1: SPELL ĐÁ -->
+      <div class="price-row-1">
+        <div class="price-box">
+          <h3>Lọ Đá Năng Lượng</h3>
+          <div class="price-note" style="margin-bottom: 16px;">
+            Lưu ý: Dòng lọ spell này không customize theo năng lượng / mối quan hệ
+          </div>
+
+          <div class="witchcraft-split">
+            <div class="col-spells">
+              <div class="price-row">
+                <span class="name">1. Đá Nối Duyên & Tình Yêu</span>
+                <span class="val">80k - 149k</span>
+              </div>
+              <div class="price-row">
+                <span class="name">2. Đá Trực Giác & Bình An</span>
+                <span class="val">80k - 149k</span>
+              </div>
+              <div class="price-row">
+                <span class="name">3. Đá Tài Lộc & May Mắn</span>
+                <span class="val">80k - 149k</span>
+              </div>
+            </div>
+
+            <div class="v-divider"></div>
+
+         
+            <div class="col-rituals">
+              <div class="price-row">
+                <span class="name">4. Đá Giao Tiếp & Cân Bằng</span>
+                <span class="val">80k - 149k</span>
+              </div>
+              <div class="price-row">
+                <span class="name">5. Đá Nhan Sắc & Sức Hút</span>
+                <span class="val">80k - 149k</span>
+              </div>
+              <div class="price-row">
+                <span class="name">6. Đá Thanh Tẩy & Bảo Vệ</span>
+                <span class="val">80k - 149k</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KHỐI 2: BỘT THANH TẨY -->
+      <div class="price-row-1">
+        <div class="price-box">
+          <h3>Bột Thanh Tẩy</h3>
+          <div class="price-note" style="margin-bottom: 16px;">
+             Tác dụng: Gột rửa trược khí, xua tan năng lượng tù đọng, hỗ trợ tinh thần thư giãn & tập trung
+          </div>
+
+          <div class="inner-grid-2">
+            <div class="price-row" style="margin-bottom: 0;">
+              <span class="name">Lẻ (1 túi)</span>
+              <span class="val">16k</span>
+            </div>
+            <div class="price-row" style="margin-bottom: 0;">
+              <span class="name">Combo 10 túi</span>
+              <span class="val">149k</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- END KHU VỰC ĐÁ NĂNG LƯỢNG & THANH TẨY -->
+
      <!-- KHU VỰC HUYỀN HỌC & CHIÊM TINH -->
     <div class="toggle-wrapper" id="huyen-hoc-chiem-tinh">
       <div class="toggle-header">
@@ -502,6 +584,7 @@
       </div>
     </div> <!-- END KHU VỰC HUYỀN HỌC -->
 
+    
   </div> <!-- END TAB BẢNG GIÁ -->
 
     
