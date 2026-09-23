@@ -65,7 +65,7 @@
     .surcharge-notice { text-align: center; font-size: 13px; color: var(--text-muted); margin: 0 auto 24px; max-width: 600px; line-height: 1.6; padding: 12px 20px; border-radius: 12px; background: rgba(139, 92, 246, 0.05); border: 1px dashed rgba(139, 92, 246, 0.3); }
     .surcharge-notice strong { color: var(--accent); font-weight: 600; }
     
-    .summary-card { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.4); border-radius: 14px; padding: 20px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .summary-card { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.4); border-radius: 14px; padding: 20px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .summary-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; cursor: pointer; transition: 0.3s; padding: 10px; border-radius: 10px;}
     .summary-item:hover { background: rgba(139, 92, 246, 0.1); }
     .summary-item .icon { font-size: 24px; margin-bottom: 4px; }
@@ -73,8 +73,7 @@
     .summary-item:hover .text strong { color: var(--accent); }
     .summary-item .text p { color: var(--text-muted); font-size: 12px; line-height: 1.5; }
     
-    .candle-banner { grid-column: 1 / -1; background: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(139,92,246,0.2), rgba(139,92,246,0.1)); border: 1px solid rgba(139, 92, 246, 0.3); padding: 12px; border-radius: 10px; margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; color: var(--text-main); cursor: pointer; transition: 0.3s;}
-    .candle-banner:hover { border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+    .candle-banner { grid-column: 1 / -1; background: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(139,92,246,0.2), rgba(139,92,246,0.1)); border: 1px solid rgba(139, 92, 246, 0.3); padding: 12px; border-radius: 10px; margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; color: var(--text-main); }
     .candle-banner strong { color: var(--accent); }
     
     .price-row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
@@ -93,24 +92,25 @@
     .price-row .name { display: flex; align-items: center; gap: 10px; }
     .price-row .name::before { content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; flex-shrink: 0; animation: pulseGlow 2s infinite alternate; }
     .price-row .val { color: var(--accent); font-weight: 600; white-space: nowrap; margin-left: 8px; text-align: right; }
-    .price-note { font-size: 11px; color: rgba(161, 161, 170, 0.6); text-align: center; margin-top: -10px; margin-bottom: 10px; font-style: italic; }
+    .price-note { font-size: 11px; color: rgba(161, 161, 170, 0.6); text-align: center; margin-top: -10px; margin-bottom: 12px; font-style: italic; }
     
     .toggle-wrapper { margin: 40px 0 20px; scroll-margin-top: 80px; }
     .toggle-header { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--accent); display: flex; margin: 0 0 20px ; position: relative; top: -10px ; align-items: center; justify-content: center; gap: 12px; cursor: pointer; padding: 10px; transition: 0.3s; user-select: none; letter-spacing: 1px; }
     .toggle-header:hover { text-shadow: 0 0 15px var(--accent-glow); color: #fff; }
-    .toggle-header .icon-arrow { font-size: 14px; transition: transform 0.4s ease; }
     .toggle-header::before,.toggle-header::after {content: "";flex: 1;border-top: 1px dashed var(--border);}
-    .toggle-wrapper.open .toggle-header .icon-arrow { transform: rotate(180deg); }
-    .toggle-content { display: none; padding-top: 10px; animation: fadeInDown 0.4s ease; }
-    .toggle-wrapper.open .toggle-content { display: block; }
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     
     .witchcraft-split { display: flex; gap: 20px; justify-content: space-between; }
     .col-spells, .col-rituals { flex: 1; }
     .v-divider { width: 1px; background: linear-gradient(to bottom, transparent, var(--accent-dark), transparent); opacity: 0.5; margin: 0 10px; }
     .witch-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: #fff; margin-bottom: 16px; font-style: italic; letter-spacing: 1px; }
-    .banner-special { background: linear-gradient(90deg, #4c1d95, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; text-align: center; padding: 8px 30px; border-radius: 20px; margin: 24px auto 0; width: fit-content; letter-spacing: 0.5px; box-shadow: 0 4px 15px var(--accent-glow); }
-    
+
+    /* NÂNG CẤP NGUYÊN LIỆU GIAO DIỆN MỚI */
+    .upgrade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    .upgrade-tier-card { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.35); border-radius: 12px; padding: 14px 16px; }
+    .upgrade-tier-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px; }
+    .tier-badge { background: rgba(139, 92, 246, 0.2); color: var(--accent); font-weight: 700; font-size: 12px; padding: 2px 10px; border-radius: 12px; border: 1px solid rgba(139,92,246,0.4); }
+    .tier-desc { font-size: 11px; color: var(--text-muted); font-style: italic; margin-bottom: 12px; line-height: 1.4; min-height: 32px; }
+
     .feed-gallery { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 16px; padding-bottom: 24px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; width: 100%; }
     .feed-gallery::-webkit-scrollbar { height: 8px; }
     .feed-gallery::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
@@ -146,13 +146,9 @@
     .personal-star { position: absolute; top: 154px; left: 0; right: 0; color: var(--accent); font-size: 13px; text-align: center; }
     .personal-text { position: absolute; top: 180px; left: 10px; right: 10px; font-size: 13px; line-height: 1.5; color: #fff; text-align: center; }
 
-
-
-    
-    
     @media (max-width: 950px) {
       .price-row-3, .summary-card { grid-template-columns: repeat(2, 1fr); }
-      .price-row-2-combo { grid-template-columns: 1fr; }
+      .price-row-2-combo, .upgrade-grid { grid-template-columns: 1fr; }
       .inner-grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
@@ -221,15 +217,14 @@
         <span class="icon">🔮</span>
         <div class="text">
           <strong>Xem Bài Tiên Tri</strong>
-          <p>Tarot, Lenormand, Tea Leaf,</p>
-          <p> Bài Tây, Clow, Oracle</p>
+          <p>Tarot, Lenormand, Tea Leaf, Bài Tây, Clow, Oracle</p>
         </div>
       </div>
       <div class="summary-item" onclick="scrollToSection('witchcraft-manifest')">
         <span class="icon">🌙</span>
         <div class="text">
           <strong>Spell & Manifest</strong>
-          <p>Spell, nến năng lượng, Manifest</p>
+          <p>Spell Jar, Nến Thơm, Spell Đá, Nghi Lễ, Coach Manifest</p>
         </div>
       </div>
       <div class="summary-item" onclick="scrollToSection('huyen-hoc-chiem-tinh')">
@@ -239,15 +234,8 @@
           <p>Tử vi chuyên đề, Bản đồ sao, Ma trận</p>
         </div>
       </div>
-       <div class="summary-item" onclick="scrollToSection('da-nang-luong-thanh-tay')">
-        <span class="icon">💎</span>
-        <div class="text">
-          <strong>Crystal & Cleansing</strong>
-          <p>Đá Năng Lượng, Bột Thanh tẩy</p>
-        </div>
-      </div>
       <div class="candle-banner">
-     <strong>Giờ làm việc:</strong> 12h trưa - 4h sáng mỗi ngày
+        <strong>Giờ làm việc:</strong> 12h trưa - 4h sáng mỗi ngày
       </div>
     </div>
 
@@ -366,228 +354,264 @@
       </div>
     </div> <!-- END KHU VỰC TIÊN TRI -->
 
-    <!-- KHU VỰC JAR & MANIFEST -->
+    <!-- KHU VỰC SPELL & MANIFEST -->
     <div class="toggle-wrapper" id="witchcraft-manifest">
-       <div class="toggle-header">
+      <div class="toggle-header">
         <span>🌙 Spell & Manifest</span>
       </div>
-        <div class="price-row-1">
-          <div class="price-box">
-            <div class="witchcraft-split">
-              <div class="col-spells">
-                <div class="witch-title">Spell Jar</div>
-                <div class="price-row"><span class="name">Love spell</span><span class="val">350k</span></div>
-                <div class="price-row"><span class="name">Lucky spell</span><span class="val">350k</span></div>
-                <div class="price-row"><span class="name">Money spell</span><span class="val">350k</span></div>
-                <div class="price-row"><span class="name">Healthy spell</span><span class="val">350k</span></div>
-              </div>
-              <div class="v-divider"></div>
-              <div class="col-rituals">
-                <div class="witch-title">Nghi lễ - Ritual</div>
-                <div class="price-row"><span class="name">Lễ nối duyên</span><span class="val">380k</span></div>
-                <div class="price-row"><span class="name">Lễ mở vận</span><span class="val">460k</span></div>
-                <div class="price-row"><span class="name">Lễ tẩy uế</span><span class="val">480k</span></div>
-                <div class="price-row"><span class="name">Lễ cắt duyên</span><span class="val">500k</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-       <div class="price-row-1">
+     <!-- 1. SPELL JAR & NGHI LỄ RITUAL  -->
+      <div class="price-row-2-combo">
         <div class="price-box">
-          <h3>Nâng Cấp Nguyên Liệu</h3>
-          <div class="price-note"> Chỉ áp dụng với jar và lễ, không áp dụng với nến <br> Thay thảo mộc và đá năng lượng có sẵn trong hũ bằng những loại cao cấp hơn, chuyên biệt hơn, dẫn đến năng lượng mạnh hơn </div>
-          <div class="witchcraft-split">
-              <div class="col-spells">
-                <div class="witch-title">Thảo Mộc</div>
-                 <div class="price-row">
-                <span class="name">Cấp 2</span>
-                 <span style="font-size: 9px;"> Củng cố tác dụng chính, giúp spell rõ lực và tập trung vào mục đích hơn </span>
-                <span class="val">119k</span>
-              </div>
-                <div class="price-row">
-                <span class="name">Cấp 3</span>
-                 <span style="font-size: 9px;"> Đẩy mạnh năng lượng của spell lên 1.5 lần, trực tiếp thúc đẩy nhanh mục tiêu và mạnh kết quả </span>
-                <span class="val">199k</span>
-              </div>
-              </div>
-              <div class="v-divider"></div>
-              <div class="col-rituals">
-                <div class="witch-title">Đá Năng Lượng</div>
-                <div class="price-row">
-                <span class="name">Cấp 2</span>
-                 <span style="font-size: 9px;"> Củng cố ý niệm, cân bằng, ổn định, hạn chế năng lượng bị phân tán </span>
-                <span class="val">149k</span>
-              </div>
-                <div class="price-row">
-                <span class="name">Cấp 3</span>
-                 <span style="font-size: 9px;"> Nâng cao độ vững của spell lên 1,5 lần, đồng thời duy trì, hỗ trợ spell tối đa để dẫn đến kết quả bền nhất </span>
-                <span class="val">299k</span>
-              </div>
-              </div>
-            </div>
-        </div>
-       </div>
-
-        <div class="price-row-2-combo">
-          <div class="price-box">
-            <h3>🕯️ CANDLE SPELL</h3>
-            <div class="price-note">Nến thơm năng lượng (mỗi hũ 500g) được mix thảo mộc, đá các loại để phù hợp với mục đích</div>
-            <div class="price-row" style="margin-top: 4px; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Love yourself</span><span class="val">650k</span></div>
-            <div class="price-row"><span class="name">Beauty</span><span class="val">650K</span></div>
-            <div class="price-row"><span class="name">Friendship</span><span class="val">750k</span></div>
-            <div class="price-row"><span class="name">Healing</span><span class="val">850k</span></div>
-            <div class="price-row"><span class="name">Study</span><span class="val">850k</span></div>
-            <div class="price-row"><span class="name">Lover</span><span class="val">850k</span></div>
-            <div class="price-row"><span class="name">Work</span><span class="val">950k</span></div>
-            <div class="price-row"><span class="name">Money</span><span class="val">950k</span></div>
-            <div class="price-row"><span class="name">Mix theo nguyện vọng</span><span class="val">Inbox</span></div>
+          <h3>🍯 Spell Jar</h3>
+          <div class="price-note">Dòng spell làm cá nhân hóa theo năng lượng & từng trường hợp riêng</div>
+          <div class="price-row" style="margin-top: 4px; border-top: 1px dashed var(--border); padding-top: 12px;">
+            <span class="name">Love spell</span><span class="val">350k</span>
           </div>
-
-          <div class="price-box">
-            <h3>✍️ Coach Manifest</h3>
-            <div class="price-row" style="flex-direction: column; align-items: center; justify-content: center; height: 100%; border-bottom: 1px dashed var(--border); padding-bottom: 16px;">
-              <span style="font-weight: 700; color: var(--text-main); font-size: 14px; margin-bottom: 8px">GÓI GẤP</span>
-              <span style="font-size: 11px; margin-bottom: 8px;">Thời gian: 60 phút call</span>
-              <span style="font-size: 11px; margin-bottom: 8px; text-align:center; line-height: 1.5;"> Cho khách hàng hiểu, nắm những kiến thức cơ bản manifest, giải quyết vấn đề cấp bách <br> (thu hút người cũ, thu hút tài chính tháng này,...), thực hành định hướng tư duy về những gì vừa dạy  </span>
-              <span class="val" style="font-size: 18px; margin:0;">450K</span>
-            </div>
-            <div class="price-row" style="flex-direction: column; align-items: center; justify-content: center; height: 100%; padding-top: 16px; margin-bottom: 0;">
-              <span style="font-weight: 700; color: var(--text-main); font-size: 14px; margin-bottom: 8px;">GÓI ĐỒNG HÀNH</span>
-              <span style="font-size: 11px; margin-bottom: 8px;">Thời gian: 30 ngày</span>
-              <span style="font-size: 11px; margin-bottom: 8px; text-align:center; line-height: 1.5;">Giải thích & hướng dẫn thực hành Manifest, đồng hành 30 ngày, call 30 phút mỗi ngày,<br>
-              thay đổi tư duy, điều chỉnh mindset, cân bằng cảm xúc, định hướng hành động.
-              </span>
-              <span class="val" style="font-size: 18px; margin: 0;">
-              <span style="text-decoration: line-through;">6TR9</span>
-              <span style="color: white;"> / </span>
-              <span style="color: #ef4444; font-size: 22px;">4TR8</span>
-            </span>
-                                                                         
-            </div>
-          </div>
+          <div class="price-row"><span class="name">Lucky spell</span><span class="val">350k</span></div>
+          <div class="price-row"><span class="name">Money spell</span><span class="val">350k</span></div>
+          <div class="price-row"><span class="name">Healthy spell</span><span class="val">350k</span></div>
         </div>
-    </div> <!-- END KHU VỰC SPELL & MANIFEST -->
 
-  <!-- KHU VỰC ĐÁ NĂNG LƯỢNG & THANH TẨY -->
-    <div class="toggle-wrapper" id="da-nang-luong-thanh-tay">
-      <div class="toggle-header">
-        <span>💎 Crystal & Cleansing</span>
+        <div class="price-box">
+          <h3>🕯️ Nghi Lễ - Ritual</h3>
+          <div class="price-note">Thực hiện theo khung giờ năng lượng phù hợp, cá nhân hóa hoàn toàn và bảo mật thông tin</div>
+          <div class="price-row" style="margin-top: 4px; border-top: 1px dashed var(--border); padding-top: 12px;">
+            <span class="name">Lễ nối duyên</span><span class="val">380k</span>
+          </div>
+          <div class="price-row"><span class="name">Lễ mở vận</span><span class="val">460k</span></div>
+          <div class="price-row"><span class="name">Lễ tẩy uế</span><span class="val">480k</span></div>
+          <div class="price-row"><span class="name">Lễ cắt duyên</span><span class="val">500k</span></div>
+        </div>
       </div>
 
-      <!-- KHỐI 1: SPELL ĐÁ -->
+      <!-- 2. CANDLE SPELL VÀ SPELL ĐÁ  -->
+      <div class="price-row-2-combo">
+        <div class="price-box">
+          <h3>🕯️ Candle Spell</h3>
+          <div class="price-note">Nến thơm năng lượng (hũ 500g) mix bởi thảo mộc & đá được cá nhân hoá </div>
+         <div class="price-row" style="margin-top: 4px; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Lover</span><span class="val">950k</span></div>
+          <div class="price-row"><span class="name">Beauty</span><span class="val">650K</span></div>
+          <div class="price-row"><span class="name">Study</span><span class="val">850k</span></div>
+          <div class="price-row"><span class="name">Work</span><span class="val">950k</span></div>
+          <div class="price-row"><span class="name">Money</span><span class="val">950k</span></div>
+          <div class="price-row"><span class="name">Mix theo nguyện vọng</span><span class="val">Inbox</span></div>
+        </div>
+
+        <div class="price-box">
+          <h3>💎 Spell Đá Năng Lượng</h3>
+          <div class="price-note">Lưu ý: Dòng spell này không làm theo năng lượng cá nhân hoá</div>
+          <div class="price-row" style="margin-top: 4px; border-top: 1px dashed var(--border); padding-top: 12px;"><span class="name">Đá Nối Duyên & Tình Yêu</span><span class="val">80k - 149k</span></div>
+          <div class="price-row"><span class="name">Trực Giác & Bình An</span><span class="val">80k - 149k</span></div>
+          <div class="price-row"><span class="name">Tài Lộc & May Mắn</span><span class="val">80k - 149k</span></div>
+          <div class="price-row"><span class="name">Giao Tiếp & Cân Bằng</span><span class="val">80k - 149k</span></div>
+          <div class="price-row"><span class="name">Nhan Sắc & Sức Hút</span><span class="val">80k - 149k</span></div>
+          <div class="price-row"><span class="name">Thanh Tẩy & Bảo Vệ</span><span class="val">80k - 149k</span></div>
+        </div>
+      </div>
+
+     <!-- 3. NÂNG CẤP NGUYÊN LIỆU  -->
       <div class="price-row-1">
         <div class="price-box">
-          <h3>Lọ Đá Năng Lượng</h3>
-          <div class="price-note" style="margin-bottom: 16px;">
-            Lưu ý: Dòng lọ spell này không làm theo năng lượng cá nhân hoá
+          <h3 style="font-size: 15px; letter-spacing: 1px; color: var(--accent);">⚡ NÂNG CẤP NGUYÊN LIỆU</h3>
+          <div class="price-note" style="margin-bottom: 20px;">
+            Chỉ áp dụng với Jar và Lễ (không áp dụng nến) • Thay thế nguyên liệu sẵn có bằng dòng cao cấp giúp năng lượng mạnh và bền lực hơn
           </div>
+          
+          <div class="witchcraft-split" style="gap: 24px;">
+            <div class="col-spells" style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="text-align: center; font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                 Thảo Mộc Cao Cấp
+              </div>
 
-          <div class="witchcraft-split">
-            <div class="col-spells">
-              <div class="price-row">
-                <span class="name">1. Đá Nối Duyên & Tình Yêu</span>
-                <span class="val">80k - 149k</span>
+              <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 12px 14px; transition: 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(139, 92, 246, 0.25)'">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-weight: 700; font-size: 13px; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block;"></span>
+                    Cấp 2
+                  </span>
+                  <span style="color: var(--accent); font-weight: 700; font-size: 14px;">119k</span>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.45;">
+                  Củng cố tác dụng chính, giúp spell tập trung rõ lực vào mục tiêu.
+                </div>
               </div>
-              <div class="price-row">
-                <span class="name">2. Đá Trực Giác & Bình An</span>
-                <span class="val">80k - 149k</span>
-              </div>
-              <div class="price-row">
-                <span class="name">3. Đá Tài Lộc & May Mắn</span>
-                <span class="val">80k - 149k</span>
+
+              <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 12px 14px; transition: 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(139, 92, 246, 0.25)'">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-weight: 700; font-size: 13px; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+                    Cấp 3 <span style="font-size: 9px; padding: 1px 6px; border-radius: 8px; background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); font-weight: 600;">x1.5 Lực</span>
+                  </span>
+                  <span style="color: var(--accent); font-weight: 700; font-size: 14px;">199k</span>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.45;">
+                  Đẩy mạnh năng lượng lên 1.5 lần, thúc đẩy nhanh và mạnh kết quả.
+                </div>
               </div>
             </div>
 
             <div class="v-divider"></div>
+            <div class="col-rituals" style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="text-align: center; font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                Đá Năng Lượng
+              </div>
 
-         
-            <div class="col-rituals">
-              <div class="price-row">
-                <span class="name">4. Đá Giao Tiếp & Cân Bằng</span>
-                <span class="val">80k - 149k</span>
+              <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 12px 14px; transition: 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(139, 92, 246, 0.25)'">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-weight: 700; font-size: 13px; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block;"></span>
+                    Cấp 2
+                  </span>
+                  <span style="color: var(--accent); font-weight: 700; font-size: 14px;">149k</span>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.45;">
+                  Củng cố ý niệm, cân bằng, ổn định và hạn chế năng lượng bị phân tán.
+                </div>
               </div>
-              <div class="price-row">
-                <span class="name">5. Đá Nhan Sắc & Sức Hút</span>
-                <span class="val">80k - 149k</span>
-              </div>
-              <div class="price-row">
-                <span class="name">6. Đá Thanh Tẩy & Bảo Vệ</span>
-                <span class="val">80k - 149k</span>
+
+              <!-- Thẻ Cấp 3 Đá -->
+              <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 12px 14px; transition: 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(139, 92, 246, 0.25)'">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-weight: 700; font-size: 13px; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+                    Cấp 3 <span style="font-size: 9px; padding: 1px 6px; border-radius: 8px; background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); font-weight: 600;">Bền Vững</span>
+                  </span>
+                  <span style="color: var(--accent); font-weight: 700; font-size: 14px;">299k</span>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.45;">
+                  Nâng cao độ vững lên 1.5 lần, hỗ trợ spell tối đa cho kết quả bền nhất.
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
-      <!-- KHỐI 2: BỘT THANH TẨY -->
+     <!-- 4. BỘT THANH TẨY -->
       <div class="price-row-1">
         <div class="price-box">
-          <h3>Bột Thanh Tẩy</h3>
-          <div class="price-note" style="margin-bottom: 16px;">
-             Tác dụng: Gột rửa trược khí, xua tan năng lượng tù đọng, hỗ trợ tinh thần thư giãn & tập trung
+          <h3>🌿 Bột Thanh Tẩy</h3>
+          <div class="price-note">
+            Làm từ thảo mộc tự nhiên giúp gột rửa trược khí, xua tan năng lượng tù đọng, trả lại không gian thanh tịnh và hỗ trợ tinh thần thư giãn, tập trung.
+          </div>
+          <div style="border-top: 1px dashed var(--border); padding-top: 14px; margin-top: 4px; display: flex; align-items: center; justify-content: space-between;">
+
+            <div style="flex: 1; padding: 0 10px;">
+              <div class="price-row" style="margin-bottom: 0;">
+                <span class="name">Lẻ (1 gói)</span>
+                <span class="val">16k</span>
+              </div>
+            </div>
+
+            <div class="v-divider" style="height: 24px; margin: 0 15px;"></div>
+
+            <div style="flex: 1; padding: 0 10px;">
+              <div class="price-row" style="margin-bottom: 0;">
+                <span class="name">Combo 10 gói</span>
+                <span class="val">149k</span>
+              </div>
+            </div>
           </div>
 
-          <div class="inner-grid-2">
-            <div class="price-row" style="margin-bottom: 0;">
-              <span class="name">Lẻ (1 túi)</span>
-              <span class="val">16k</span>
-            </div>
-            <div class="price-row" style="margin-bottom: 0;">
-              <span class="name">Combo 10 túi</span>
-              <span class="val">149k</span>
-            </div>
-          </div>
         </div>
       </div>
-    </div> <!-- END KHU VỰC ĐÁ NĂNG LƯỢNG & THANH TẨY -->
 
-     <!-- KHU VỰC HUYỀN HỌC & CHIÊM TINH -->
+      <!-- 5. COACH MANIFEST -->
+      <div class="price-row-1">
+        <div class="price-box">
+          <h3 style="font-size: 16px; letter-spacing: 1px; color: var(--accent);">✍️ COACH MANIFEST CHUYÊN SÂU</h3>
+          <div class="price-note" style="margin-bottom: 16px;">
+            Đồng hành điều chỉnh tần số rung động, tháo gỡ tắc nghẽn và định hướng hành động
+          </div>
+          
+          <div class="inner-grid-2" style="gap: 16px;">
+            <!-- Gói Gấp -->
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 16px 14px; display: flex; flex-direction: column; justify-content: space-between; text-align: center;">
+              <div>
+                <div style="font-weight: 700; color: var(--text-main); font-size: 13px; letter-spacing: 0.5px; margin-bottom: 4px;">
+                  GÓI GẤP
+                </div>
+                <div style="font-size: 11px; color: var(--accent); font-weight: 600; margin-bottom: 10px;">
+                  ⏱ 60 Phút Call Trực Tiếp
+                </div>
+                <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                  Nắm nhanh nguyên lý cốt lõi, tháo gỡ vấn đề cấp bách (thu hút người cũ, tài chính trong tháng) và định hướng tư duy chuẩn xác.
+                </p>
+              </div>
+              <div class="val" style="font-size: 15px; text-align: center; margin: 0; padding-top: 10px; border-top: 1px dashed var(--border);">
+                450K
+              </div>
+            </div>
+
+            <!-- Gói Đồng Hành -->
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 16px 14px; display: flex; flex-direction: column; justify-content: space-between; text-align: center;">
+              <div>
+                <div style="font-weight: 700; color: var(--text-main); font-size: 13px; letter-spacing: 0.5px; margin-bottom: 4px;">
+                  GÓI ĐỒNG HÀNH
+                </div>
+                <div style="font-size: 11px; color: var(--accent); font-weight: 600; margin-bottom: 10px;">
+                  ⏱ 30 Ngày Chuyển Hóa (Call 30p/ngày)
+                </div>
+                <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                  Đồng hành chuyên sâu, chuyển hóa mindset, cân bằng cảm xúc, thiết lập tần số nhất quán và theo sát từng hành động thực tế.
+                </p>
+              </div>
+              <div class="val" style="font-size: 19px; text-align: center; margin: 0; padding-top: 10px; border-top: 1px dashed var(--border);">
+                <span style="text-decoration: line-through; color: var(--text-muted); font-size: 13px; margin-right: 6px;">6TR9</span>
+                <span style="color: #ef4444; font-size: 15px;">4TR8</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div> <!-- END KHU VỰC SPELL & MANIFEST -->
+
+    <!-- KHU VỰC HUYỀN HỌC & CHIÊM TINH -->
     <div class="toggle-wrapper" id="huyen-hoc-chiem-tinh">
       <div class="toggle-header">
         <span>🌟 Huyền Học & Chiêm Tinh</span>
       </div>
-        <div class="price-row-2-combo">
-          <div class="price-box">
-            <h3>Bản Đồ Sao</h3>
-            <div class="price-row"><span class="name">Progressed / Natal chart</span><span class="val">390k</span></div>
-            <div class="price-row"><span class="name">Composite / Synasty chart</span><span class="val">590k</span></div>
-            <div class="price-row"><span class="name">Theo nhà</span><span class="val">90k/nhà</span></div>
-          </div>
-          <div class="price-box">
-            <h3>Ma Trận Cặp Đôi</h3>
-            <div class="price-row"><span class="name">Cặp đôi</span><span class="val">590k</span></div>
-            <div class="price-row"><span class="name">Lẻ</span><span class="val">350k</span></div>
-          </div>
+      <div class="price-row-2-combo">
+        <div class="price-box">
+          <h3>Bản Đồ Sao</h3>
+          <div class="price-row"><span class="name">Progressed / Natal chart</span><span class="val">390k</span></div>
+          <div class="price-row"><span class="name">Composite / Synasty chart</span><span class="val">590k</span></div>
+          <div class="price-row"><span class="name">Theo nhà</span><span class="val">90k/nhà</span></div>
         </div>
+        <div class="price-box">
+          <h3>Ma Trận Cặp Đôi</h3>
+          <div class="price-row"><span class="name">Cặp đôi</span><span class="val">590k</span></div>
+          <div class="price-row"><span class="name">Lẻ</span><span class="val">350k</span></div>
+        </div>
+      </div>
 
-        <div class="price-row-1">
-          <div class="price-box">
-            <h3>TỬ VI CHI TIẾT</h3>
-            <div class="inner-grid-4">
-              <div class="price-row"><span class="name">Tử Vi Tình Duyên</span><span class="val">380k</span></div>
-              <div class="price-row"><span class="name">Tử Vi Gia Tiên</span><span class="val">380k</span></div>
-              <div class="price-row"><span class="name">Tử Vi Vận Hạn</span><span class="val">380k</span></div>
-              <div class="price-row"><span class="name">Tử Vi Soi Âm</span><span class="val">380k</span></div>
-              
-              <div class="price-row"><span class="name">Tử Vi Vợ Chồng</span><span class="val">380k</span></div>
-              <div class="price-row"><span class="name">Tử Vi Sự Nghiệp</span><span class="val">380k</span></div>
-              <div class="price-row"><span class="name">Tử Vi Tài Bạch</span><span class="val">380k</span></div>
-              <div class="price-row"><span class="name">Tử Vi Trọn Đời</span><span class="val" style="color: #ef4444;">1500k</span></div>
-              
-              <div class="price-row"><span class="name">Tử Vi Con Cái</span><span class="val">380k</span></div>
-              <div class="price-row"><span class="name">Tử Vi Điền Trạch</span><span class="val">380k</span></div>
-              <div class="price-row"><span class="name">Tử Vi Bản Mệnh</span><span class="val">380k</span></div>
-            </div>
+      <div class="price-row-1">
+        <div class="price-box">
+          <h3>TỬ VI CHI TIẾT</h3>
+          <div class="inner-grid-4">
+            <div class="price-row"><span class="name">Tử Vi Tình Duyên</span><span class="val">380k</span></div>
+            <div class="price-row"><span class="name">Tử Vi Gia Tiên</span><span class="val">380k</span></div>
+            <div class="price-row"><span class="name">Tử Vi Vận Hạn</span><span class="val">380k</span></div>
+            <div class="price-row"><span class="name">Tử Vi Soi Âm</span><span class="val">380k</span></div>
+            
+            <div class="price-row"><span class="name">Tử Vi Vợ Chồng</span><span class="val">380k</span></div>
+            <div class="price-row"><span class="name">Tử Vi Sự Nghiệp</span><span class="val">380k</span></div>
+            <div class="price-row"><span class="name">Tử Vi Tài Bạch</span><span class="val">380k</span></div>
+            <div class="price-row"><span class="name">Tử Vi Trọn Đời</span><span class="val" style="color: #ef4444;">1500k</span></div>
+            
+            <div class="price-row"><span class="name">Tử Vi Con Cái</span><span class="val">380k</span></div>
+            <div class="price-row"><span class="name">Tử Vi Điền Trạch</span><span class="val">380k</span></div>
+            <div class="price-row"><span class="name">Tử Vi Bản Mệnh</span><span class="val">380k</span></div>
           </div>
         </div>
       </div>
     </div> <!-- END KHU VỰC HUYỀN HỌC -->
 
-    
   </div> <!-- END TAB BẢNG GIÁ -->
-
-    
 
   <!-- TAB FEEDBACK -->
   <div id="feed" class="tab-content">
@@ -618,32 +642,33 @@
     </div>
   </div>
 
+  <!-- TAB CAM KẾT & QUY ĐỊNH -->
   <div id="contact" class="tab-content">
     <div class="section-title">Cam kết</div>
     <div class="personal-cards">
-    <div class="personal-content">
+      <div class="personal-content">
         <div class="personal-avatar">
-             <img src="Commit/card_1.png">
+          <img src="Commit/card_1.png">
         </div>
         <div class="personal-title">Đồng Hành Từng Khách</div>
         <div class="personal-star">✦</div>
         <div class="personal-text">
-            Ưu tiên chỉn chu từng trải bài,<br>
-            không xem cùng lúc nhiều khách.
+          Ưu tiên chỉn chu từng trải bài,<br>
+          không xem cùng lúc nhiều khách.
         </div>
-    </div>
+      </div>
 
-    <div class="personal-content">
+      <div class="personal-content">
         <div class="personal-avatar">
           <img src="Commit/card_5.png">
         </div>
         <div class="personal-title">Không Sử Dụng <br> AI/CHAT GPT</div>
         <div class="personal-star">✦</div>
         <div class="personal-text">
-            Không dùng AI để thay thế <br>
-            reader trong quá trình luận bài.
+          Không dùng AI để thay thế <br>
+          reader trong quá trình luận bài.
         </div>
-    </div>
+      </div>
 
       <div class="personal-content">
         <div class="personal-avatar">
@@ -652,35 +677,34 @@
         <div class="personal-title">Chụp Trải Bài <br> Thực Tế</div>
         <div class="personal-star">✦</div>
         <div class="personal-text">
-            Gửi ảnh trải bài thật để <br>
-            khách có thể theo dõi trực tiếp.  
+          Gửi ảnh trải bài thật để <br>
+          khách có thể theo dõi trực tiếp.  
         </div>
-    </div>
+      </div>
 
-  
-    <div class="personal-content">
+      <div class="personal-content">
         <div class="personal-avatar">
           <img src="Commit/card_3.png">
         </div>
         <div class="personal-title">Bảo Mật Thông tin <br> Tuyệt Đối</div>
         <div class="personal-star">✦</div>
         <div class="personal-text">
-            Tôn trọng và bảo mật toàn bộ<br>
-            thông tin, câu chuyện của khách.
+          Tôn trọng và bảo mật toàn bộ<br>
+          thông tin, câu chuyện của khách.
         </div>
-    </div>
+      </div>
 
-    <div class="personal-content">
+      <div class="personal-content">
         <div class="personal-avatar">
           <img src="Commit/card_2.png">
         </div>
         <div class="personal-title">Nói Không Với Feedback Ảo</div>
         <div class="personal-star">✦</div>
         <div class="personal-text">
-            Feedback được đăng tải đều <br>
-            đến từ trải nghiệm thực tế của khách hàng.
+          Feedback được đăng tải đều <br>
+          đến từ trải nghiệm thực tế của khách hàng.
         </div>
-    </div>
+      </div>
 
       <div class="personal-content">
         <div class="personal-avatar">
@@ -689,11 +713,11 @@
         <div class="personal-title">Spell Cá Nhân Hóa <br> Năng Lượng</div>
         <div class="personal-star">✦</div>
         <div class="personal-text">
-            Thiết lập theo năng lượng,<br>
-            mục đích và nguyện vọng riêng của từng khách.
+          Thiết lập theo năng lượng,<br>
+          mục đích và nguyện vọng riêng của từng khách.
         </div>
+      </div>
     </div>
-</div>
 
     <div class="section-title">Quy Định & Đặt Lịch</div>
     
